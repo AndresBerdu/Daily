@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://dqinf3ok8v043"]
+
+[ext_resource type="Script" uid="uid://cug1gahmik01w" path="res://src/entities/npc/npc.gd" id="1_pdcmu"]
+[ext_resource type="Texture2D" uid="uid://cqmxgod048mbr" path="res://assets/sprites/characters/recepcionits/idle/character_recepcionist_down.png" id="2_nmtqg"]
+[ext_resource type="Script" uid="uid://bugurv12g5iec" path="res://src/components/state_machine/state_machine.gd" id="2_pdcmu"]
+
+[sub_resource type="Animation" id="Animation_pdcmu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_nmtqg"]
+resource_name = "idle"
+length = 1.6
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_r7l4f"]
+resource_name = "idle_d"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.76666665, 0.93333334, 1.1, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r7l4f"]
+_data = {
+&"RESET": SubResource("Animation_pdcmu"),
+&"idle": SubResource("Animation_nmtqg"),
+&"idle_d": SubResource("Animation_r7l4f")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ketdh"]
+size = Vector2(16, 18)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0mfjg"]
+radius = 24.0
+
+[node name="Npc" type="CharacterBody2D" unique_id=1445802270]
+motion_mode = 1
+script = ExtResource("1_pdcmu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1310669163]
+texture = ExtResource("2_nmtqg")
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1471399956]
+libraries/ = SubResource("AnimationLibrary_r7l4f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=872239534]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_ketdh")
+debug_color = Color(0.56206334, 0.5554356, 0.19401139, 0.41960785)
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1833024295]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=779504910]
+shape = SubResource("CircleShape2D_0mfjg")
+debug_color = Color(0.09544215, 0.64880884, 7.70092e-07, 0.41960785)
+
+[node name="StateMabine" type="Node" parent="." unique_id=340864515]
+script = ExtResource("2_pdcmu")
+
+[node name="Idle" type="Node" parent="StateMabine" unique_id=1391177231]
