@@ -1,0 +1,266 @@
+[gd_scene format=3 uid="uid://bei0eiwjkkcv6"]
+
+[ext_resource type="Script" uid="uid://caqw4t8r0ity2" path="res://ui/menus/save/save.gd" id="1_8rs2d"]
+[ext_resource type="FontFile" uid="uid://dhuiae4jqwh0y" path="res://assets/fonts/determination.ttf" id="1_lva22"]
+[ext_resource type="Texture2D" uid="uid://bk36l7d8s850f" path="res://assets/sprites/characters/player/idle/character_player_idle_down.png" id="2_2e3yr"]
+
+[node name="Save" type="CanvasLayer" unique_id=1324698705]
+script = ExtResource("1_8rs2d")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1470381240]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.27058825)
+metadata/_edit_use_anchors_ = true
+
+[node name="BackgroundContainer" type="ColorRect" parent="." unique_id=1275003923]
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.06666667
+anchor_right = 0.9
+anchor_bottom = 0.9111111
+color = Color(0.25597736, 0.25832132, 0.27450395, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Slot1" type="ColorRect" parent="BackgroundContainer" unique_id=815185277]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.046875
+anchor_top = 0.05263158
+anchor_right = 0.953125
+anchor_bottom = 0.31436703
+color = Color(0.23753911, 0.23753914, 0.23753911, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="BackgroundContainer/Slot1" unique_id=2031971960]
+visible = false
+position = Vector2(48, 40.000008)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("2_2e3yr")
+hframes = 3
+
+[node name="InfoContainer" type="HBoxContainer" parent="BackgroundContainer/Slot1" unique_id=1690260314]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.18965517
+anchor_top = 0.3016304
+anchor_right = 0.94827586
+anchor_bottom = 0.80434775
+theme_override_constants/separation = 52
+alignment = 1
+
+[node name="LabelName" type="Label" parent="BackgroundContainer/Slot1/InfoContainer" unique_id=927142527]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lva22")
+theme_override_font_sizes/font_size = 14
+text = "Nombre"
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelCoins" type="Label" parent="BackgroundContainer/Slot1/InfoContainer" unique_id=325583261]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lva22")
+theme_override_font_sizes/font_size = 14
+text = "999"
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelLevelName" type="Label" parent="BackgroundContainer/Slot1/InfoContainer" unique_id=1162248124]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lva22")
+theme_override_font_sizes/font_size = 14
+text = "Nivel 1"
+
+[node name="LabelDate" type="Label" parent="BackgroundContainer/Slot1/InfoContainer" unique_id=578370624]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lva22")
+theme_override_font_sizes/font_size = 14
+text = "00:00:00"
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BackgroundContainer/Slot1" unique_id=1681300316]
+layout_mode = 0
+anchor_left = 0.05172414
+anchor_top = 0.20108694
+anchor_right = 0.9655172
+anchor_bottom = 0.80434775
+theme_override_constants/separation = 292
+alignment = 1
+
+[node name="LabelEmpty" type="Label" parent="BackgroundContainer/Slot1/HBoxContainer" unique_id=1875985711]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lva22")
+theme_override_font_sizes/font_size = 14
+text = "[Vacio]"
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelDateEmpy" type="Label" parent="BackgroundContainer/Slot1/HBoxContainer" unique_id=270363112]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lva22")
+theme_override_font_sizes/font_size = 14
+text = "--:--:--"
+metadata/_edit_use_anchors_ = true
+
+[node name="Slot2" type="ColorRect" parent="BackgroundContainer" unique_id=1601623586]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.046875
+anchor_top = 0.05263158
+anchor_right = 0.953125
+anchor_bottom = 0.31436703
+offset_top = 95.57895
+offset_bottom = 95.57894
+color = Color(0.23753911, 0.23753914, 0.23753911, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="BackgroundContainer/Slot2" unique_id=1082402834]
+visible = false
+position = Vector2(48, 40.000008)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("2_2e3yr")
+hframes = 3
+
+[node name="InfoContainer" type="HBoxContainer" parent="BackgroundContainer/Slot2" unique_id=1679903909]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.18965517
+anchor_top = 0.3016304
+anchor_right = 0.94827586
+anchor_bottom = 0.80434775
+theme_override_constants/separation = 52
+alignment = 1
+
+[node name="LabelName" type="Label" parent="BackgroundContainer/Slot2/InfoContainer" unique_id=2036690458]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lva22")
+theme_override_font_sizes/font_size = 14
+text = "Nombre"
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelCoins" type="Label" parent="BackgroundContainer/Slot2/InfoContainer" unique_id=2052902966]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lva22")
+theme_override_font_sizes/font_size = 14
+text = "999"
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelLevelName" type="Label" parent="BackgroundContainer/Slot2/InfoContainer" unique_id=1764309907]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lva22")
+theme_override_font_sizes/font_size = 14
+text = "Nivel 1"
+
+[node name="LabelDate" type="Label" parent="BackgroundContainer/Slot2/InfoContainer" unique_id=1047021879]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lva22")
+theme_override_font_sizes/font_size = 14
+text = "00:00:00"
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BackgroundContainer/Slot2" unique_id=710428648]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05172414
+anchor_top = 0.20108694
+anchor_right = 0.9655172
+anchor_bottom = 0.80434775
+offset_top = 0.42105103
+offset_bottom = 0.42105103
+theme_override_constants/separation = 292
+alignment = 1
+
+[node name="LabelEmpty" type="Label" parent="BackgroundContainer/Slot2/HBoxContainer" unique_id=1994362376]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lva22")
+theme_override_font_sizes/font_size = 14
+text = "[Vacio]"
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelDateEmpy" type="Label" parent="BackgroundContainer/Slot2/HBoxContainer" unique_id=501054288]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lva22")
+theme_override_font_sizes/font_size = 14
+text = "--:--:--"
+metadata/_edit_use_anchors_ = true
+
+[node name="Slot3" type="ColorRect" parent="BackgroundContainer" unique_id=471120552]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.046875
+anchor_top = 0.05263158
+anchor_right = 0.953125
+anchor_bottom = 0.31436703
+offset_top = 191.57895
+offset_bottom = 191.57895
+color = Color(0.23753911, 0.23753914, 0.23753911, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="BackgroundContainer/Slot3" unique_id=623092818]
+visible = false
+position = Vector2(48, 40.000008)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("2_2e3yr")
+hframes = 3
+
+[node name="InfoContainer" type="HBoxContainer" parent="BackgroundContainer/Slot3" unique_id=868266646]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.18965517
+anchor_top = 0.3016304
+anchor_right = 0.94827586
+anchor_bottom = 0.80434775
+theme_override_constants/separation = 52
+alignment = 1
+
+[node name="LabelName" type="Label" parent="BackgroundContainer/Slot3/InfoContainer" unique_id=443887907]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lva22")
+theme_override_font_sizes/font_size = 14
+text = "Nombre"
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelCoins" type="Label" parent="BackgroundContainer/Slot3/InfoContainer" unique_id=1196416847]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lva22")
+theme_override_font_sizes/font_size = 14
+text = "999"
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelLevelName" type="Label" parent="BackgroundContainer/Slot3/InfoContainer" unique_id=1220629343]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lva22")
+theme_override_font_sizes/font_size = 14
+text = "Nivel 1"
+
+[node name="LabelDate" type="Label" parent="BackgroundContainer/Slot3/InfoContainer" unique_id=533240015]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lva22")
+theme_override_font_sizes/font_size = 14
+text = "00:00:00"
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BackgroundContainer/Slot3" unique_id=771519373]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05172414
+anchor_top = 0.2063787
+anchor_right = 0.9655172
+anchor_bottom = 0.8096395
+theme_override_constants/separation = 292
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelEmpty" type="Label" parent="BackgroundContainer/Slot3/HBoxContainer" unique_id=245776670]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lva22")
+theme_override_font_sizes/font_size = 14
+text = "[Vacio]"
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelDateEmpy" type="Label" parent="BackgroundContainer/Slot3/HBoxContainer" unique_id=516288309]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_lva22")
+theme_override_font_sizes/font_size = 14
+text = "--:--:--"
+metadata/_edit_use_anchors_ = true

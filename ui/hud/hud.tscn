@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://ca4rjeb4gnuay"]
+
+[ext_resource type="Script" uid="uid://ba1nf4wu4nrs7" path="res://ui/hud/hud.gd" id="1_w75iv"]
+[ext_resource type="Texture2D" uid="uid://cm31whh2jmrkh" path="res://assets/sprites/hud/heart_1.png" id="1_xmswo"]
+[ext_resource type="Texture2D" uid="uid://dl71q0mnxrd4q" path="res://assets/sprites/hud/coin.png" id="2_e0nub"]
+[ext_resource type="FontFile" uid="uid://dhuiae4jqwh0y" path="res://assets/fonts/determination.ttf" id="3_w75iv"]
+[ext_resource type="Texture2D" uid="uid://qitsmb1xfdry" path="res://assets/sprites/hud/backpack.png" id="5_imuuq"]
+[ext_resource type="PackedScene" uid="uid://bl7hfcdb0ldxp" path="res://ui/inventory/inventory.tscn" id="6_kwc50"]
+
+[node name="Hud" type="CanvasLayer" unique_id=917611303]
+script = ExtResource("1_w75iv")
+
+[node name="HeartCointainer" type="HBoxContainer" parent="." unique_id=1224238439]
+anchors_preset = -1
+anchor_left = 0.025
+anchor_top = 0.044444446
+anchor_right = 0.24375
+anchor_bottom = 0.15555556
+theme_override_constants/separation = 6
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Heart3" type="TextureRect" parent="HeartCointainer" unique_id=1769536185]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_xmswo")
+stretch_mode = 5
+
+[node name="Heart2" type="TextureRect" parent="HeartCointainer" unique_id=251776291]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_xmswo")
+stretch_mode = 5
+
+[node name="Heart1" type="TextureRect" parent="HeartCointainer" unique_id=613659234]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_xmswo")
+stretch_mode = 5
+
+[node name="CoinContainer" type="HBoxContainer" parent="." unique_id=1491989215]
+anchors_preset = -1
+anchor_left = 0.825
+anchor_top = 0.044444446
+anchor_right = 0.9546875
+anchor_bottom = 0.15555556
+offset_left = 32.0
+offset_right = 32.0
+
+[node name="Coin" type="TextureRect" parent="CoinContainer" unique_id=204792681]
+layout_mode = 2
+texture = ExtResource("2_e0nub")
+stretch_mode = 5
+
+[node name="LabelCoin" type="Label" parent="CoinContainer" unique_id=1123553457]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_w75iv")
+text = "999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=85714648]
+anchors_preset = -1
+anchor_left = 0.875
+anchor_top = 0.82222223
+anchor_right = 0.98125
+anchor_bottom = 0.9777778
+offset_left = -24.0
+offset_right = -24.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=282110590]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_imuuq")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=1593856370]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_w75iv")
+theme_override_font_sizes/font_size = 16
+text = "R"
+
+[node name="Inventory" parent="." unique_id=1581503205 instance=ExtResource("6_kwc50")]
+visible = false

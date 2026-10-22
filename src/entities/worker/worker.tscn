@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://dn80ev40ygyxm"]
+
+[ext_resource type="Script" uid="uid://jk2qqqsauuin" path="res://src/entities/worker/worker.gd" id="1_p4w3h"]
+[ext_resource type="Texture2D" uid="uid://c5i364jkbg6xd" path="res://assets/sprites/characters/workers/worker_1.png" id="2_tuxur"]
+[ext_resource type="Texture2D" uid="uid://cgik606aqbm4u" path="res://assets/sprites/characters/workers/exclamation.png" id="3_ifsix"]
+[ext_resource type="AudioStream" uid="uid://kvgttdry6cff" path="res://assets/audio/sfx/problem_sfx.ogg" id="4_tuxur"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
+size = Vector2(32, 34)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tuxur"]
+bg_color = Color(0.023781596, 0.6747911, 0.7715389, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2lis"]
+size = Vector2(32, 34)
+
+[node name="Worker" type="StaticBody2D" unique_id=1707059291]
+script = ExtResource("1_p4w3h")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=230503450]
+texture = ExtResource("2_tuxur")
+
+[node name="Exclamation" type="Sprite2D" parent="." unique_id=473095486]
+position = Vector2(0, -16)
+texture = ExtResource("3_ifsix")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=519287700]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_ostoq")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1396162189]
+offset_left = 24.0
+offset_top = -24.0
+offset_right = 28.0
+offset_bottom = 11.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_tuxur")
+fill_mode = 3
+show_percentage = false
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1888520865]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=469426229]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_o2lis")
+debug_color = Color(0.70004594, 0.46205866, 0.7982961, 0.41960785)
+
+[node name="FailTimer" type="Timer" parent="." unique_id=1579158484]
+one_shot = true
+
+[node name="ProblmeSfx" type="AudioStreamPlayer" parent="." unique_id=1515355891]
+stream = ExtResource("4_tuxur")
+bus = &"SFX"

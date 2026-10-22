@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dqinf3ok8v043"]
 
 [ext_resource type="Script" uid="uid://cug1gahmik01w" path="res://src/entities/npc/npc.gd" id="1_pdcmu"]
-[ext_resource type="Texture2D" uid="uid://cqmxgod048mbr" path="res://assets/sprites/characters/recepcionits/idle/character_recepcionist_down.png" id="2_nmtqg"]
+[ext_resource type="Texture2D" uid="uid://cnxx5taj5kvr" path="res://assets/sprites/characters/npc/boss_level_01/idle/character_boss_level_01_idle_side.png" id="2_nmtqg"]
 [ext_resource type="Script" uid="uid://bugurv12g5iec" path="res://src/components/state_machine/state_machine.gd" id="2_pdcmu"]
 
 [sub_resource type="Animation" id="Animation_pdcmu"]
@@ -19,14 +19,9 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_nmtqg"]
-resource_name = "idle"
-length = 1.6
-loop_mode = 1
-
 [sub_resource type="Animation" id="Animation_r7l4f"]
 resource_name = "idle_d"
-length = 1.4
+length = 2.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -35,7 +30,24 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.76666665, 0.93333334, 1.1, 1.3),
+"times": PackedFloat32Array(0, 1.775, 1.9416666, 2.1083333, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_04px5"]
+resource_name = "idle_h"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.7333333, 1.9, 2.0666666, 2.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 1, 0]
@@ -44,8 +56,8 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r7l4f"]
 _data = {
 &"RESET": SubResource("Animation_pdcmu"),
-&"idle": SubResource("Animation_nmtqg"),
-&"idle_d": SubResource("Animation_r7l4f")
+&"idle_d": SubResource("Animation_r7l4f"),
+&"idle_h": SubResource("Animation_04px5")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ketdh"]

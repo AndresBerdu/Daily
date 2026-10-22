@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://bl7hfcdb0ldxp"]
+
+[ext_resource type="Script" uid="uid://ci51xl0k2qstx" path="res://ui/inventory/inventory.gd" id="1_qrt2q"]
+[ext_resource type="Texture2D" uid="uid://dl71q0mnxrd4q" path="res://assets/sprites/hud/coin.png" id="1_s83yu"]
+[ext_resource type="FontFile" uid="uid://dhuiae4jqwh0y" path="res://assets/fonts/determination.ttf" id="2_qrt2q"]
+
+[node name="Inventory" type="CanvasLayer" unique_id=1581503205]
+script = ExtResource("1_qrt2q")
+
+[node name="Background" type="ColorRect" parent="." unique_id=471756471]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.16862746)
+metadata/_edit_use_anchors_ = true
+
+[node name="InventoryOutline" type="ColorRect" parent="." unique_id=191512318]
+anchors_preset = -1
+anchor_left = 0.35
+anchor_top = 0.13333334
+anchor_right = 0.65
+anchor_bottom = 0.9111111
+metadata/_edit_use_anchors_ = true
+
+[node name="InventoryContainer" type="ColorRect" parent="." unique_id=1760854897]
+anchors_preset = -1
+anchor_left = 0.3625
+anchor_top = 0.15555556
+anchor_right = 0.6375
+anchor_bottom = 0.8888889
+color = Color(0.056291588, 0.056291603, 0.056291595, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryContainer" unique_id=351546586]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="InventoryContainer/MarginContainer" unique_id=2084345994]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryContainer/MarginContainer/ScrollContainer" unique_id=679408759]
+layout_mode = 2
+
+[node name="ItemSlot" type="HBoxContainer" parent="InventoryContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1470760871]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="TextureRect" type="TextureRect" parent="InventoryContainer/MarginContainer/ScrollContainer/VBoxContainer/ItemSlot" unique_id=946512501]
+layout_mode = 2
+texture = ExtResource("1_s83yu")
+
+[node name="Label" type="Label" parent="InventoryContainer/MarginContainer/ScrollContainer/VBoxContainer/ItemSlot" unique_id=1532833614]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qrt2q")
+theme_override_font_sizes/font_size = 11
+text = "item_01"
+
+[node name="Label2" type="Label" parent="InventoryContainer/MarginContainer/ScrollContainer/VBoxContainer/ItemSlot" unique_id=1488724718]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qrt2q")
+theme_override_font_sizes/font_size = 11
+text = "x1"

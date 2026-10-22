@@ -2,6 +2,8 @@ extends State
 
 const SPEED := 120.0
 
+@onready var walk_audio: AudioStreamPlayer = $"../../WalkAudio"
+
 func physics_update(_delta: float) -> void:
 	var dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 

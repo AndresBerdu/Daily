@@ -36,6 +36,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 
 	if in_elevator_area:
-		get_tree().change_scene_to_packed(ELEVATOR_SCENE)
+		SceneTransition.change_scene(ELEVATOR_SCENE)
 	elif in_exit_area:
 		get_tree().free()

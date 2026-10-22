@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://dybl2y8hx4wav"
+path="res://.godot/imported/sara_dialogue_01.dialogue-ea0cbe093177f9d878137444a3cdaded.tres"
+
+[deps]
+
+source_file="res://escenes/level_01/dialogues/sara_dialogue_01.dialogue"
+dest_files=["res://.godot/imported/sara_dialogue_01.dialogue-ea0cbe093177f9d878137444a3cdaded.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b8lhgqvw4x5tl"]
+
+[ext_resource type="Script" uid="uid://ca1wdkjwyv7db" path="res://src/entities/saver/saver.gd" id="1_fm7p5"]
+[ext_resource type="Texture2D" uid="uid://ko6cc757bbhf" path="res://assets/sprites/saver/coffee-maker.png" id="1_w51jw"]
+[ext_resource type="AudioStream" uid="uid://ddq8sup1rrb02" path="res://assets/audio/sfx/save_sfx.ogg" id="3_fepx0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ostoq"]
+radius = 48.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajtct"]
+size = Vector2(64, 40)
+
+[node name="Saver" type="StaticBody2D" unique_id=2026510827]
+script = ExtResource("1_fm7p5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1137218416]
+texture = ExtResource("1_w51jw")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1115697911]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1586015666]
+shape = SubResource("CircleShape2D_ostoq")
+debug_color = Color(0.8777326, 0.27593774, 0.5220709, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=300350982]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_ajtct")
+
+[node name="SaveSfx" type="AudioStreamPlayer" parent="." unique_id=39076046]
+stream = ExtResource("3_fepx0")

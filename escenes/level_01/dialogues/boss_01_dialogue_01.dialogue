@@ -1,0 +1,10 @@
+~ start
+Desconocido: Hola, así que tú eres el nuevo empleado de Engineer Shine. Mi nombre es Martín, mucho gusto en conocerte.
+Jefe Martín: Soy el encargado del área de Soporte Técnico. Imagino que ya sabes qué es lo que hace un soporte técnico, ¿no?
+Jefe Martín: Como sea, el equipo de soporte se encarga del mantenimiento de las computadoras de la empresa. Pero no solo eso; también supervisamos la seguridad de nuestros equipos para sancionar a cualquiera que se quiera dar de listo conectando dispositivos no permitidos. Además, ayudamos a los empleados con sus problemas técnicos.
+Jugador: Ok, pero yo no soy de soporte... vine para el área de desarrollo.
+Jefe Martín: No me importa. Me vas a ayudar ahora mismo si no quieres que te bajen el sueldo en tu primer día.
+Jugador: Está bien, te ayudaré en lo que pueda.
+Jefe Martín: ¡Así se habla! Tu primera misión será ayudar a los empleados con cualquier problema que tengan en sus PCs.
+Jefe Martín: Pero primero, vamos a cambiar ese traje por uno de soporte técnico. Gira a la derecha por el pasillo largo hasta llegar a la oficina de técnicos, que está a mano izquierda de los torniquetes. Ahí estará Sara, una de tus compañeras. 
+=> END

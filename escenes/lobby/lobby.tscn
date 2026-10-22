@@ -4,13 +4,16 @@
 [ext_resource type="Script" uid="uid://c73sp71oalm6r" path="res://escenes/lobby/lobby.gd" id="1_m5nfp"]
 [ext_resource type="Texture2D" uid="uid://dk8u784jrtwh8" path="res://assets/sprites/lobby/spritesheet.png" id="2_5d5ti"]
 [ext_resource type="PackedScene" uid="uid://dcdogvkuk1jp2" path="res://src/entities/player/player.tscn" id="2_wgydy"]
-[ext_resource type="AudioStream" uid="uid://d4cg7c8fjym1e" path="res://assets/audio/music/LobbyMusic.ogg" id="4_5d5ti"]
+[ext_resource type="AudioStream" uid="uid://d4cg7c8fjym1e" path="res://assets/audio/music/lobby_music.ogg" id="4_5d5ti"]
 [ext_resource type="Resource" uid="uid://dhc65q8s5acqq" path="res://escenes/lobby/dialogues/recepcionist/recepcionist.dialogue" id="5_aaaoe"]
 [ext_resource type="PackedScene" uid="uid://dqinf3ok8v043" path="res://src/entities/npc/npc.tscn" id="5_bjwa8"]
-[ext_resource type="Texture2D" uid="uid://cqmxgod048mbr" path="res://assets/sprites/characters/recepcionits/idle/character_recepcionist_down.png" id="6_dlvv7"]
-[ext_resource type="Texture2D" uid="uid://dims1864od2fg" path="res://assets/sprites/characters/recepcionist_2/idle/character_recepcionis_2_down.png" id="6_p6qp5"]
+[ext_resource type="Texture2D" uid="uid://cqmxgod048mbr" path="res://assets/sprites/characters/npc/recepcionits/idle/character_recepcionist_down.png" id="6_dlvv7"]
+[ext_resource type="Texture2D" uid="uid://dims1864od2fg" path="res://assets/sprites/characters/npc/recepcionist_2/idle/character_recepcionis_2_down.png" id="6_p6qp5"]
 [ext_resource type="Resource" uid="uid://ikicdc2ljni1" path="res://escenes/lobby/dialogues/recepcionist_2/recepcionist_2.dialogue" id="7_ttjuc"]
 [ext_resource type="Texture2D" uid="uid://cs2fc8854aid5" path="res://assets/sprites/lobby/elevador.png" id="11_8n4k8"]
+[ext_resource type="PackedScene" uid="uid://7u6ws8e716io" path="res://src/entities/item/item.tscn" id="12_5172v"]
+[ext_resource type="Resource" uid="uid://dyov6p70mir8q" path="res://escenes/lobby/dialogues/items/cv_software_engineer.dialogue" id="13_k7ycu"]
+[ext_resource type="Texture2D" uid="uid://drq3cvn82ndjs" path="res://assets/sprites/items/notes/note.png" id="14_fsbr5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0lf8f"]
 texture = ExtResource("1_0lf8f")
@@ -427,12 +430,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_bjwa8")
 sources/1 = SubResource("TileSetAtlasSource_aaaoe")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajtct"]
-size = Vector2(48, 18)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
-size = Vector2(66, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_5172v"]
 atlas = ExtResource("11_8n4k8")
 region = Rect2(0, 0, 64, 64)
@@ -469,6 +466,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajtct"]
+size = Vector2(48, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
+size = Vector2(66, 16)
+
 [node name="Lobby" type="Node2D" unique_id=1422680142]
 script = ExtResource("1_m5nfp")
 
@@ -478,7 +481,7 @@ tile_set = SubResource("TileSet_ajtct")
 
 [node name="Decoration" type="TileMapLayer" parent="." unique_id=2126154000]
 z_index = 1
-tile_map_data = PackedByteArray("AAASABQAAAAGAAgAAAASABUAAAAGAAkAAAATABQAAAAHAAgAAAATABUAAAAHAAkAAAAUABQAAAAIAAgAAAAUABUAAAAIAAkAAAAVABQAAAAJAAgAAAAVABUAAAAJAAkAAAARABMAAAAKAAgAAAARABQAAAAKAAkAAAAWABMAAAAKAAgAAAAWABQAAAAKAAkAAAAQAAoAAAAHAAwAAAAQAAsAAAAHAA0AAAAXAAoAAAACAAwAAAAXAAsAAAACAA0AAAAYAAoAAAADAAwAAAAYAAsAAAADAA0AAAAZAAoAAAAEAAwAAAAZAAsAAAAEAA0AAAAaAAoAAAAFAAwAAAAaAAsAAAAFAA0AAAAbAAoAAAAGAAwAAAAbAAsAAAAGAA0AAAAcAAoAAAAHAAwAAAAcAAsAAAAHAA0AAAARAAIAAAAKAAwAAAARAAMAAAAKAA0AAAASAAIAAAALAAwAAAASAAMAAAALAA0AAAAMAAoAAAADAAwAAAAMAAsAAAADAA0AAAANAAoAAAAEAAwAAAANAAsAAAAEAA0AAAAOAAoAAAAFAAwAAAAOAAsAAAAFAA0AAAAPAAoAAAAGAAwAAAAPAAsAAAAGAA0AAAALAAoAAAACAAwAAAALAAsAAAACAA0AAAA=")
+tile_map_data = PackedByteArray("AAASABQAAAAGAAgAAAASABUAAAAGAAkAAAATABQAAAAHAAgAAAATABUAAAAHAAkAAAAUABQAAAAIAAgAAAAUABUAAAAIAAkAAAAVABQAAAAJAAgAAAAVABUAAAAJAAkAAAARABMAAAAKAAgAAAARABQAAAAKAAkAAAAWABMAAAAKAAgAAAAWABQAAAAKAAkAAAAQAAoAAAAHAAwAAAAQAAsAAAAHAA0AAAAXAAoAAAACAAwAAAAXAAsAAAACAA0AAAAYAAoAAAADAAwAAAAYAAsAAAADAA0AAAAZAAoAAAAEAAwAAAAZAAsAAAAEAA0AAAAaAAoAAAAFAAwAAAAaAAsAAAAFAA0AAAAbAAoAAAAGAAwAAAAbAAsAAAAGAA0AAAAcAAoAAAAHAAwAAAAcAAsAAAAHAA0AAAARAAIAAAAKAAwAAAARAAMAAAAKAA0AAAASAAIAAAALAAwAAAASAAMAAAALAA0AAAAMAAoAAAADAAwAAAAMAAsAAAADAA0AAAANAAoAAAAEAAwAAAANAAsAAAAEAA0AAAAOAAoAAAAFAAwAAAAOAAsAAAAFAA0AAAAPAAoAAAAGAAwAAAAPAAsAAAAGAA0AAAALAAoAAAACAAwAAAALAAsAAAACAA0AAAAbAAIAAQAIAAIAAAAbAAMAAQAIAAMAAAAcAAIAAQAJAAIAAAAcAAMAAQAJAAMAAAA=")
 tile_set = SubResource("TileSet_loq3h")
 
 [node name="Player" parent="." unique_id=1866043696 instance=ExtResource("2_wgydy")]
@@ -494,6 +497,13 @@ sprite_texture = ExtResource("6_dlvv7")
 position = Vector2(416, 161)
 dialogue_resource = ExtResource("7_ttjuc")
 sprite_texture = ExtResource("6_p6qp5")
+
+[node name="Elevator" type="AnimatedSprite2D" parent="." unique_id=342198752]
+position = Vector2(192, 48)
+sprite_frames = SubResource("SpriteFrames_ostoq")
+animation = &"open"
+frame = 3
+frame_progress = 1.0
 
 [node name="ElevatorArea" type="Area2D" parent="." unique_id=704691190]
 
@@ -512,10 +522,10 @@ debug_color = Color(0.67695296, 0.50592065, 9.62615e-07, 0.41960785)
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1523641062]
 stream = ExtResource("4_5d5ti")
 autoplay = true
+bus = &"Music"
+parameters/looping = true
 
-[node name="Elevator" type="AnimatedSprite2D" parent="." unique_id=342198752]
-position = Vector2(192, 48)
-sprite_frames = SubResource("SpriteFrames_ostoq")
-animation = &"open"
-frame = 3
-frame_progress = 1.0
+[node name="Note" parent="." unique_id=608901302 instance=ExtResource("12_5172v")]
+position = Vector2(608, 336)
+dialogue_resource = ExtResource("13_k7ycu")
+item_texture = ExtResource("14_fsbr5")

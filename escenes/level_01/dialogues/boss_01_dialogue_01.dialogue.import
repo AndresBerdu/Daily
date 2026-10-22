@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://genqea4wmenb"
+path="res://.godot/imported/boss_01_dialogue_01.dialogue-4dcff5af79f77a4858d14711150e592f.tres"
+
+[deps]
+
+source_file="res://escenes/level_01/dialogues/boss_01_dialogue_01.dialogue"
+dest_files=["res://.godot/imported/boss_01_dialogue_01.dialogue-4dcff5af79f77a4858d14711150e592f.tres"]
+
+[params]
+
+defaults=true

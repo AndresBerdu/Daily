@@ -1,11 +1,53 @@
 extends Node
 
+signal hearts_changed(hearts: int)
+signal coins_changed(coins: int)
+signal game_over
 
-# Called when the node enters the scene tree for the first time.
+const MAX_HEARTS := 3
+
+var hearts := MAX_HEARTS
+var coins := 0
+var play_time := 0.0              # segundos jugados en total
+var player_name := "Técnico"
+var appearance_seed := 0
+
 func _ready() -> void:
-	pass # Replace with function body.
+	if appearance_seed == 0:
+		new_appearance_seed()
 
+func new_appearance_seed() -> void:
+	appearance_seed = randi()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	play_time += delta
+
+func apply_save(data: Dictionary) -> void:
+	appearance_seed = int(data.get("appearance_seed", appearance_seed))
+	coins = int(data.get("coins", 0))
+	hearts = int(data.get("hearts", MAX_HEARTS))
+	play_time = float(data.get("play_time", 0.0))
+	player_name = str(data.get("player_name", player_name))
+	coins_changed.emit(coins)
+	hearts_changed.emit(hearts)
+	InventoryManager.load_save_data(data.get("inventory", {}))
+
+func add_coins(amount: int) -> void:
+	coins += amount
+	coins_changed.emit(coins)
+
+func lose_heart() -> void:
+	if hearts <= 0:
+		return
+		
+	hearts -= 1
+	hearts_changed.emit(hearts)
+	
+	if hearts <= 0:
+		game_over.emit()
+
+func reset_run() -> void:
+	hearts = MAX_HEARTS
+	coins = 0
+	hearts_changed.emit(hearts)
+	coins_changed.emit(coins)
