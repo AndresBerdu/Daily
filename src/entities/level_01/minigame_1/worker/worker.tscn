@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dn80ev40ygyxm"]
 
-[ext_resource type="Script" uid="uid://jk2qqqsauuin" path="res://src/entities/level_01/worker/worker.gd" id="1_p4w3h"]
+[ext_resource type="Script" uid="uid://jk2qqqsauuin" path="res://src/entities/level_01/minigame_1/worker/worker.gd" id="1_p4w3h"]
 [ext_resource type="Texture2D" uid="uid://c5i364jkbg6xd" path="res://assets/sprites/characters/workers/worker_1.png" id="2_tuxur"]
 [ext_resource type="Texture2D" uid="uid://cgik606aqbm4u" path="res://assets/sprites/characters/workers/exclamation.png" id="3_ifsix"]
 [ext_resource type="AudioStream" uid="uid://kvgttdry6cff" path="res://assets/audio/sfx/problem_sfx.ogg" id="4_tuxur"]

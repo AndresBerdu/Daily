@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://wsqq3c0g2ce4"]
+
+[ext_resource type="Texture2D" uid="uid://c5rymntk4t265" path="res://assets/sprites/items/tools/cpu.png" id="1_jm8ub"]
+[ext_resource type="Script" uid="uid://b3c7d747iorsd" path="res://src/entities/level_01/minigame_3/cpu/cpu.gd" id="1_pcmow"]
+[ext_resource type="Texture2D" uid="uid://cinhlnj66bd2c" path="res://assets/sprites/items/tools/old_termal_grease.png" id="2_pcmow"]
+[ext_resource type="Texture2D" uid="uid://bka15uouuw5cw" path="res://assets/sprites/items/tools/alchol.png" id="3_btqj2"]
+[ext_resource type="Texture2D" uid="uid://b6e760t8jsbi8" path="res://assets/sprites/items/tools/new_thermal_grease.png" id="4_t2htk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
+size = Vector2(92, 88)
+
+[node name="Cpu" type="Node2D" unique_id=264427199]
+script = ExtResource("1_pcmow")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=985694586]
+texture = ExtResource("1_jm8ub")
+
+[node name="OldTermalGrease" type="Sprite2D" parent="." unique_id=1650016021]
+texture = ExtResource("2_pcmow")
+
+[node name="Alchol" type="Sprite2D" parent="." unique_id=396606890]
+visible = false
+texture = ExtResource("3_btqj2")
+
+[node name="NewTermalGrease" type="Sprite2D" parent="." unique_id=1893821278]
+visible = false
+texture = ExtResource("4_t2htk")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=241326040]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1846203188]
+shape = SubResource("RectangleShape2D_ostoq")
+debug_color = Color(0.7339673, 0.46812218, 0.1444549, 0.41960785)

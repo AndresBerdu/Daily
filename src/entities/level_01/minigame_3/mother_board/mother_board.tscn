@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://c8nvex8ouqydd"]
+
+[ext_resource type="Texture2D" uid="uid://cq2avo63pravk" path="res://assets/sprites/items/tools/mother_board.png" id="1_fk0qc"]
+[ext_resource type="Script" uid="uid://bg8jpb25fqvrq" path="res://src/entities/level_01/minigame_3/mother_board/mother_board.gd" id="1_nukhj"]
+[ext_resource type="PackedScene" uid="uid://bh5kidnys0hc3" path="res://src/entities/level_01/minigame_3/placeholders/placeholder.tscn" id="2_of1t1"]
+[ext_resource type="PackedScene" uid="uid://1we7n8bp4mhq" path="res://src/entities/level_01/minigame_3/memory_ram/memory_ram.tscn" id="3_0vpfa"]
+[ext_resource type="Texture2D" uid="uid://ddbcv37ig68pm" path="res://assets/sprites/items/tools/screw.png" id="3_of1t1"]
+[ext_resource type="PackedScene" uid="uid://wsqq3c0g2ce4" path="res://src/entities/level_01/minigame_3/cpu/cpu.tscn" id="4_fk0qc"]
+[ext_resource type="Texture2D" uid="uid://bbwr1h16i576t" path="res://assets/sprites/items/tools/welding.png" id="4_nukhj"]
+[ext_resource type="Texture2D" uid="uid://dbiehm12xfti1" path="res://assets/sprites/items/tools/welder.png" id="5_of1t1"]
+[ext_resource type="Texture2D" uid="uid://dfcxwqe2l4ck2" path="res://assets/sprites/items/tools/screwdriver.png" id="6_nukhj"]
+[ext_resource type="PackedScene" uid="uid://c8l3234yeuldc" path="res://src/entities/level_01/minigame_3/swab/swab.tscn" id="10_vs745"]
+
+[node name="MotherBoard" type="CanvasLayer" unique_id=1065568908]
+script = ExtResource("1_nukhj")
+
+[node name="background" type="ColorRect" parent="." unique_id=584128322]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 0.20392157)
+
+[node name="MotherBoard" type="Sprite2D" parent="." unique_id=1814676734]
+position = Vector2(345, 169)
+texture = ExtResource("1_fk0qc")
+
+[node name="Screws" type="Node2D" parent="." unique_id=1498459614]
+position = Vector2(28, -14)
+
+[node name="Placehorder" parent="Screws" unique_id=202633493 instance=ExtResource("2_of1t1")]
+position = Vector2(34, 44)
+tex_screw = ExtResource("3_of1t1")
+
+[node name="Placehorder2" parent="Screws" unique_id=971445820 instance=ExtResource("2_of1t1")]
+position = Vector2(153, 157)
+tex_screw = ExtResource("3_of1t1")
+
+[node name="Placehorder3" parent="Screws" unique_id=193900784 instance=ExtResource("2_of1t1")]
+position = Vector2(34, 322)
+tex_screw = ExtResource("3_of1t1")
+
+[node name="Placehorder4" parent="Screws" unique_id=814161075 instance=ExtResource("2_of1t1")]
+position = Vector2(427, 157)
+tex_screw = ExtResource("3_of1t1")
+
+[node name="Placehorder5" parent="Screws" unique_id=1316499012 instance=ExtResource("2_of1t1")]
+position = Vector2(601, 44)
+tex_screw = ExtResource("3_of1t1")
+
+[node name="Placehorder6" parent="Screws" unique_id=1583990028 instance=ExtResource("2_of1t1")]
+position = Vector2(601, 322)
+tex_screw = ExtResource("3_of1t1")
+
+[node name="Welders" type="Node2D" parent="." unique_id=1316755122]
+position = Vector2(28, -14)
+
+[node name="Placehorder" parent="Welders" unique_id=1132843551 instance=ExtResource("2_of1t1")]
+position = Vector2(45, 69)
+kind = 1
+tex_weld = ExtResource("4_nukhj")
+
+[node name="Placehorder2" parent="Welders" unique_id=2103671273 instance=ExtResource("2_of1t1")]
+position = Vector2(54, 159)
+kind = 1
+tex_weld = ExtResource("4_nukhj")
+
+[node name="Placehorder3" parent="Welders" unique_id=1434661932 instance=ExtResource("2_of1t1")]
+position = Vector2(210, 106)
+kind = 1
+tex_weld = ExtResource("4_nukhj")
+
+[node name="Placehorder4" parent="Welders" unique_id=517650194 instance=ExtResource("2_of1t1")]
+position = Vector2(210, 267)
+kind = 1
+tex_weld = ExtResource("4_nukhj")
+
+[node name="Placehorder5" parent="Welders" unique_id=778201830 instance=ExtResource("2_of1t1")]
+position = Vector2(421, 264)
+kind = 1
+tex_weld = ExtResource("4_nukhj")
+
+[node name="Placehorder6" parent="Welders" unique_id=241257368 instance=ExtResource("2_of1t1")]
+position = Vector2(430, 172)
+kind = 1
+tex_weld = ExtResource("4_nukhj")
+
+[node name="Placehorder7" parent="Welders" unique_id=1555701534 instance=ExtResource("2_of1t1")]
+position = Vector2(583, 265)
+kind = 1
+tex_weld = ExtResource("4_nukhj")
+
+[node name="Placehorder8" parent="Welders" unique_id=582990924 instance=ExtResource("2_of1t1")]
+position = Vector2(594, 74)
+kind = 1
+tex_weld = ExtResource("4_nukhj")
+
+[node name="Placehorder9" parent="Welders" unique_id=253641205 instance=ExtResource("2_of1t1")]
+position = Vector2(515, 50)
+kind = 1
+tex_weld = ExtResource("4_nukhj")
+
+[node name="MemoriesRam" type="Node2D" parent="." unique_id=112174585]
+position = Vector2(28, -14)
+
+[node name="MemoryRam" parent="MemoriesRam" unique_id=581305973 instance=ExtResource("3_0vpfa")]
+position = Vector2(484, 129)
+
+[node name="MemoryRam2" parent="MemoriesRam" unique_id=1847919051 instance=ExtResource("3_0vpfa")]
+position = Vector2(509, 129)
+
+[node name="MemoryRam3" parent="MemoriesRam" unique_id=1170269391 instance=ExtResource("3_0vpfa")]
+position = Vector2(533, 129)
+
+[node name="MemoryRam4" parent="MemoriesRam" unique_id=104649959 instance=ExtResource("3_0vpfa")]
+position = Vector2(557, 129)
+
+[node name="Cpu" parent="." unique_id=264427199 instance=ExtResource("4_fk0qc")]
+position = Vector2(350, 143)
+
+[node name="Welder" type="Sprite2D" parent="." unique_id=507847725]
+position = Vector2(52, 150)
+texture = ExtResource("5_of1t1")
+
+[node name="Screwdriver" type="Sprite2D" parent="." unique_id=639935704]
+position = Vector2(646, 164)
+texture = ExtResource("6_nukhj")
+
+[node name="Swab" parent="." unique_id=1059893358 instance=ExtResource("10_vs745")]
+position = Vector2(34, 176)

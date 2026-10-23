@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://ryq3lyol82o4"]
+
+[ext_resource type="Shader" uid="uid://bcbm0d5w2tvhx" path="res://src/entities/level_02/minigame_4/old_window.gdshader" id="1_twntj"]
+[ext_resource type="Texture2D" uid="uid://bcvb05d7wimjf" path="res://assets/sprites/hud/window/window.png" id="2_1n6b0"]
+[ext_resource type="PackedScene" uid="uid://dcdogvkuk1jp2" path="res://src/entities/player/player.tscn" id="2_sx46g"]
+[ext_resource type="Texture2D" uid="uid://b8b641y6b108g" path="res://assets/sprites/hud/buttons/btn_on/button_on.png" id="3_1n6b0"]
+[ext_resource type="Texture2D" uid="uid://cti6vl1kgky8p" path="res://assets/sprites/characters/enemies/bomb/bomb.png" id="3_groaa"]
+[ext_resource type="Texture2D" uid="uid://c14i46llpr4hi" path="res://assets/sprites/hud/buttons/btn_on/button_on_pressed.png" id="4_dqt7a"]
+[ext_resource type="Texture2D" uid="uid://dpa5n18viif8k" path="res://assets/sprites/hud/buttons/btn_on/button_on_hover.png" id="5_lvkh1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ostoq"]
+shader = ExtResource("1_twntj")
+shader_parameter/crt_curve = 0.02
+shader_parameter/crt_scan_line_color = 0.0
+shader_parameter/aperture_grille_rate = 0.370000017575
+shader_parameter/aparture_grille_cut_rate = 0.3470000164825
+shader_parameter/rf_switch_esque_blur = 0.3370000160075
+shader_parameter/white_noise_rate = 0.0
+
+[node name="PacketInterceptor" type="Node2D" unique_id=2079989889]
+position = Vector2(-17, 0)
+
+[node name="Window" type="Sprite2D" parent="." unique_id=1918950392]
+position = Vector2(329, 188)
+texture = ExtResource("2_1n6b0")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2129859641]
+offset_left = 155.0
+offset_top = 58.0
+offset_right = 538.0
+offset_bottom = 276.08002
+color = Color(0.37126642, 0.6841091, 0.3444217, 1)
+
+[node name="Player" parent="." unique_id=1866043696 instance=ExtResource("2_sx46g")]
+position = Vector2(274, 156)
+
+[node name="SpawnerEnemy1" type="Marker2D" parent="." unique_id=1352431229]
+position = Vector2(516, 216)
+
+[node name="SpawnerEnemy2" type="Marker2D" parent="." unique_id=1878188109]
+position = Vector2(516, 102)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=120127601]
+position = Vector2(515, 215)
+texture = ExtResource("3_groaa")
+hframes = 3
+
+[node name="OldWindowEffect" type="ColorRect" parent="." unique_id=963076987]
+material = SubResource("ShaderMaterial_ostoq")
+offset_left = 154.0
+offset_top = 58.0
+offset_right = 539.0
+offset_bottom = 278.0
+
+[node name="BtnOn" type="TextureButton" parent="." unique_id=1844065909]
+offset_left = 518.0
+offset_top = 287.0
+offset_right = 550.0
+offset_bottom = 319.0
+texture_normal = ExtResource("3_1n6b0")
+texture_pressed = ExtResource("4_dqt7a")
+texture_hover = ExtResource("5_lvkh1")

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bvnvusnoknb88"]
 
 [ext_resource type="Texture2D" uid="uid://cdecaha8gk0lw" path="res://assets/sprites/items/pc/pc.png" id="1_7kne7"]
-[ext_resource type="Script" uid="uid://du06xrheiq0fk" path="res://src/entities/level_01/desktop/desktop.gd" id="1_uqfdt"]
+[ext_resource type="Script" uid="uid://du06xrheiq0fk" path="res://src/entities/level_01/minigame_2/desktop/desktop.gd" id="1_uqfdt"]
 [ext_resource type="Texture2D" uid="uid://dtjrjlk0yqpyx" path="res://assets/sprites/items/pc/pc_error.png" id="2_5tdwg"]
 [ext_resource type="Texture2D" uid="uid://bdormvberp1gu" path="res://assets/sprites/hud/buttons/btn_install/button_install.png" id="2_nullw"]
 [ext_resource type="Texture2D" uid="uid://gcrie587fnog" path="res://assets/sprites/items/pc/pc_blue_window.png" id="3_1enmd"]

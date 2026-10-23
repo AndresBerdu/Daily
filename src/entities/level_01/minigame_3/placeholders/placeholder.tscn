@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bh5kidnys0hc3"]
+
+[ext_resource type="Script" uid="uid://1kl0u1r2jw1b" path="res://src/entities/level_01/minigame_3/placeholders/placeholder.gd" id="1_imx73"]
+[ext_resource type="Texture2D" uid="uid://ddbcv37ig68pm" path="res://assets/sprites/items/tools/screw.png" id="1_ysu13"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ostoq"]
+radius = 5.0990195
+
+[node name="Placeholder" type="Node2D" unique_id=202633493]
+script = ExtResource("1_imx73")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2131421867]
+texture = ExtResource("1_ysu13")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=102858254]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1925824189]
+shape = SubResource("CircleShape2D_ostoq")

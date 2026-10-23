@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://c8l3234yeuldc"]
+
+[ext_resource type="Texture2D" uid="uid://d3bqc8a720rxb" path="res://assets/sprites/items/tools/swab.png" id="1_ficdh"]
+[ext_resource type="Script" uid="uid://b51pg7ffp1l05" path="res://src/entities/level_01/minigame_3/swab/swab.gd" id="1_mo7mg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ajtct"]
+height = 24.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
+size = Vector2(10, 91)
+
+[node name="Swab" type="Node2D" unique_id=1059893358]
+script = ExtResource("1_mo7mg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1789207363]
+texture = ExtResource("1_ficdh")
+
+[node name="CleanerArea" type="Area2D" parent="." unique_id=1766354254]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CleanerArea" unique_id=712458195]
+position = Vector2(0, -47)
+shape = SubResource("CapsuleShape2D_ajtct")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=262249081]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=738897872]
+position = Vector2(0, 8.5)
+shape = SubResource("RectangleShape2D_ostoq")
+debug_color = Color(0.86698925, 0.14315444, 0.7897389, 0.41960785)

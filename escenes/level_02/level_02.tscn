@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://sql5n8lkita8" path="res://assets/sprites/level_01/sprite_sheet_decoration_office.png" id="2_oajor"]
 [ext_resource type="PackedScene" uid="uid://dcdogvkuk1jp2" path="res://src/entities/player/player.tscn" id="3_4j2n2"]
 [ext_resource type="PackedScene" uid="uid://dqinf3ok8v043" path="res://src/entities/npc/npc.tscn" id="4_21h3d"]
+[ext_resource type="AudioStream" uid="uid://d0n4m5gi52ns3" path="res://assets/audio/music/level_02_music.ogg" id="5_oajor"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3cwp2"]
 texture = ExtResource("1_axv0t")
@@ -1186,3 +1187,9 @@ position = Vector2(48, 80)
 
 [node name="Npc" parent="." unique_id=1445802270 instance=ExtResource("4_21h3d")]
 position = Vector2(680, -23)
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=328910765]
+stream = ExtResource("5_oajor")
+autoplay = true
+bus = &"Music"
+parameters/looping = true

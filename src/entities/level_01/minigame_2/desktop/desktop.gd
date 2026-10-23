@@ -32,6 +32,8 @@ enum State { LOCKED, IDLE, INSTALLING, ERROR, FAILED, DONE }
 @onready var fail_timer: Timer = $FailTime
 @onready var error_sfx: AudioStreamPlayer = $ErrorSfx
 
+var windows_error = load("res://assets/audio/sfx/error_windows_sfx.ogg")
+
 var state := State.LOCKED
 var progress := 0.0
 var error_at := -1.0

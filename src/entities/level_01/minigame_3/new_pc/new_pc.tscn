@@ -1,25 +1,27 @@
 [gd_scene format=3 uid="uid://ct4nht0h86lrj"]
 
+[ext_resource type="Script" uid="uid://b1qmrkur4p2qo" path="res://src/entities/level_01/minigame_3/new_pc/new_pc.gd" id="1_41fmj"]
 [ext_resource type="Texture2D" uid="uid://c5ifxu0kxom4a" path="res://assets/sprites/items/new_pc/new_pc.png" id="1_ig7qk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
-size = Vector2(48, 41)
+size = Vector2(48, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajtct"]
-size = Vector2(48, 34)
+size = Vector2(64, 42)
 
 [node name="NewPc" type="StaticBody2D" unique_id=1373171301]
+script = ExtResource("1_41fmj")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1822148119]
 texture = ExtResource("1_ig7qk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1350750135]
-position = Vector2(0, 4.5)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_ostoq")
 
 [node name="InteractionArea" type="Area2D" parent="." unique_id=1909509101]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1619996714]
-position = Vector2(0, 7)
+position = Vector2(0, 11)
 shape = SubResource("RectangleShape2D_ajtct")
 debug_color = Color(0.8725253, 0.29593763, 0.48021597, 0.41960785)

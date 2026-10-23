@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://1we7n8bp4mhq"]
+
+[ext_resource type="Texture2D" uid="uid://c6ouni4knkwcb" path="res://assets/sprites/items/tools/memory_ram.png" id="1_jyoxs"]
+[ext_resource type="Script" uid="uid://cchirx1ylaw6e" path="res://src/entities/level_01/minigame_3/memory_ram/memory_ram.gd" id="1_ypytx"]
+[ext_resource type="AudioStream" uid="uid://bh6hestckrdtn" path="res://assets/audio/sfx/ram_sfx.ogg" id="3_vbf2s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
+size = Vector2(8, 149)
+
+[node name="MemoryRam" type="Node2D" unique_id=581305973]
+script = ExtResource("1_ypytx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1633458026]
+texture = ExtResource("1_jyoxs")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1660039323]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=666417597]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_ostoq")
+debug_color = Color(0.8509418, 0.16741684, 0.81157106, 0.41960785)
+
+[node name="ram_sfx" type="AudioStreamPlayer" parent="." unique_id=461233494]
+stream = ExtResource("3_vbf2s")
+bus = &"SFX"
