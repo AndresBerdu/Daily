@@ -22,7 +22,8 @@ anchor_left = 0.35
 anchor_top = 0.13333334
 anchor_right = 0.65
 anchor_bottom = 0.9111111
-metadata/_edit_use_anchors_ = true
+offset_left = -24.0
+offset_right = 24.0
 
 [node name="InventoryContainer" type="ColorRect" parent="." unique_id=1760854897]
 anchors_preset = -1
@@ -30,6 +31,8 @@ anchor_left = 0.3625
 anchor_top = 0.15555556
 anchor_right = 0.6375
 anchor_bottom = 0.8888889
+offset_left = -24.0
+offset_right = 24.0
 color = Color(0.056291588, 0.056291603, 0.056291595, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="InventoryContainer" unique_id=351546586]
@@ -52,20 +55,26 @@ layout_mode = 2
 
 [node name="ItemSlot" type="HBoxContainer" parent="InventoryContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1470760871]
 layout_mode = 2
-theme_override_constants/separation = 13
+theme_override_constants/separation = 19
 
-[node name="TextureRect" type="TextureRect" parent="InventoryContainer/MarginContainer/ScrollContainer/VBoxContainer/ItemSlot" unique_id=946512501]
+[node name="Icon" type="TextureRect" parent="InventoryContainer/MarginContainer/ScrollContainer/VBoxContainer/ItemSlot" unique_id=946512501]
 layout_mode = 2
 texture = ExtResource("1_s83yu")
 
-[node name="Label" type="Label" parent="InventoryContainer/MarginContainer/ScrollContainer/VBoxContainer/ItemSlot" unique_id=1532833614]
+[node name="LabelName" type="Label" parent="InventoryContainer/MarginContainer/ScrollContainer/VBoxContainer/ItemSlot" unique_id=1532833614]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_qrt2q")
 theme_override_font_sizes/font_size = 11
 text = "item_01"
 
-[node name="Label2" type="Label" parent="InventoryContainer/MarginContainer/ScrollContainer/VBoxContainer/ItemSlot" unique_id=1488724718]
+[node name="LabelQuantity" type="Label" parent="InventoryContainer/MarginContainer/ScrollContainer/VBoxContainer/ItemSlot" unique_id=1488724718]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_qrt2q")
 theme_override_font_sizes/font_size = 11
 text = "x1"
+
+[node name="LabelEquipped" type="Label" parent="InventoryContainer/MarginContainer/ScrollContainer/VBoxContainer/ItemSlot" unique_id=2072603729]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qrt2q")
+theme_override_font_sizes/font_size = 11
+text = "Equip"

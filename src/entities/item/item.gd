@@ -15,6 +15,7 @@ signal collected(item: Item)
 @export var item_icon: Texture2D
 @export var quantity := 1
 @export var disappear_after := true
+@export_enum("none", "suit", "shoes") var equip_slot := "none"
 
 @onready var interaction_area: Area2D = $InteractionArea
 @onready var sfx_sound: AudioStreamPlayer = $sfx
@@ -59,7 +60,8 @@ func interact() -> void:
 func collect() -> void:
 	if not pickable or not enabled:
 		return
-	InventoryManager.add_item(item_id, item_name, item_icon, quantity)
+	var slot := "" if equip_slot == "none" else equip_slot
+	InventoryManager.add_item(item_id, item_name, item_icon, quantity, slot)
 	sfx_sound.play()
 	collected.emit(self)
 	if disappear_after:

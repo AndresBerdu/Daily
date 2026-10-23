@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c8nvex8ouqydd"]
+
+[ext_resource type="Texture2D" uid="uid://cq2avo63pravk" path="res://assets/sprites/items/tools/mother_board.png" id="1_k7axx"]
+[ext_resource type="Texture2D" uid="uid://ddbcv37ig68pm" path="res://assets/sprites/items/tools/screw.png" id="2_eloa0"]
+[ext_resource type="Texture2D" uid="uid://c5rymntk4t265" path="res://assets/sprites/items/tools/cpu.png" id="3_mek1j"]
+[ext_resource type="Texture2D" uid="uid://c6ouni4knkwcb" path="res://assets/sprites/items/tools/memory_ram.png" id="4_eloa0"]
+
+[node name="MotherBoard" type="CanvasLayer" unique_id=1065568908]
+
+[node name="MotherBoard" type="Sprite2D" parent="." unique_id=1814676734]
+position = Vector2(317, 159)
+texture = ExtResource("1_k7axx")
+
+[node name="Screw" type="Sprite2D" parent="." unique_id=809946578]
+position = Vector2(35, 20)
+texture = ExtResource("2_eloa0")
+
+[node name="Cpu" type="Sprite2D" parent="." unique_id=1146076306]
+position = Vector2(324, 134)
+texture = ExtResource("3_mek1j")
+
+[node name="MemoryRam" type="Sprite2D" parent="." unique_id=1164533135]
+position = Vector2(455, 104)
+texture = ExtResource("4_eloa0")

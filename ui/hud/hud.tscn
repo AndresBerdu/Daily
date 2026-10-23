@@ -20,7 +20,7 @@ theme_override_constants/separation = 6
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Heart3" type="TextureRect" parent="HeartCointainer" unique_id=1769536185]
+[node name="Heart1" type="TextureRect" parent="HeartCointainer" unique_id=613659234]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("1_xmswo")
@@ -32,7 +32,7 @@ size_flags_horizontal = 3
 texture = ExtResource("1_xmswo")
 stretch_mode = 5
 
-[node name="Heart1" type="TextureRect" parent="HeartCointainer" unique_id=613659234]
+[node name="Heart3" type="TextureRect" parent="HeartCointainer" unique_id=1769536185]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("1_xmswo")

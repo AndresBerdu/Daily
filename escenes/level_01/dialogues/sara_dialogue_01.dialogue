@@ -1,11 +1,29 @@
 ~ start
-if has_suit():
+if is_minigame2_done()
+	Sara: !Bien hecho! los nuevos programas para los empleados esta lista, ahora que terminastes falta un trabajo más.
+	Sara: En la sala número 2 de tecnicos hay unos pc que toca realizarle mantenimiento para que esten de nuevo operativos.
+	Sara: Necesito que vayas y realices este ultimo trabajo. Cuando termines vuelve con Martín el te dira que es lo proximo que debes hacer. Adios ( ˙▿˙ ).
+elif is_minigame1_done()
+	Sara: Buen trabajo atendiendo los problemas de los empleados me soprende la verdad.
+	Jugador: Si fue muy duro tratar de ayudar a tantas personas y más si te van a despedir si no ayudas a todos.
+	Sara: Muy bien es hora de que continues con tu siguiente trabajo.
+	Jugador: ¿QUÉ MAS TRABAJO?
+	Sara: Claro que si nuevo, que esperabas un descanso con un Café y arepa. Claro que no.
+	Jugador: Ok, ¿Qué es lo siguiente que debo de hacer?
+	Sara: Debes de ir a la nueva Sala que esta arriba por el pasillo a la derecha. Ahí hay unos computadores los cuales deben de tener instalados todos los programas.
+	Sara: Para instalar los programas debes de acercarte al computador y presionar el botón de "Install". Pero ten cuidado durante la instalación, puede que ocurra algo mal durante la instalación.
+	Sara: Tienes que presionar el botón de "Reboot" lo mas rapido posible porque si dejas que el error siga al final el computador quedara en pantalla azul y en ese momento el que te va a reportar sere yo >:) asi que ten cuidado.
+	Jugador: Mmm... Ok entiendo que es lo que debo de hacer.
+	Sara: Muy bien entonces pongamonos manos a la obra, cuando termines vuelve conmigo.
+	Jugador: Ok.
+	do request_minigame2()
+elif has_suit()
 	Sara: ¡Genial! Ya tienes el traje. 
 	Sara: Ahora si podemos empezar a trabajar de verdad, Ahora mismo hay muchas personas que tienen el excel o el word malo, cuando te salha un signo de ! significa que te estan pidiendo ayuda.
-	Sara: Acercate a ellos para ayudarlos y presiona rapidamente la E para ayudarles lo más rapido posible, y sera mejor que sea rapido porque hay 24 personas en esta oficina, apurate.
+	Sara: Acercate a ellos para ayudarlos y presiona rapidamente la "E"  para ayudarles lo más rapido posible, y sera mejor que sea rapido porque hay 24 personas en esta oficina, apurate.
 	Sara: Una vez que ya este normal el panorama vuelve aqui y te asignare tu siguiente tarea.
 	do request_minigame()
-else:
+else
 	Sara: ¡Ah! Hola, ¿quién eres? 
 	Jugador: Hola, mi nombre es Jugador. Soy el nuevo empleado de la empresa. 
 	Sara: Ah, ok, no lo sabía. ¿Y qué necesitas? 
