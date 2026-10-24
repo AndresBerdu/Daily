@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://dt2wqefowjhim"]
+
+[ext_resource type="FontFile" uid="uid://dhuiae4jqwh0y" path="res://assets/fonts/determination.ttf" id="1_aa4pf"]
+[ext_resource type="Texture2D" uid="uid://bkksdefr2rtu4" path="res://assets/sprites/hud/buttons/btn_delete/button_delete.png" id="2_jvu3o"]
+[ext_resource type="Texture2D" uid="uid://bajscf6uy5m7h" path="res://assets/sprites/hud/buttons/btn_delete/button_delete_pressed.png" id="3_4cod1"]
+[ext_resource type="Texture2D" uid="uid://dpw4brqt38xy6" path="res://assets/sprites/hud/buttons/btn_delete/button_delete_hover.png" id="4_1gako"]
+
+[node name="User" type="ReferenceRect" unique_id=2055468850]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.097222224
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelId" type="Label" parent="." unique_id=1061975444]
+layout_mode = 0
+offset_top = 13.0
+offset_right = 7.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0.16206557, 0.1620656, 0.16206557, 1)
+theme_override_fonts/font = ExtResource("1_aa4pf")
+theme_override_font_sizes/font_size = 6
+text = "Id"
+
+[node name="LabelName" type="Label" parent="." unique_id=95008992]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 28.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+theme_override_fonts/font = ExtResource("1_aa4pf")
+theme_override_font_sizes/font_size = 6
+text = "Name"
+
+[node name="LabelEmail" type="Label" parent="." unique_id=685359158]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 13.0
+offset_right = 52.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+theme_override_fonts/font = ExtResource("1_aa4pf")
+theme_override_font_sizes/font_size = 6
+text = "Email"
+
+[node name="LabelCreatedAt" type="Label" parent="." unique_id=1095681257]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 13.0
+offset_right = 90.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+theme_override_fonts/font = ExtResource("1_aa4pf")
+theme_override_font_sizes/font_size = 6
+text = "CreatedAt"
+
+[node name="BtnDelete" type="TextureButton" parent="." unique_id=327521865]
+layout_mode = 0
+offset_left = 96.0
+offset_right = 166.0
+offset_bottom = 35.0
+texture_normal = ExtResource("2_jvu3o")
+texture_pressed = ExtResource("3_4cod1")
+texture_hover = ExtResource("4_1gako")
+stretch_mode = 3

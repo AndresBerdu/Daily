@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://deolhwbd1qh2f"]
+
+[ext_resource type="Script" uid="uid://c4j2kb1bmktyr" path="res://src/entities/level_02/minigame_4/enemies/obstacle.gd" id="1_6tka8"]
+[ext_resource type="Texture2D" uid="uid://cwl520fj3wp1e" path="res://assets/sprites/characters/enemies/wall/wall.png" id="2_vm3af"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
+size = Vector2(6, 33)
+
+[node name="Wall" type="Area2D" unique_id=189493705]
+script = ExtResource("1_6tka8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1979466112]
+texture = ExtResource("2_vm3af")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=32693342]
+position = Vector2(3, 3.5)
+shape = SubResource("RectangleShape2D_ostoq")

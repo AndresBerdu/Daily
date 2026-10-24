@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://behgioh5klo6n"]
+
+[ext_resource type="Script" uid="uid://c4j2kb1bmktyr" path="res://src/entities/level_02/minigame_4/enemies/obstacle.gd" id="1_yjqwy"]
+[ext_resource type="Texture2D" uid="uid://co7iyjom7vp42" path="res://assets/sprites/characters/enemies/hook/hook.png" id="2_qevrs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qojiu"]
+atlas = ExtResource("2_qevrs")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ostoq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qojiu")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajtct"]
+size = Vector2(20, 38)
+
+[node name="Hook" type="Area2D" unique_id=1815555932]
+script = ExtResource("1_yjqwy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1390611856]
+sprite_frames = SubResource("SpriteFrames_ostoq")
+animation = &"run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=254907469]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_ajtct")

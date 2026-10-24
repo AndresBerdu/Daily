@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://qygnq3ahad4q"]
+
+[ext_resource type="Script" uid="uid://c4j2kb1bmktyr" path="res://src/entities/level_02/minigame_4/enemies/obstacle.gd" id="1_0mnym"]
+[ext_resource type="Texture2D" uid="uid://dmk74n3fkb3f1" path="res://assets/sprites/characters/enemies/virus/virus.png" id="1_kyq0i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06es3"]
+atlas = ExtResource("1_kyq0i")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qo48"]
+atlas = ExtResource("1_kyq0i")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ostoq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06es3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qo48")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ajtct"]
+radius = 15.132746
+
+[node name="Virus" type="Area2D" unique_id=1075910941]
+script = ExtResource("1_0mnym")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=795582081]
+sprite_frames = SubResource("SpriteFrames_ostoq")
+animation = &"run"
+frame_progress = 0.18106769
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1219787709]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_ajtct")

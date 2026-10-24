@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://ryq3lyol82o4"]
+
+[ext_resource type="Script" uid="uid://k53r1u0jo8kw" path="res://src/entities/level_02/minigame_4/packet_interceptor.gd" id="1_c0cvc"]
+[ext_resource type="PackedScene" uid="uid://qygnq3ahad4q" path="res://src/entities/level_02/minigame_4/enemies/virus/virus.tscn" id="2_s77gy"]
+[ext_resource type="PackedScene" uid="uid://deolhwbd1qh2f" path="res://src/entities/level_02/minigame_4/enemies/wall/wall.tscn" id="3_unu7v"]
+[ext_resource type="PackedScene" uid="uid://catetl88k3usk" path="res://src/entities/level_02/minigame_4/enemies/bomb/bomb.tscn" id="4_icow2"]
+[ext_resource type="PackedScene" uid="uid://behgioh5klo6n" path="res://src/entities/level_02/minigame_4/enemies/hook/hook.tscn" id="5_v8eik"]
+[ext_resource type="Texture2D" uid="uid://bcvb05d7wimjf" path="res://assets/sprites/hud/window/window.png" id="6_pardy"]
+[ext_resource type="PackedScene" uid="uid://pxb6yan3ckh7" path="res://src/entities/level_02/minigame_4/packet/packet_car.tscn" id="7_a0t24"]
+[ext_resource type="Shader" uid="uid://bcbm0d5w2tvhx" path="res://src/entities/level_02/minigame_4/old_window.gdshader" id="8_dg33k"]
+[ext_resource type="Texture2D" uid="uid://b8b641y6b108g" path="res://assets/sprites/hud/buttons/btn_on/button_on.png" id="9_erpam"]
+[ext_resource type="Texture2D" uid="uid://c14i46llpr4hi" path="res://assets/sprites/hud/buttons/btn_on/button_on_pressed.png" id="10_7nhgd"]
+[ext_resource type="Texture2D" uid="uid://dpa5n18viif8k" path="res://assets/sprites/hud/buttons/btn_on/button_on_hover.png" id="11_hyiqr"]
+[ext_resource type="PackedScene" uid="uid://ca4rjeb4gnuay" path="res://ui/hud/hud.tscn" id="12_bjq3h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ostoq"]
+shader = ExtResource("8_dg33k")
+shader_parameter/crt_curve = 0.02
+shader_parameter/crt_scan_line_color = 0.0
+shader_parameter/aperture_grille_rate = 0.370000017575
+shader_parameter/aparture_grille_cut_rate = 0.3470000164825
+shader_parameter/rf_switch_esque_blur = 0.3370000160075
+shader_parameter/white_noise_rate = 0.0
+
+[node name="PacketInterceptor" type="Node2D" unique_id=2079989889]
+script = ExtResource("1_c0cvc")
+ground_obstacles = Array[PackedScene]([ExtResource("2_s77gy"), ExtResource("3_unu7v"), ExtResource("4_icow2")])
+air_obstacles = Array[PackedScene]([ExtResource("5_v8eik")])
+
+[node name="Window" type="Sprite2D" parent="." unique_id=1918950392]
+position = Vector2(329, 188)
+texture = ExtResource("6_pardy")
+
+[node name="Backgrond" type="ColorRect" parent="." unique_id=2129859641]
+offset_left = 155.0
+offset_top = 58.0
+offset_right = 538.0
+offset_bottom = 276.08002
+color = Color(0.37126642, 0.6841091, 0.3444217, 1)
+
+[node name="SpawnerEnemy1" type="Marker2D" parent="." unique_id=1352431229]
+position = Vector2(516, 219)
+
+[node name="SpawnerEnemy2" type="Marker2D" parent="." unique_id=1878188109]
+position = Vector2(516, 181)
+
+[node name="CarPacket" parent="." unique_id=1039017474 instance=ExtResource("7_a0t24")]
+position = Vector2(205, 205)
+
+[node name="WindowShutDown" type="ColorRect" parent="." unique_id=391563844]
+visible = false
+offset_left = 155.0
+offset_top = 58.0
+offset_right = 538.0
+offset_bottom = 276.0
+color = Color(0.16206557, 0.1620656, 0.16206557, 1)
+
+[node name="Playfield" type="Control" parent="." unique_id=322567691]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 227.0
+offset_top = 59.0
+offset_right = 535.0
+offset_bottom = 275.0
+
+[node name="OldWindowEffect" type="ColorRect" parent="." unique_id=963076987]
+material = SubResource("ShaderMaterial_ostoq")
+offset_left = 154.0
+offset_top = 58.0
+offset_right = 539.0
+offset_bottom = 278.0
+
+[node name="BtnOn" type="TextureButton" parent="." unique_id=1844065909]
+offset_left = 518.0
+offset_top = 287.0
+offset_right = 550.0
+offset_bottom = 319.0
+texture_normal = ExtResource("9_erpam")
+texture_pressed = ExtResource("10_7nhgd")
+texture_hover = ExtResource("11_hyiqr")
+
+[node name="Hud" parent="." unique_id=917611303 instance=ExtResource("12_bjq3h")]
+visible = false

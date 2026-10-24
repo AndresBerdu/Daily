@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://dap8fgtigwrv1"]
+
+[ext_resource type="Texture2D" uid="uid://bcvb05d7wimjf" path="res://assets/sprites/hud/window/window.png" id="1_cttn0"]
+[ext_resource type="Script" uid="uid://dufx11g4v8i2p" path="res://src/entities/level_02/minigame_5/user_security.gd" id="1_r3k1n"]
+[ext_resource type="Shader" uid="uid://bcbm0d5w2tvhx" path="res://src/entities/level_02/minigame_4/old_window.gdshader" id="2_14mb8"]
+[ext_resource type="Texture2D" uid="uid://ywhmne74r7as" path="res://assets/sprites/hud/backgrounds_windows/bg_IAM.png" id="2_jf7he"]
+[ext_resource type="FontFile" uid="uid://dhuiae4jqwh0y" path="res://assets/fonts/determination.ttf" id="3_jf7he"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ostoq"]
+shader = ExtResource("2_14mb8")
+shader_parameter/crt_curve = 0.02
+shader_parameter/crt_scan_line_color = 0.0
+shader_parameter/aperture_grille_rate = 0.4590000218025
+shader_parameter/aparture_grille_cut_rate = 0.4
+shader_parameter/rf_switch_esque_blur = 0.2170000103075
+shader_parameter/white_noise_rate = 0.0
+
+[node name="UserSecurity" type="Control" unique_id=80272426 node_paths=PackedStringArray("warn_marker")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r3k1n")
+warn_marker = NodePath("WarnMarket")
+metadata/_edit_use_anchors_ = true
+
+[node name="Window" type="TextureRect" parent="." unique_id=1150236722]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_cttn0")
+stretch_mode = 3
+
+[node name="BackgroundWindow" type="TextureRect" parent="." unique_id=133144092]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.53000003
+anchor_top = 0.446
+anchor_right = 0.53000003
+anchor_bottom = 0.446
+offset_left = -199.20001
+offset_top = -107.56
+offset_right = 193.79999
+offset_bottom = 106.44
+texture = ExtResource("2_jf7he")
+expand_mode = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=67062402]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.371875
+anchor_top = 0.3611111
+anchor_right = 0.803125
+anchor_bottom = 0.7083333
+metadata/_edit_use_anchors_ = true
+
+[node name="UserList" type="GridContainer" parent="ScrollContainer" unique_id=1543143001]
+layout_mode = 2
+theme_override_constants/h_separation = 4
+columns = 5
+
+[node name="LabelId" type="Label" parent="ScrollContainer/UserList" unique_id=346040629]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_jf7he")
+theme_override_font_sizes/font_size = 6
+text = "Id"
+
+[node name="LabelName" type="Label" parent="ScrollContainer/UserList" unique_id=1495893102]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_jf7he")
+theme_override_font_sizes/font_size = 6
+text = "Name"
+
+[node name="LabelEmail" type="Label" parent="ScrollContainer/UserList" unique_id=1225017940]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_jf7he")
+theme_override_font_sizes/font_size = 6
+text = "email"
+
+[node name="LabelCreatedAt" type="Label" parent="ScrollContainer/UserList" unique_id=54721560]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_jf7he")
+theme_override_font_sizes/font_size = 6
+text = "created_at"
+
+[node name="LabelOptions" type="Label" parent="ScrollContainer/UserList" unique_id=1525818076]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_jf7he")
+theme_override_font_sizes/font_size = 6
+text = "Option"
+
+[node name="OldWindowEffect" type="ColorRect" parent="." unique_id=1886455286]
+material = SubResource("ShaderMaterial_ostoq")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.53000003
+anchor_top = 0.45000002
+anchor_right = 0.53000003
+anchor_bottom = 0.45000002
+offset_left = -199.20001
+offset_top = -109.0
+offset_right = 193.79999
+offset_bottom = 108.0
+mouse_filter = 2
+
+[node name="WarnMarket" type="Marker2D" parent="." unique_id=109882982]
+position = Vector2(339, 174)

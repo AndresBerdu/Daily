@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cta7duyjcnhb6"]
+
+[ext_resource type="Texture2D" uid="uid://cw2q4pfbkifie" path="res://assets/sprites/hud/window/alarm_intruders.png" id="1_molsh"]
+[ext_resource type="AudioStream" uid="uid://wopydblyed2t" path="res://assets/audio/sfx/warn_sfx.ogg" id="2_wamst"]
+[ext_resource type="Texture2D" uid="uid://bc68g64m1osqo" path="res://assets/sprites/hud/buttons/btn_close/button_close.png" id="3_0426u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21vu4"]
+atlas = ExtResource("1_molsh")
+region = Rect2(0, 0, 162, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qikk"]
+atlas = ExtResource("1_molsh")
+region = Rect2(162, 0, 162, 82)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ostoq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21vu4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qikk")
+}],
+"loop": 1,
+"name": &"Warn",
+"speed": 1.8
+}]
+
+[node name="Warn" type="Node2D" unique_id=1620352409]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1024135519]
+sprite_frames = SubResource("SpriteFrames_ostoq")
+animation = &"Warn"
+frame_progress = 0.56871784
+
+[node name="CloseWarn" type="TextureButton" parent="." unique_id=601915631]
+offset_left = 68.0
+offset_top = -37.0
+offset_right = 77.0
+offset_bottom = -28.0
+texture_normal = ExtResource("3_0426u")
+
+[node name="warn_sfx" type="AudioStreamPlayer" parent="." unique_id=2073780719]
+stream = ExtResource("2_wamst")
+bus = &"SFX"
+parameters/looping = true

@@ -3260,6 +3260,9 @@ equip_slot = "suit"
 [node name="Nota" parent="." unique_id=608901302 instance=ExtResource("8_135ep")]
 position = Vector2(696, 144)
 
+[node name="Saver" parent="." unique_id=2026510827 instance=ExtResource("9_ldqyh")]
+position = Vector2(320, 88)
+
 [node name="Desktops" type="Node2D" parent="." unique_id=40606150]
 
 [node name="Desktop" parent="Desktops" unique_id=636032281 instance=ExtResource("11_gtdxa")]
@@ -3409,7 +3412,7 @@ position = Vector2(712, -712)
 position = Vector2(792, -712)
 
 [node name="Player" parent="." unique_id=1866043696 instance=ExtResource("1_ut7rv")]
-position = Vector2(1280, -1424)
+position = Vector2(254, 128)
 
 [node name="NewPcs" type="Node2D" parent="." unique_id=1583089596]
 
@@ -3429,9 +3432,6 @@ position = Vector2(1440, -1464)
 position = Vector2(88, 48)
 texture = ExtResource("14_8hiqs")
 hframes = 4
-
-[node name="Saver" parent="." unique_id=2026510827 instance=ExtResource("9_ldqyh")]
-position = Vector2(320, 88)
 
 [node name="Teleports" type="Node2D" parent="." unique_id=1538456546]
 
