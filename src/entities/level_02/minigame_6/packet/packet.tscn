@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://dht7he2cshgjg"]
+
+[ext_resource type="Texture2D" uid="uid://dbpu6paykh1k0" path="res://assets/sprites/props/packet/corrupt_note.png" id="1_5ux58"]
+[ext_resource type="Script" uid="uid://ufttxdb4su2i" path="res://src/entities/level_02/minigame_6/packet/packet.gd" id="1_6lcly"]
+[ext_resource type="Texture2D" uid="uid://27vm4xb0lroj" path="res://assets/sprites/items/box/box.png" id="2_hv2qc"]
+[ext_resource type="FontFile" uid="uid://dhuiae4jqwh0y" path="res://assets/fonts/determination.ttf" id="3_6lcly"]
+[ext_resource type="Texture2D" uid="uid://c2qlrm3vkho7r" path="res://assets/sprites/props/watch/watch.png" id="4_hv2qc"]
+[ext_resource type="Script" uid="uid://bugurv12g5iec" path="res://src/components/state_machine/state_machine.gd" id="6_r1ymb"]
+[ext_resource type="Script" uid="uid://5bry6qe6kmfg" path="res://src/entities/level_02/minigame_6/packet/states/travel.gd" id="7_btfg7"]
+[ext_resource type="Script" uid="uid://cpdm7op3fyw7f" path="res://src/entities/level_02/minigame_6/packet/states/waiting.gd" id="8_52kwv"]
+[ext_resource type="Script" uid="uid://bps5rrfujmxby" path="res://src/entities/level_02/minigame_6/packet/states/exiting.gd" id="9_sarey"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
+size = Vector2(16, 16)
+
+[node name="Packet" type="StaticBody2D" unique_id=1072431562]
+script = ExtResource("1_6lcly")
+
+[node name="ContentPacket" type="Sprite2D" parent="." unique_id=801748057]
+position = Vector2(0, -33)
+texture = ExtResource("1_5ux58")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=559145694]
+texture = ExtResource("2_hv2qc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2128228098]
+shape = SubResource("RectangleShape2D_ostoq")
+
+[node name="LabelIp" type="Label" parent="." unique_id=544561233]
+offset_left = -27.0
+offset_top = -22.0
+offset_right = 27.0
+offset_bottom = -12.0
+theme_override_fonts/font = ExtResource("3_6lcly")
+theme_override_font_sizes/font_size = 7
+text = "255.255.255.255"
+metadata/_edit_use_anchors_ = true
+
+[node name="Watch" type="TextureRect" parent="." unique_id=58390590]
+offset_left = 28.0
+offset_top = -10.0
+offset_right = 44.0
+offset_bottom = 6.0
+texture = ExtResource("4_hv2qc")
+stretch_mode = 3
+
+[node name="Time" type="Label" parent="." unique_id=1121844577]
+offset_left = 11.0
+offset_top = -6.0
+offset_right = 25.0
+offset_bottom = 5.0
+theme_override_fonts/font = ExtResource("3_6lcly")
+theme_override_font_sizes/font_size = 8
+text = "10 s"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StateMachine" type="Node" parent="." unique_id=1262660412 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("6_r1ymb")
+initial_state = NodePath("Travel")
+
+[node name="Travel" type="Node" parent="StateMachine" unique_id=1878771094]
+script = ExtResource("7_btfg7")
+
+[node name="Waiting" type="Node" parent="StateMachine" unique_id=1868929329]
+script = ExtResource("8_52kwv")
+
+[node name="Exiting" type="Node" parent="StateMachine" unique_id=844764937]
+script = ExtResource("9_sarey")

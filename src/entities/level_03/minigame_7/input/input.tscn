@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b3h3ubi5qlv3j"]
+
+[ext_resource type="Texture2D" uid="uid://bdwbomt7lpc3j" path="res://assets/sprites/props/inputs/hdmi_input.png" id="1_rmdsm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
+size = Vector2(24, 32)
+
+[node name="Input" type="StaticBody2D" unique_id=101889838]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=949363303]
+texture = ExtResource("1_rmdsm")
+
+[node name="ConnectArea" type="Area2D" parent="." unique_id=321468704]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConnectArea" unique_id=138772627]
+position = Vector2(4, 0)
+shape = SubResource("RectangleShape2D_ostoq")

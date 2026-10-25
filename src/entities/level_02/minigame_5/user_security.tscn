@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bcvb05d7wimjf" path="res://assets/sprites/hud/window/window.png" id="1_cttn0"]
 [ext_resource type="Script" uid="uid://dufx11g4v8i2p" path="res://src/entities/level_02/minigame_5/user_security.gd" id="1_r3k1n"]
 [ext_resource type="Shader" uid="uid://bcbm0d5w2tvhx" path="res://src/entities/level_02/minigame_4/old_window.gdshader" id="2_14mb8"]
-[ext_resource type="Texture2D" uid="uid://ywhmne74r7as" path="res://assets/sprites/hud/backgrounds_windows/bg_IAM.png" id="2_jf7he"]
+[ext_resource type="Texture2D" uid="uid://ywhmne74r7as" path="res://assets/sprites/backgrounds/bg_IAM.png" id="2_jf7he"]
 [ext_resource type="FontFile" uid="uid://dhuiae4jqwh0y" path="res://assets/fonts/determination.ttf" id="3_jf7he"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ostoq"]

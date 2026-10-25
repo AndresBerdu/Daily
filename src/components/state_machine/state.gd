@@ -3,7 +3,7 @@ extends Node
 
 signal transitioned(new_state_name: String)
 
-var actor: CharacterBody2D # actor que va a usar la maquina de estado
+var actor  # actor que usa la maquina de estados (sin tipo: puede ser cualquier nodo)
 
 ## Función para iniciar la acción
 func enter() -> void:

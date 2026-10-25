@@ -7,13 +7,16 @@ var current_state: State
 var states: Dictionary = {}
 
 func _ready() -> void:
-	var actor := owner as CharacterBody2D
-	
+	var actor := get_parent()
+
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child
 			child.actor = actor
 			child.transitioned.connect(_on_transition)
+
+	if initial_state == null and get_child_count() > 0:
+		initial_state = get_child(0) as State
 
 	if initial_state:
 		current_state = initial_state

@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://csj7wb3rredl5"]
+
+[ext_resource type="Texture2D" uid="uid://mhf3ebf6jhaj" path="res://assets/sprites/items/pc/pc_security.png" id="1_83dwl"]
+[ext_resource type="Script" uid="uid://dqu8fos218qvr" path="res://src/entities/level_02/minigame_6/security_pc/security_pc.gd" id="1_v805x"]
+[ext_resource type="Texture2D" uid="uid://c18q5yvrbmag4" path="res://assets/sprites/hud/buttons/btn_right/button_right.png" id="2_q7hn1"]
+[ext_resource type="Texture2D" uid="uid://pf6nq503m0qm" path="res://assets/sprites/hud/buttons/btn_right/button_right_pressed.png" id="3_2gei4"]
+[ext_resource type="Texture2D" uid="uid://b3ugiw8tkfcop" path="res://assets/sprites/hud/buttons/btn_right/button_right_hover.png" id="4_x01sd"]
+[ext_resource type="Texture2D" uid="uid://cxxvymol72fw0" path="res://assets/sprites/hud/buttons/btn_open/button_open.png" id="5_pjul3"]
+[ext_resource type="Texture2D" uid="uid://ded2yknpv71ms" path="res://assets/sprites/hud/buttons/btn_open/button_open_pressed.png" id="6_v805x"]
+[ext_resource type="Texture2D" uid="uid://c0wmi0uuygh4e" path="res://assets/sprites/hud/buttons/btn_open/button_open_hover.png" id="7_0pg5l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
+size = Vector2(50, 18.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajtct"]
+size = Vector2(56, 37)
+
+[node name="SecurityPc" type="StaticBody2D" unique_id=286883050]
+script = ExtResource("1_v805x")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2010432243]
+texture = ExtResource("1_83dwl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1962008109]
+position = Vector2(1, 8.25)
+shape = SubResource("RectangleShape2D_ostoq")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1355488123]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=2105009218]
+position = Vector2(1, 8.5)
+shape = SubResource("RectangleShape2D_ajtct")
+debug_color = Color(0.78211904, 0.30827153, 0.7777963, 0.41960785)
+
+[node name="BtnLeft" type="TextureButton" parent="." unique_id=1441841958]
+offset_left = -48.0
+offset_right = -32.0
+offset_bottom = 16.2
+texture_normal = ExtResource("2_q7hn1")
+texture_pressed = ExtResource("3_2gei4")
+texture_hover = ExtResource("4_x01sd")
+stretch_mode = 5
+
+[node name="BtnRight" type="TextureButton" parent="." unique_id=516896107]
+offset_left = 32.0
+offset_right = 48.0
+offset_bottom = 16.2
+texture_normal = ExtResource("2_q7hn1")
+texture_pressed = ExtResource("3_2gei4")
+texture_hover = ExtResource("4_x01sd")
+stretch_mode = 5
+flip_h = true
+
+[node name="BtnOpen" type="TextureButton" parent="." unique_id=1234605802]
+offset_left = -60.0
+offset_top = -59.0
+offset_right = 60.0
+offset_bottom = -19.0
+texture_normal = ExtResource("5_pjul3")
+texture_pressed = ExtResource("6_v805x")
+texture_hover = ExtResource("7_0pg5l")
+stretch_mode = 3

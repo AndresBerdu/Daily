@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bmtc0wnwsblpl"]
+
+[ext_resource type="Texture2D" uid="uid://80d1lms13c5m" path="res://assets/sprites/backgrounds/bg_cable_connect.png" id="1_mmvmy"]
+
+[node name="ConnectAllCables" type="Node2D" unique_id=1215166395]
+
+[node name="background" type="TextureRect" parent="." unique_id=294782901]
+offset_right = 688.0
+offset_bottom = 360.0
+texture = ExtResource("1_mmvmy")
+
+[node name="Tips" type="Node2D" parent="." unique_id=1461674375]
+position = Vector2(-40, 176)
+
+[node name="Tip1" type="Marker2D" parent="Tips" unique_id=2085444931]
+position = Vector2(64, -128)
+
+[node name="Tip2" type="Marker2D" parent="Tips" unique_id=1816062995]
+position = Vector2(64, -64)
+
+[node name="Tip3" type="Marker2D" parent="Tips" unique_id=1769937310]
+position = Vector2(64, 0)
+
+[node name="Tip4" type="Marker2D" parent="Tips" unique_id=1811744509]
+position = Vector2(64, 64)
+
+[node name="Tip5" type="Marker2D" parent="Tips" unique_id=1458504434]
+position = Vector2(64, 128)
+
+[node name="Inputs" type="Node2D" parent="." unique_id=888550941]
+position = Vector2(704, 176)
+
+[node name="Input1" type="Marker2D" parent="Inputs" unique_id=908161800]
+position = Vector2(-38, -128)
+
+[node name="Input2" type="Marker2D" parent="Inputs" unique_id=679614369]
+position = Vector2(-38, -64)
+
+[node name="Input3" type="Marker2D" parent="Inputs" unique_id=264291467]
+position = Vector2(-38, 0)
+
+[node name="Input4" type="Marker2D" parent="Inputs" unique_id=18575582]
+position = Vector2(-38, 64)
+
+[node name="Input5" type="Marker2D" parent="Inputs" unique_id=731014070]
+position = Vector2(-38, 128)

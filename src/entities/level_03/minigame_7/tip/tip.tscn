@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://ejn2d08o3h2d"]
+
+[ext_resource type="Texture2D" uid="uid://bnnbr26elicp8" path="res://assets/sprites/props/tips/hdmi_tip.png" id="1_dnuuv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
+size = Vector2(32, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajtct"]
+size = Vector2(30, 26)
+
+[node name="Tip" type="StaticBody2D" unique_id=1143138311]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1660760464]
+texture = ExtResource("1_dnuuv")
+
+[node name="DraggableArea" type="Area2D" parent="." unique_id=1706353898]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DraggableArea" unique_id=825958508]
+shape = SubResource("RectangleShape2D_ostoq")
+
+[node name="ConenctArea" type="Area2D" parent="." unique_id=2145996390]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConenctArea" unique_id=296536528]
+position = Vector2(5, 0)
+shape = SubResource("RectangleShape2D_ajtct")
+debug_color = Color(0.8376693, 0.20860654, 0.7999173, 0.41960785)

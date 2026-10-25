@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ywhmne74r7as"
-path="res://.godot/imported/bg_IAM.png-be2b1b953923e293fc9b9d2b52e48e5e.ctex"
+uid="uid://dbpu6paykh1k0"
+path="res://.godot/imported/corrupt_note.png-1f05a8fff2a122344b6f04988c5ff84e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/hud/backgrounds_windows/bg_IAM.png"
-dest_files=["res://.godot/imported/bg_IAM.png-be2b1b953923e293fc9b9d2b52e48e5e.ctex"]
+source_file="res://assets/sprites/props/packet/corrupt_note.png"
+dest_files=["res://.godot/imported/corrupt_note.png-1f05a8fff2a122344b6f04988c5ff84e.ctex"]
 
 [params]
 
