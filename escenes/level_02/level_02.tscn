@@ -10,7 +10,15 @@
 [ext_resource type="PackedScene" uid="uid://biixe0c77ab0w" path="res://src/entities/pc/pc.tscn" id="6_4j2n2"]
 [ext_resource type="PackedScene" uid="uid://csj7wb3rredl5" path="res://src/entities/level_02/minigame_6/security_pc/security_pc.tscn" id="8_7t22e"]
 [ext_resource type="Script" uid="uid://dg66os7ipgfnh" path="res://src/entities/level_02/minigame_6/belt_packets/belt_packets.gd" id="9_7t22e"]
+[ext_resource type="Texture2D" uid="uid://27vm4xb0lroj" path="res://assets/sprites/items/box/box.png" id="11_grab8"]
 [ext_resource type="PackedScene" uid="uid://dht7he2cshgjg" path="res://src/entities/level_02/minigame_6/packet/packet.tscn" id="11_sasjh"]
+[ext_resource type="Texture2D" uid="uid://cvj2u84hlu8xl" path="res://assets/sprites/props/packet/packet_corrupt_01.png" id="12_i8gjn"]
+[ext_resource type="Texture2D" uid="uid://dqtlkpgy2vdg8" path="res://assets/sprites/props/packet/packet_corrupt_02.png" id="13_vgfsl"]
+[ext_resource type="Texture2D" uid="uid://ddimkw16ihdvb" path="res://assets/sprites/props/packet/packet_corrupt_03.png" id="14_u5dyr"]
+[ext_resource type="Texture2D" uid="uid://drq3cvn82ndjs" path="res://assets/sprites/items/notes/note.png" id="15_m0sy6"]
+[ext_resource type="Texture2D" uid="uid://dbpu6paykh1k0" path="res://assets/sprites/props/packet/corrupt_note.png" id="16_kjiyh"]
+[ext_resource type="Texture2D" uid="uid://dcwncb61aeypk" path="res://assets/sprites/props/packet/virus_packet.png" id="17_yv6jj"]
+[ext_resource type="Texture2D" uid="uid://67u5w4ne8yd7" path="res://assets/sprites/props/packet/worm_packet.png" id="18_fdqpm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3cwp2"]
 texture = ExtResource("1_axv0t")
@@ -1796,6 +1804,10 @@ main_path = NodePath("MainPath")
 good_path = NodePath("GoodPath")
 bad_path = NodePath("BadPath")
 auto_start = true
+valid_packet_texture = ExtResource("11_grab8")
+corrupted_packet_textures = Array[Texture2D]([ExtResource("12_i8gjn"), ExtResource("13_vgfsl"), ExtResource("14_u5dyr")])
+valid_content_texture = ExtResource("15_m0sy6")
+bad_content_textures = Array[Texture2D]([ExtResource("16_kjiyh"), ExtResource("17_yv6jj"), ExtResource("18_fdqpm")])
 
 [node name="MainPath" type="Path2D" parent="BeltPackets" unique_id=1660700583]
 curve = SubResource("Curve2D_sasjh")

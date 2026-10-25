@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://dxrctxh7wa64s"]
 
+[ext_resource type="PackedScene" uid="uid://b302rud2h3ppv" path="res://src/entities/level_03/minigame_7/server/server.tscn" id="1_cn7si"]
+[ext_resource type="PackedScene" uid="uid://dcdogvkuk1jp2" path="res://src/entities/player/player.tscn" id="2_hs65l"]
+
 [node name="Level03" type="Node2D" unique_id=1334471936]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1585267588]
@@ -7,3 +10,8 @@
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1203338842]
 
 [node name="TileMapLayer3" type="TileMapLayer" parent="." unique_id=1579345257]
+
+[node name="Server" parent="." unique_id=78144769 instance=ExtResource("1_cn7si")]
+
+[node name="Player" parent="Server" unique_id=1866043696 instance=ExtResource("2_hs65l")]
+position = Vector2(0, 80)

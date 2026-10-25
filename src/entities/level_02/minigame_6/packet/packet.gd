@@ -5,10 +5,7 @@ signal reached_center(packet: BeltPacket)   # llego al final del camino principa
 signal timed_out(packet: BeltPacket)        # se acabo el tiempo para decidir
 signal finished(packet: BeltPacket)         # termino el camino elegido
 
-enum Content { NOTE, VIRUS, BOMB, SCRIPT }
 enum Decision { NONE, GOOD, BAD }
-
-@export var box_textures Array:
 
 @onready var box: Sprite2D = $Sprite2D
 @onready var content_sprite: Sprite2D = $ContentPacket
@@ -33,7 +30,7 @@ func setup(ip: String, box_texture: Texture2D, content_tex: Texture2D, good: boo
 		belt_speed: float, length: float, decide: float, exit_t: float) -> void:
 	label_ip.text = ip
 	if box_texture:
-		box.texture = box_texture          # valido o corrupto
+		box.texture = box_texture          # sano o corrupto
 	if content_tex:
 		content_sprite.texture = content_tex
 	content_sprite.hide()                  # el contenido se ve al abrirlo
@@ -49,9 +46,6 @@ func setup(ip: String, box_texture: Texture2D, content_tex: Texture2D, good: boo
 func open() -> void:
 	opened = true
 	content_sprite.show()
-
-func set_selected(value: bool) -> void:
-	box.modulate = Color(1.5, 1.5, 1.5) if value else Color.WHITE
 
 func decide(value: Decision) -> void:
 	decision = value

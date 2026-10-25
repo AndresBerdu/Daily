@@ -15,21 +15,23 @@ signal packet_resolved(correct: bool)
 
 @export_group("Reglas")
 @export var total_packets := 10
-@export var spawn_interval := 6.0
-@export var max_on_belt := 3
-@export var belt_speed := 60.0
-@export var packet_spacing := 28.0
-@export var decide_time := 40.0
-@export var exit_time := 3.0
+@export var spawn_interval := 6.0     # segundos entre intentos de generar un paquete
+@export var max_on_belt := 3          # paquetes sin decidir a la vez
+@export var belt_speed := 60.0        # pixeles por segundo hasta el centro
+@export var packet_spacing := 28.0    # separacion entre paquetes en la fila
+@export var decide_time := 40.0       # segundos para decidir, desde que llega al centro
+@export var exit_time := 3.0          # segundos que tarda en recorrer el camino elegido
 @export_range(0.0, 1.0) var good_chance := 0.4
 
-@export_group("Texturas")
-@export var valid_packet_texture: Texture2D            # paquete sano
-@export var corrupted_packet_textures: Array[Texture2D] # paquetes corruptos
-# Orden: NOTE, VIRUS, BOMB, SCRIPT
-@export var content_textures: Array[Texture2D]
+@export_group("Texturas de la caja")
+@export var valid_packet_texture: Texture2D                # 1 paquete sano
+@export var corrupted_packet_textures: Array[Texture2D]    # 3 paquetes corruptos
 
-var queue: Array[BeltPacket] = []
+@export_group("Texturas del contenido")
+@export var valid_content_texture: Texture2D               # 1 contenido bueno (la nota)
+@export var bad_content_textures: Array[Texture2D]         # 3 contenidos maliciosos
+
+var queue: Array[BeltPacket] = []     # paquetes sin decidir; el primero es el mas cercano al centro
 var spawn_timer := Timer.new()
 var spawned := 0
 var finished_count := 0
@@ -72,6 +74,7 @@ func start() -> void:
 func _spawn_packet() -> void:
 	if not running or spawned >= total_packets:
 		return
+	# Si la cinta esta llena, espera al siguiente intento
 	if queue.size() >= max_on_belt:
 		return
 
@@ -81,20 +84,23 @@ func _spawn_packet() -> void:
 
 	# Un paquete bueno cumple todo; uno malo falla en una sola cosa
 	var good := randf() < good_chance
-	var flaw := -1 if good else randi() % 3   # 0 = IP, 1 = contenido, 2 = paquete corrupto
+	var flaw := -1 if good else randi() % 3   # 0 = IP, 1 = contenido, 2 = caja corrupta
 
 	var ip := _make_ip(flaw != 0)
-	var content: int = BeltPacket.Content.NOTE if flaw != 1 \
-			else randi_range(1, BeltPacket.Content.size() - 1)
 
+	# Contenido: la nota buena o uno de los 3 maliciosos
+	var bad_content := flaw == 1 and not bad_content_textures.is_empty()
+	var content_tex: Texture2D = valid_content_texture
+	if bad_content:
+		content_tex = bad_content_textures.pick_random()
+
+	# Caja: la sana o una de las 3 corruptas
 	var corrupted := flaw == 2 and not corrupted_packet_textures.is_empty()
 	var box_texture: Texture2D = valid_packet_texture
 	if corrupted:
 		box_texture = corrupted_packet_textures.pick_random()
 
-	var should_be_good := ip_is_valid(ip) \
-			and content == BeltPacket.Content.NOTE \
-			and not corrupted
+	var should_be_good := ip_is_valid(ip) and not bad_content and not corrupted
 
 	var instance := packet_scene.instantiate()
 	var packet := instance as BeltPacket
@@ -106,9 +112,6 @@ func _spawn_packet() -> void:
 	var follower := _make_follower(main_path)
 	follower.add_child(packet)
 
-	var content_tex: Texture2D = null
-	if content < content_textures.size():
-		content_tex = content_textures[content]
 	packet.setup(ip, box_texture, content_tex, should_be_good,
 			belt_speed, path_length, decide_time, exit_time)
 	packet.reached_center.connect(_on_packet_reached_center)
@@ -126,10 +129,10 @@ func _make_ip(valid: bool) -> String:
 	if not valid:
 		var i := randi() % 4
 		match randi() % 4:
-			0: parts[i] = str(randi_range(256, 999))
-			1: parts.remove_at(i)
-			2: parts[i] = "x" + str(randi_range(1, 99))
-			3: parts.append(str(randi_range(1, 254)))
+			0: parts[i] = str(randi_range(256, 999))       # octeto fuera de rango
+			1: parts.remove_at(i)                          # faltan octetos
+			2: parts[i] = "x" + str(randi_range(1, 99))    # letras
+			3: parts.append(str(randi_range(1, 254)))      # sobra un octeto
 	return ".".join(parts)
 
 static func ip_is_valid(ip: String) -> bool:
@@ -147,7 +150,7 @@ static func ip_is_valid(ip: String) -> bool:
 func _make_follower(path: Path2D) -> PathFollow2D:
 	var follower := PathFollow2D.new()
 	follower.loop = false
-	follower.rotates = false
+	follower.rotates = false            # el texto del paquete no debe girar
 	path.add_child(follower)
 	return follower
 
@@ -156,9 +159,9 @@ func _update_slots() -> void:
 	for i in queue.size():
 		var packet := queue[i]
 		packet.target_progress = maxf(0.0, path_length - i * packet_spacing)
-		packet.set_selected(i == 0 and packet.is_waiting())
 
 # --- Acciones del PC ---
+# Solo se puede actuar sobre el paquete que ya llego al centro
 func has_front() -> bool:
 	return not queue.is_empty() and queue[0].is_waiting()
 
@@ -205,7 +208,7 @@ func _move_to_path(packet: BeltPacket, path: Path2D) -> void:
 
 func _on_packet_finished(packet: BeltPacket) -> void:
 	var correct := packet.is_correct()
-	packet.get_parent().queue_free()
+	packet.get_parent().queue_free()    # elimina el follower y el paquete
 
 	if not correct:
 		GameManager.lose_heart()

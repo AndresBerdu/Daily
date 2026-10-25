@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b302rud2h3ppv"]
+
+[ext_resource type="Texture2D" uid="uid://gyvxd0kjaypc" path="res://assets/sprites/props/server/server.png" id="1_abs48"]
+[ext_resource type="Script" uid="uid://l0dq2rbekas6" path="res://src/entities/level_03/minigame_7/server/server.gd" id="1_xcwio"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
+size = Vector2(24, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajtct"]
+size = Vector2(31, 43)
+
+[node name="Server" type="StaticBody2D" unique_id=78144769]
+script = ExtResource("1_xcwio")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=295296752]
+texture = ExtResource("1_abs48")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=68441401]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_ostoq")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1215381708]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1259856590]
+position = Vector2(0.5, 11.5)
+shape = SubResource("RectangleShape2D_ajtct")
+debug_color = Color(0.8871554, 0.203287, 0.6488899, 0.41960785)

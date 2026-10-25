@@ -1,8 +1,26 @@
 [gd_scene format=3 uid="uid://bmtc0wnwsblpl"]
 
+[ext_resource type="Script" uid="uid://xi2gwuimqg2y" path="res://src/entities/level_03/minigame_7/connect_all_cables.gd" id="1_33qft"]
 [ext_resource type="Texture2D" uid="uid://80d1lms13c5m" path="res://assets/sprites/backgrounds/bg_cable_connect.png" id="1_mmvmy"]
+[ext_resource type="PackedScene" uid="uid://ejn2d08o3h2d" path="res://src/entities/level_03/minigame_7/tip/tip.tscn" id="2_4d6lm"]
+[ext_resource type="PackedScene" uid="uid://b3h3ubi5qlv3j" path="res://src/entities/level_03/minigame_7/input/input.tscn" id="3_rv563"]
+[ext_resource type="Texture2D" uid="uid://c4xyfwmut2ivi" path="res://assets/sprites/props/tips/ac_tip.png" id="4_h4q25"]
+[ext_resource type="Texture2D" uid="uid://c56pf35ha3ogt" path="res://assets/sprites/props/tips/display_port_tip.png" id="5_al28n"]
+[ext_resource type="Texture2D" uid="uid://csrtun8f5yqnf" path="res://assets/sprites/props/tips/ehernet_tip.png" id="6_8h4fg"]
+[ext_resource type="Texture2D" uid="uid://bnnbr26elicp8" path="res://assets/sprites/props/tips/hdmi_tip.png" id="7_4a4g0"]
+[ext_resource type="Texture2D" uid="uid://dnvg8k7jqt0st" path="res://assets/sprites/props/tips/usb_tip.png" id="8_b2s51"]
+[ext_resource type="Texture2D" uid="uid://b3f5php5ffp5m" path="res://assets/sprites/props/inputs/ac_input.png" id="9_at312"]
+[ext_resource type="Texture2D" uid="uid://bs7u31k7fw4do" path="res://assets/sprites/props/inputs/display_port_input.png" id="10_jdkmy"]
+[ext_resource type="Texture2D" uid="uid://hj5wsk40eogp" path="res://assets/sprites/props/inputs/ethernet_input.png" id="11_x8l2i"]
+[ext_resource type="Texture2D" uid="uid://bdwbomt7lpc3j" path="res://assets/sprites/props/inputs/hdmi_input.png" id="12_1xg5g"]
+[ext_resource type="Texture2D" uid="uid://cwlsej5xlfo6v" path="res://assets/sprites/props/inputs/usb_input.png" id="13_l5t64"]
 
 [node name="ConnectAllCables" type="Node2D" unique_id=1215166395]
+script = ExtResource("1_33qft")
+tip_scene = ExtResource("2_4d6lm")
+input_scene = ExtResource("3_rv563")
+tip_textures = Array[Texture2D]([ExtResource("4_h4q25"), ExtResource("5_al28n"), ExtResource("6_8h4fg"), ExtResource("7_4a4g0"), ExtResource("8_b2s51")])
+input_textures = Array[Texture2D]([ExtResource("9_at312"), ExtResource("10_jdkmy"), ExtResource("11_x8l2i"), ExtResource("12_1xg5g"), ExtResource("13_l5t64")])
 
 [node name="background" type="TextureRect" parent="." unique_id=294782901]
 offset_right = 688.0
@@ -10,7 +28,7 @@ offset_bottom = 360.0
 texture = ExtResource("1_mmvmy")
 
 [node name="Tips" type="Node2D" parent="." unique_id=1461674375]
-position = Vector2(-40, 176)
+position = Vector2(-48, 176)
 
 [node name="Tip1" type="Marker2D" parent="Tips" unique_id=2085444931]
 position = Vector2(64, -128)
@@ -28,7 +46,7 @@ position = Vector2(64, 64)
 position = Vector2(64, 128)
 
 [node name="Inputs" type="Node2D" parent="." unique_id=888550941]
-position = Vector2(704, 176)
+position = Vector2(712, 176)
 
 [node name="Input1" type="Marker2D" parent="Inputs" unique_id=908161800]
 position = Vector2(-38, -128)
