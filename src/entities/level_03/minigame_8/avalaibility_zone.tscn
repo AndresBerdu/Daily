@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://vcnfrxlcdg5b"]
+
+[ext_resource type="Script" uid="uid://dfl1p2inracof" path="res://src/entities/level_03/minigame_8/avalaibility_zone.gd" id="1_d1qn7"]
+[ext_resource type="Texture2D" uid="uid://bcvb05d7wimjf" path="res://assets/sprites/hud/window/window.png" id="1_qhk74"]
+[ext_resource type="PackedScene" uid="uid://0tr3jc8erqyw" path="res://src/entities/level_03/minigame_8/flag/flag.tscn" id="2_ndxin"]
+[ext_resource type="Shader" uid="uid://bcbm0d5w2tvhx" path="res://src/entities/level_02/minigame_4/old_window.gdshader" id="2_twfgt"]
+[ext_resource type="Texture2D" uid="uid://dcc3wfru40kvt" path="res://assets/sprites/backgrounds/world_map.png" id="3_d1qn7"]
+[ext_resource type="PackedScene" uid="uid://nap8cevx8nh" path="res://src/entities/level_03/minigame_8/zone/zone.tscn" id="3_twfgt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ajtct"]
+shader = ExtResource("2_twfgt")
+shader_parameter/crt_curve = 0.02
+shader_parameter/crt_scan_line_color = 0.0
+shader_parameter/aperture_grille_rate = 0.6
+shader_parameter/aparture_grille_cut_rate = 0.4
+shader_parameter/rf_switch_esque_blur = 0.0010000000475
+shader_parameter/white_noise_rate = 0.0
+
+[node name="AvalaibilityZone" type="Node2D" unique_id=1593466855]
+script = ExtResource("1_d1qn7")
+flag_scene = ExtResource("2_ndxin")
+auto_start = true
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=120854504]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = 32.0
+offset_right = 635.0
+offset_bottom = 352.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qhk74")
+stretch_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=737095485]
+offset_left = 145.0
+offset_top = 64.0
+offset_right = 521.0
+offset_bottom = 279.0
+texture = ExtResource("3_d1qn7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=2000108118]
+position = Vector2(475, 95)
+
+[node name="Zones" type="Node2D" parent="." unique_id=180135999]
+
+[node name="RioJaneiro" parent="Zones" unique_id=1169565044 instance=ExtResource("3_twfgt")]
+position = Vector2(258, 219)
+
+[node name="Maima" parent="Zones" unique_id=247746796 instance=ExtResource("3_twfgt")]
+position = Vector2(228, 174)
+
+[node name="Berlin" parent="Zones" unique_id=2061549327 instance=ExtResource("3_twfgt")]
+position = Vector2(326, 144)
+
+[node name="Shanghai" parent="Zones" unique_id=1891900929 instance=ExtResource("3_twfgt")]
+position = Vector2(418, 167)
+
+[node name="Sidney" parent="Zones" unique_id=1862010430 instance=ExtResource("3_twfgt")]
+position = Vector2(460, 231)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=38284312]
+material = SubResource("ShaderMaterial_ajtct")
+offset_left = 139.0
+offset_top = 64.0
+offset_right = 526.0
+offset_bottom = 279.0
+mouse_filter = 2

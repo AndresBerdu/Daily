@@ -15,7 +15,7 @@ signal collected(item: Item)
 @export var item_icon: Texture2D
 @export var quantity := 1
 @export var disappear_after := true
-@export_enum("none", "suit", "shoes") var equip_slot := "none"
+@export_enum("none", "suit", "shoes", "tools") var equip_slot := "none"
 
 @onready var interaction_area: Area2D = $InteractionArea
 @onready var sfx_sound: AudioStreamPlayer = $sfx

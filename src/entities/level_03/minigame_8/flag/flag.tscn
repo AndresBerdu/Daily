@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://0tr3jc8erqyw"]
+
+[ext_resource type="Texture2D" uid="uid://cginm2ao2sym6" path="res://assets/sprites/props/flags/co.png" id="1_ms2f4"]
+[ext_resource type="Script" uid="uid://dlqoqd2tqwofh" path="res://src/entities/level_03/minigame_8/flag/flag.gd" id="1_ubyvm"]
+[ext_resource type="FontFile" uid="uid://dhuiae4jqwh0y" path="res://assets/fonts/determination.ttf" id="2_ubyvm"]
+
+[node name="Flag" type="Node2D" unique_id=1817855970]
+script = ExtResource("1_ubyvm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=653167652]
+texture = ExtResource("1_ms2f4")
+
+[node name="LabelNameCountry" type="Label" parent="." unique_id=912049419]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.0
+offset_top = 10.0
+offset_right = 14.0
+offset_bottom = 21.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_ubyvm")
+theme_override_font_sizes/font_size = 8
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1

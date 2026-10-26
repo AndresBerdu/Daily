@@ -33,7 +33,7 @@ var box_open := false                 # Sara ya habló y la caja se puede abrir
 
 # --- Estado del minijuego 1 ---
 var minigame1_started := false
-var minigame1_done := true
+var minigame1_done := false
 var minigame1_requested := false      # El diálogo pidió empezar; arranca al cerrarse
 var minigame1_time_left := MINIGAME1_DURATION
 var workers: Array[OfficeWorker] = []

@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cs2fc8854aid5" path="res://assets/sprites/lobby/elevador.png" id="14_8hiqs"]
 [ext_resource type="Resource" uid="uid://dybl2y8hx4wav" path="res://escenes/level_01/dialogues/sara_dialogue_01.dialogue" id="15_8ajf4"]
 [ext_resource type="Texture2D" uid="uid://chosbuoc7qmmc" path="res://assets/sprites/characters/npc/sara/idle/character_sara_idle_down.png" id="16_ua715"]
+[ext_resource type="Texture2D" uid="uid://0o3j5cnb28dl" path="res://assets/sprites/items/suits/item_suit_tech.png" id="17_jsl6l"]
 [ext_resource type="Resource" uid="uid://ciyfu1bo37mr6" path="res://escenes/level_01/dialogues/box_dialogue_01.dialogue" id="18_ynnr0"]
 [ext_resource type="Texture2D" uid="uid://27vm4xb0lroj" path="res://assets/sprites/items/box/box.png" id="20_ppvlf"]
 
@@ -3254,7 +3255,7 @@ item_texture = ExtResource("20_ppvlf")
 pickable = true
 item_id = "traje_tecnico"
 item_name = "Traje de técnico"
-item_icon = ExtResource("20_ppvlf")
+item_icon = ExtResource("17_jsl6l")
 equip_slot = "suit"
 
 [node name="Nota" parent="." unique_id=608901302 instance=ExtResource("8_135ep")]
@@ -3412,7 +3413,7 @@ position = Vector2(712, -712)
 position = Vector2(792, -712)
 
 [node name="Player" parent="." unique_id=1866043696 instance=ExtResource("1_ut7rv")]
-position = Vector2(254, 128)
+position = Vector2(-64, -528)
 
 [node name="NewPcs" type="Node2D" parent="." unique_id=1583089596]
 

@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://nap8cevx8nh"]
+
+[ext_resource type="FontFile" uid="uid://dhuiae4jqwh0y" path="res://assets/fonts/determination.ttf" id="1_aw24e"]
+[ext_resource type="Script" uid="uid://lnpwwmcegvjv" path="res://src/entities/level_03/minigame_8/zone/zone.gd" id="1_egnhw"]
+[ext_resource type="Texture2D" uid="uid://gyvxd0kjaypc" path="res://assets/sprites/props/server/server.png" id="2_0usic"]
+[ext_resource type="Texture2D" uid="uid://bp2v4aebqgdjg" path="res://assets/sprites/hud/buttons/btn_select/button_select.png" id="3_vjequ"]
+[ext_resource type="Texture2D" uid="uid://csyuhg3qqll7h" path="res://assets/sprites/hud/buttons/btn_select/button_select_pressed.png" id="4_egnhw"]
+[ext_resource type="Texture2D" uid="uid://5if40n2nmxn4" path="res://assets/sprites/hud/buttons/btn_select/button_select_hover.png" id="5_lu1fi"]
+
+[node name="Zone" type="Node2D" unique_id=1169565044]
+script = ExtResource("1_egnhw")
+
+[node name="LabelZone" type="Label" parent="." unique_id=1873287308]
+offset_left = -9.0
+offset_top = -19.0
+offset_right = 9.0
+offset_bottom = -10.0
+theme_override_fonts/font = ExtResource("1_aw24e")
+theme_override_font_sizes/font_size = 6
+text = "Zone"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1661313586]
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("2_0usic")
+
+[node name="BtnSelected" type="TextureButton" parent="." unique_id=2038062091]
+offset_left = 6.0
+offset_top = -9.0
+offset_right = 23.0
+offset_bottom = 7.0
+texture_normal = ExtResource("3_vjequ")
+texture_pressed = ExtResource("4_egnhw")
+texture_hover = ExtResource("5_lu1fi")
+stretch_mode = 3

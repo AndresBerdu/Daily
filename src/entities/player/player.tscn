@@ -345,4 +345,11 @@ script = ExtResource("5_0mfjg")
 [node name="Hud" parent="." unique_id=559625638 instance=ExtResource("10_tk761")]
 metadata/_edit_use_anchors_ = true
 
+[node name="FishingBar" type="ProgressBar" parent="." unique_id=2087630581]
+offset_left = 24.0
+offset_top = -16.0
+offset_right = 28.0
+offset_bottom = 11.0
+show_percentage = false
+
 [node name="WalkAudio" type="AudioStreamPlayer" parent="." unique_id=1199130307]

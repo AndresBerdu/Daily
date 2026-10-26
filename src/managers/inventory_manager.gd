@@ -4,13 +4,14 @@ signal item_added(id: String, amount: int)
 signal inventory_changed
 signal equipment_changed(slot: String, id: String)
 
-const SLOTS := ["suit", "shoes"]
+const SLOTS := ["suit", "shoes", "tools"]
+
 
 # id -> { "name", "icon", "quantity", "slot" }
 var items: Dictionary = {}
 
 # slot -> id equipado ("" = nada)
-var equipped: Dictionary = {"suit": "", "shoes": ""}
+var equipped: Dictionary = {"suit": "", "shoes": "", "tools": ""}
 
 func add_item(id: String, item_name: String, icon: Texture2D, amount := 1, slot := "") -> void:
 	if items.has(id):
@@ -101,7 +102,7 @@ func load_save_data(data: Dictionary) -> void:
 			"quantity": int(d["quantity"]),
 			"slot": d.get("slot", ""),
 		}
-	equipped = {"suit": "", "shoes": ""}
+	equipped = {"suit": "", "shoes": "", "tools": ""}
 	var saved_eq: Dictionary = data.get("equipped", {})
 	for slot in saved_eq:
 		if saved_eq[slot] != "" and items.has(saved_eq[slot]):

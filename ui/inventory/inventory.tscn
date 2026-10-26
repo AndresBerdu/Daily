@@ -55,7 +55,7 @@ layout_mode = 2
 
 [node name="ItemSlot" type="HBoxContainer" parent="InventoryContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1470760871]
 layout_mode = 2
-theme_override_constants/separation = 19
+theme_override_constants/separation = 9
 
 [node name="Icon" type="TextureRect" parent="InventoryContainer/MarginContainer/ScrollContainer/VBoxContainer/ItemSlot" unique_id=946512501]
 layout_mode = 2
