@@ -174,5 +174,3 @@ script = ExtResource("8_71x53")
 
 [node name="Enlarge" type="Node" parent="StateMachine" unique_id=1339788457]
 script = ExtResource("9_h3fqw")
-
-[node name="dead" type="Node" parent="StateMachine" unique_id=493970980]

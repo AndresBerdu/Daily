@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cht1ipnhert7v"]
+
+[ext_resource type="Texture2D" uid="uid://b0dmdcndjrb43" path="res://assets/sprites/items/normal_props/usb.png" id="1_w5fmo"]
+[ext_resource type="Script" uid="uid://csr0bmafqnr7x" path="res://src/components/items/items_resource/item_data.gd" id="2_tc701"]
+
+[resource]
+script = ExtResource("2_tc701")
+id = "usb"
+display_name = "Usb con el Microhard 720"
+description = "Usb con el Microhard 720 y el ejecutable de GTA San Andreas"
+icon = ExtResource("1_w5fmo")
+speed_multiplier = 0.0
+heal_amount = 0

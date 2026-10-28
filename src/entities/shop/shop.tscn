@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dsbaswiwvlyhh"]
 
 [ext_resource type="Texture2D" uid="uid://dgnr52n2hseiu" path="res://assets/sprites/items/shop/shop.png" id="1_20kj5"]
+[ext_resource type="Script" uid="uid://bkfvqtqd42x8r" path="res://src/entities/shop/shop.gd" id="1_vhq8f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
 size = Vector2(80, 20)
@@ -9,6 +10,7 @@ size = Vector2(80, 20)
 size = Vector2(80, 34)
 
 [node name="Shop" type="StaticBody2D" unique_id=527676]
+script = ExtResource("1_vhq8f")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2013351980]
 texture = ExtResource("1_20kj5")

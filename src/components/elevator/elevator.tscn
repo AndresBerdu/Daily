@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://da3h71swts075"]
+
+[ext_resource type="Script" uid="uid://djlfqlnjfdlv5" path="res://src/components/elevator/elevator.gd" id="1_n34g8"]
+[ext_resource type="Texture2D" uid="uid://cs2fc8854aid5" path="res://assets/sprites/lobby/elevador.png" id="1_qs5p0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5172v"]
+atlas = ExtResource("1_qs5p0")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvst5"]
+atlas = ExtResource("1_qs5p0")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7ycu"]
+atlas = ExtResource("1_qs5p0")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsbr5"]
+atlas = ExtResource("1_qs5p0")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n34g8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5172v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvst5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7ycu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsbr5")
+}],
+"loop": 0,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2i6nw"]
+size = Vector2(48, 18)
+
+[node name="Elevator" type="Node2D" unique_id=1140957268]
+script = ExtResource("1_n34g8")
+
+[node name="Elevator" type="AnimatedSprite2D" parent="." unique_id=1448402392]
+position = Vector2(192, 48)
+sprite_frames = SubResource("SpriteFrames_n34g8")
+animation = &"open"
+
+[node name="ElevatorArea" type="Area2D" parent="." unique_id=1839039411]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ElevatorArea" unique_id=125849877]
+z_index = 1
+position = Vector2(192, 73)
+shape = SubResource("RectangleShape2D_2i6nw")

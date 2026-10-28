@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cv0e4rj3picx3"]
+
+[ext_resource type="Texture2D" uid="uid://c6ub6ok5up6o4" path="res://assets/sprites/items/normal_props/shooes_venom.png" id="1_mfu42"]
+[ext_resource type="Script" uid="uid://csr0bmafqnr7x" path="res://src/components/items/items_resource/item_data.gd" id="2_tb6c8"]
+
+[resource]
+script = ExtResource("2_tb6c8")
+id = "shoes_venom"
+display_name = "Zapatos Venom"
+icon = ExtResource("1_mfu42")
+category = 0
+price = 10
+slot = 2
+speed_multiplier = 2.0

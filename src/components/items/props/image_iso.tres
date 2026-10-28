@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://fviwyt4t8jm5"]
+
+[ext_resource type="Texture2D" uid="uid://4pqtpxq5b8ay" path="res://assets/sprites/items/normal_props/image_iso.png" id="1_f05os"]
+[ext_resource type="Script" uid="uid://csr0bmafqnr7x" path="res://src/components/items/items_resource/item_data.gd" id="2_axilb"]
+
+[resource]
+script = ExtResource("2_axilb")
+id = "image_iso"
+display_name = "Imagen iso con linux"
+icon = ExtResource("1_f05os")
+price = 10

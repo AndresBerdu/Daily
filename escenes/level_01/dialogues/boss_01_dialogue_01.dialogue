@@ -1,10 +1,36 @@
 ~ start
-Desconocido: Hola, así que tú eres el nuevo empleado de Engineer Shine. Mi nombre es Martín, mucho gusto en conocerte.
-Jefe Martín: Soy el encargado del área de Soporte Técnico. Imagino que ya sabes qué es lo que hace un soporte técnico, ¿no?
-Jefe Martín: Como sea, el equipo de soporte se encarga del mantenimiento de las computadoras de la empresa. Pero no solo eso; también supervisamos la seguridad de nuestros equipos para sancionar a cualquiera que se quiera dar de listo conectando dispositivos no permitidos. Además, ayudamos a los empleados con sus problemas técnicos.
-Jugador: Ok, pero yo no soy de soporte... vine para el área de desarrollo.
-Jefe Martín: No me importa. Me vas a ayudar ahora mismo si no quieres que te bajen el sueldo en tu primer día.
-Jugador: Está bien, te ayudaré en lo que pueda.
-Jefe Martín: ¡Así se habla! Tu primera misión será ayudar a los empleados con cualquier problema que tengan en sus PCs.
-Jefe Martín: Pero primero, vamos a cambiar ese traje por uno de soporte técnico. Gira a la derecha por el pasillo largo hasta llegar a la oficina de técnicos, que está a mano izquierda de los torniquetes. Ahí estará Sara, una de tus compañeras. 
+if martin_taking == false
+	Desconocido: Hola, así que tú eres el nuevo empleado de Engineer Shine. Mi nombre es Martín, mucho gusto en conocerte.
+	Jefe Martín: Soy el encargado del área de Soporte Técnico. Imagino que ya sabes qué es lo que hace un soporte técnico, ¿no?
+	Jefe Martín: Como sea, el equipo de soporte se encarga del mantenimiento de las computadoras de la empresa. Pero no solo eso; también supervisamos la seguridad de nuestros equipos para sancionar a cualquiera que se quiera dar de listo conectando dispositivos no permitidos. Además, ayudamos a los empleados con sus problemas técnicos.
+	Jugador: Ok, pero yo no soy de soporte... vine para el área de desarrollo.
+	Jefe Martín: No me importa. Me vas a ayudar ahora mismo si no quieres que te bajen el sueldo en tu primer día.
+	Jugador: Está bien, te ayudaré en lo que pueda.
+	Jefe Martín: ¡Así se habla! Tu primera misión será ayudar a los empleados con cualquier problema que tengan en sus PCs.
+	Jefe Martín: Pero primero, vamos a cambiar ese traje por uno de soporte técnico. Gira a la derecha por el pasillo largo hasta llegar a la oficina de técnicos, que está a mano izquierda de los torniquetes. Ahí estará Sara, una de tus compañeras.
+	Jefe Martín: Ah casi se me olvida. Toma esta es tu credencial es de tier 1 por lo cual solo tienes acceso a la zona de arriba por ahora. Mas adelante te daran la de tier 2.
+	Jefe Martín: *Has obtenido tarjeta de acceso de nivel 1
+	do get_card_access() 
+	set martin_taking = true
+elif is_elevator_open()
+	Jefe Martín: El ascensor ya está operativo. Ve a lo que sigue.
+elif has_card_tier_3()
+	Jefe Martín: Así que ya tienes la tarjeta de nivel 3 y terminaste el último trabajo. Buen trabajo.
+	Jefe Martín: Ya activé el ascensor. Cuando estés listo, súbete.
+	do open_elevator()
+elif is_minigame2_done()
+	Jefe Martín: Terminaste los computadores. Antes de que te acompañe, vuelve con Sara tiene un último trabajo para ti.
+elif has_card_tier_2()
+	Jefe Martín: Ya tienes tu credencial de nivel 2. Ve a instalar esos programas y no me hagas perder el tiempo.
+elif is_minigame1_done() and has_image_iso()
+	Jefe Martín: Así que ya tienes la imagen ISO. Sara me avisó que vendrías.
+	Jefe Martín: Toma tu credencial de nivel 2. Con esta ya puedes entrar a la sala nueva, arriba por el pasillo a la derecha.
+	Jefe Martín: *Has obtenido tarjeta de acceso de nivel 2
+	Jefe Martín: Te acompaño hasta allá. Y más te vale que esos 24 computadores queden listos.
+	do get_card_access_tier_2()
+	do request_minigame2()
+elif is_minigame1_done()
+	Jefe Martín: Sara me dijo que te falta la imagen ISO. Cómprala en la tienda con lo que ganaste y vuelve conmigo por tu credencial de nivel 2.
+else 
+	Jefe Martín: Ya te dije que tienes que hacer hablamos luego.
 => END

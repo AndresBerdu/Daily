@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cfsxorgmmmfeo"]
+
+[ext_resource type="Script" uid="uid://ce1vxalr6fxdt" path="res://src/components/ticket_gate/ticket_gate.gd" id="1_3bmfn"]
+[ext_resource type="Texture2D" uid="uid://dvdar0n0ocsm0" path="res://assets/sprites/props/ticket_gate/ticket_gate_close.png" id="1_puldm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
+size = Vector2(10, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajtct"]
+size = Vector2(11, 20)
+
+[node name="TicketGate" type="StaticBody2D" unique_id=2094805449]
+script = ExtResource("1_3bmfn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1485988940]
+texture = ExtResource("1_puldm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=670181726]
+position = Vector2(-5, 0)
+shape = SubResource("RectangleShape2D_ostoq")
+
+[node name="PermissionShape" type="CollisionShape2D" parent="." unique_id=1664226929]
+position = Vector2(5.5, 0)
+shape = SubResource("RectangleShape2D_ajtct")
+debug_color = Color(0.9481843, 5.679429e-06, 0.58187866, 0.41960785)

@@ -1,4 +1,9 @@
 ~ start
-Desconocido: Te encontrastes un curriculum como ingeniero de software*.
-Desconocido: Has obtenido un curriculum.
+Jugador: Te encontraste un currículum de ingeniero de software.
+- Recoger currículum
+	do collect()
+	Jugador: Es de un tal Solid Snake Armstrong.
+	Jugador: Has obtenido un currículum.
+	=> END
+- Dejarlo
 => END

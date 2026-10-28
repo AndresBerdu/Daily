@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://cmw53vn71sbpw"
+path="res://.godot/imported/first_job.dialogue-4ba35aace4a68e6689f290206ff42134.tres"
+
+[deps]
+
+source_file="res://escenes/lobby/dialogues/first_job.dialogue"
+dest_files=["res://.godot/imported/first_job.dialogue-4ba35aace4a68e6689f290206ff42134.tres"]
+
+[params]
+
+defaults=true

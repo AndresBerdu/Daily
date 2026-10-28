@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://ikicdc2ljni1"
+path="res://.godot/imported/recepcionist_2.dialogue-f1d7d1b2825a7ce0b5e9bbfd73162cf2.tres"
+
+[deps]
+
+source_file="res://escenes/lobby/dialogues/npc/recepcionist_2.dialogue"
+dest_files=["res://.godot/imported/recepcionist_2.dialogue-f1d7d1b2825a7ce0b5e9bbfd73162cf2.tres"]
+
+[params]
+
+defaults=true

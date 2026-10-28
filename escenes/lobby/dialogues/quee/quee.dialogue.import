@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://bc3pnwpcjso4k"
+path="res://.godot/imported/quee.dialogue-a88c86d2d47030eb278e69e24f678ba0.tres"
+
+[deps]
+
+source_file="res://escenes/lobby/dialogues/quee/quee.dialogue"
+dest_files=["res://.godot/imported/quee.dialogue-a88c86d2d47030eb278e69e24f678ba0.tres"]
+
+[params]
+
+defaults=true

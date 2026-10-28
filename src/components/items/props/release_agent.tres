@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://csq7a5h1sefpe"]
+
+[ext_resource type="Script" uid="uid://csr0bmafqnr7x" path="res://src/components/items/items_resource/item_data.gd" id="1_cpwkw"]
+[ext_resource type="Texture2D" uid="uid://07linsq655gh" path="res://assets/sprites/items/normal_props/release_agent.png" id="1_mxube"]
+
+[resource]
+script = ExtResource("1_cpwkw")
+id = "release_agent"
+display_name = "Despegante"
+description = "Despegante para la moneda"
+icon = ExtResource("1_mxube")

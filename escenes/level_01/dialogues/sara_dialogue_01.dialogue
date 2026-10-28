@@ -1,8 +1,19 @@
 ~ start
-if is_minigame2_done()
+if is_elevator_open()
+	Sara: Ya no tienes nada pendiente conmigo. Ve a lo que sigue y cuídate.
+elif has_card_tier_3()
+	Sara: Ya tienes tu tarjeta de nivel 3. Ve con Martín, él te está esperando.
+elif is_minigame2_done()
 	Sara: !Bien hecho! los nuevos programas para los empleados esta lista, ahora que terminastes falta un trabajo más.
 	Sara: En la sala número 2 de tecnicos hay unos pc que toca realizarle mantenimiento para que esten de nuevo operativos.
 	Sara: Necesito que vayas y realices este ultimo trabajo. Cuando termines vuelve con Martín el te dira que es lo proximo que debes hacer. Adios ( ˙▿˙ ).
+	Sara: Ah, y toma esta tarjeta de acceso de nivel 3. Con ella llegas a la zona del último trabajo.
+	Sara: *Has obtenido tarjeta de acceso de nivel 3
+	do get_card_access_tier_3()
+elif has_card_tier_2()
+	Sara: Ya tienes la tarjeta de nivel 2. Ve a la sala nueva, arriba por el pasillo a la derecha, y acuérdate del botón de "Reboot".
+elif is_minigame1_done() and has_image_iso()
+	Sara: Ya tienes la imagen ISO. Ahora ve con Martín, él te dará la tarjeta de acceso de nivel 2.
 elif is_minigame1_done()
 	Sara: Buen trabajo atendiendo los problemas de los empleados me soprende la verdad.
 	Jugador: Si fue muy duro tratar de ayudar a tantas personas y más si te van a despedir si no ayudas a todos.
@@ -14,24 +25,33 @@ elif is_minigame1_done()
 	Sara: Para instalar los programas debes de acercarte al computador y presionar el botón de "Install". Pero ten cuidado durante la instalación, puede que ocurra algo mal durante la instalación.
 	Sara: Tienes que presionar el botón de "Reboot" lo mas rapido posible porque si dejas que el error siga al final el computador quedara en pantalla azul y en ese momento el que te va a reportar sere yo >:) asi que ten cuidado.
 	Jugador: Mmm... Ok entiendo que es lo que debo de hacer.
-	Sara: Muy bien entonces pongamonos manos a la obra, cuando termines vuelve conmigo.
-	Jugador: Ok.
-	do request_minigame2()
-elif has_suit()
-	Sara: ¡Genial! Ya tienes el traje. 
+	Sara: Pero antes necesitas una imagen ISO con los programas. Cómprala en la tienda con el dinero que ganaste atendiendo a los empleados.
+	Sara: Cuando la tengas, ve con Martín. Él te dará la tarjeta de acceso de nivel 2 para entrar a esa sala.
+	Jugador: Ok, compro la imagen ISO y voy con Martín.
+elif has_suit() and has_usb() and sara_taking
+	Sara: ¡Genial! Ya tienes el traje y la usb. 
 	Sara: Ahora si podemos empezar a trabajar de verdad, Ahora mismo hay muchas personas que tienen el excel o el word malo, cuando te salha un signo de ! significa que te estan pidiendo ayuda.
 	Sara: Acercate a ellos para ayudarlos y presiona rapidamente la "E"  para ayudarles lo más rapido posible, y sera mejor que sea rapido porque hay 24 personas en esta oficina, apurate.
 	Sara: Una vez que ya este normal el panorama vuelve aqui y te asignare tu siguiente tarea.
 	do request_minigame()
-else
-	Sara: ¡Ah! Hola, ¿quién eres? 
-	Jugador: Hola, mi nombre es Jugador. Soy el nuevo empleado de la empresa. 
-	Sara: Ah, ok, no lo sabía. ¿Y qué necesitas? 
-	Jugador: Martín me dijo que viniera acá para que me asignaras una tarea y me dieras mi traje. 
-	Sara: Ese Martín siempre me encaja a los nuevos mientras él se queda en el baño jugando Chinpokomon. 
-	Sara: Como sea, estamos muy atareados últimamente. Muchos empleados están reportando fallas con los programas ofimáticos. 
-	Sara: Necesito que vayas a las oficinas y los ayudes. Ah, y que no se te olvide tu traje de técnico; si no lo llevas puesto, no te dejarán tocar sus PCs. Está en esa caja que ves en el piso. 
-	Jugador: OK, muchas gracias. Ya me voy a poner a trabajar. 
+elif sara_taking == false
+	Sara: ¡Ah! Hola, ¿quién eres? 
+	Jugador: Hola, mi nombre es Jugador. Soy el nuevo empleado de la empresa. 
+	Sara: Ah, ok, no lo sabía. ¿Y qué necesitas? 
+	Jugador: Martín me dijo que viniera acá para que me asignaras una tarea y me dieras mi traje. 
+	Sara: Ese Martín siempre me encaja a los nuevos mientras él se queda en el baño jugando Chinpokomon. 
+	Sara: Como sea, estamos muy atareados últimamente. Muchos empleados están reportando fallas con los programas ofimáticos y tendras que instalar de nuevo los programas del Microhard 720. 
+	Sara: Necesito que vayas a las oficinas y los ayudes. Ah, y que no se te olvide tu traje de técnico; si no lo llevas puesto, no te dejarán tocar sus PCs. Está en esa caja que ves en el piso. 
+	Jugador: OK, muchas gracias. Ya me voy a poner a trabajar. 
 	Sara: Sí, sí. Solo no vayas a meter la pata dejando mucho tiempo desatendidos a los empleados. Se enojan muy rápido si no les solucionas los problemas y te pueden reportar con Martín. Él despide a la gente en un parpadeo, así que será mejor que te apures si no quieres ser el siguiente.
+	Sara: Por utimilo te hago entrega de la usb con los progra...
+	Sara: ...
+	Sara: ...
+	Sara: ...
+	Sara: Bueno al parecer se me perdio la usb trata de buscarla por allá sino Martin me matara.. Que descuido.
+	Jugador: Ok me pondre el traje y buscare la usb
 	do unlock_box()
+	set sara_taking = true
+else
+	Sara: Que estas esperando agarra el traje y busca la usb
 => END

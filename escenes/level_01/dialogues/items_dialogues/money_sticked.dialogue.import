@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://bwja2y4aa5o6w"
+path="res://.godot/imported/money_sticked.dialogue-3b8a1fc641480409a3943f0d970ad661.tres"
+
+[deps]
+
+source_file="res://escenes/level_01/dialogues/items_dialogues/money_sticked.dialogue"
+dest_files=["res://.godot/imported/money_sticked.dialogue-3b8a1fc641480409a3943f0d970ad661.tres"]
+
+[params]
+
+defaults=true

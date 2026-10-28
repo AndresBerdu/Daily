@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cmvhwtq0o82mx"]
+
+[ext_resource type="Texture2D" uid="uid://drq3cvn82ndjs" path="res://assets/sprites/items/notes/note.png" id="1_ufcil"]
+[ext_resource type="Script" uid="uid://csr0bmafqnr7x" path="res://src/components/items/items_resource/item_data.gd" id="2_lt4ui"]
+
+[resource]
+script = ExtResource("2_lt4ui")
+id = "curriculum"
+display_name = "Curriculum"
+description = "Un curriculum de un tal Solid Snake Amstrong"
+icon = ExtResource("1_ufcil")
+speed_multiplier = 0.0
+heal_amount = 0

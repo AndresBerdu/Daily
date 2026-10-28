@@ -1,0 +1,9 @@
+~ start
+Miras al suelo y te encuentras un despegante industrial.
+- Recoger Despegante
+	do collect()
+		Has obtenido un despegante industrial
+	=> END
+- Dejarlo
+	=> END
+=> END

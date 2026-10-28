@@ -78,3 +78,11 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_qrt2q")
 theme_override_font_sizes/font_size = 11
 text = "Equip"
+
+[node name="LabelEmpty" type="Label" parent="InventoryContainer/MarginContainer" unique_id=1706028754]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_qrt2q")
+theme_override_font_sizes/font_size = 24
+text = "Vació"
+horizontal_alignment = 1
+vertical_alignment = 1

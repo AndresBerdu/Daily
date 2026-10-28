@@ -36,6 +36,18 @@ func add_coins(amount: int) -> void:
 	coins += amount
 	coins_changed.emit(coins)
 
+func earn_coins_for_floor(amout: int) -> void:
+	InventoryManager.remove_item("money", 1)
+	add_coins(amout)
+
+# Devuelve false si la vida ya estaba llena
+func heal(amount := 1) -> bool:
+	if hearts >= MAX_HEARTS:
+		return false
+	hearts = mini(MAX_HEARTS, hearts + amount)
+	hearts_changed.emit(hearts)
+	return true
+
 func lose_heart() -> void:
 	if hearts <= 0:
 		return

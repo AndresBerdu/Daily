@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dn3vdd8pucipt"]
+
+[ext_resource type="Texture2D" uid="uid://bcvb05d7wimjf" path="res://assets/sprites/hud/window/window.png" id="1_gaqwx"]
+[ext_resource type="PackedScene" uid="uid://bcllu0aylhsv2" path="res://src/entities/level_03/minigame_9/trash/trash.tscn" id="2_degft"]
+[ext_resource type="Shader" uid="uid://bcbm0d5w2tvhx" path="res://src/entities/level_02/minigame_4/old_window.gdshader" id="3_72nvo"]
+[ext_resource type="PackedScene" uid="uid://dxyh84747ql2x" path="res://src/entities/level_03/minigame_9/file/file.tscn" id="4_degft"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ostoq"]
+shader = ExtResource("3_72nvo")
+shader_parameter/crt_curve = 0.02
+shader_parameter/crt_scan_line_color = 0.0
+shader_parameter/aperture_grille_rate = 0.6
+shader_parameter/aparture_grille_cut_rate = 0.710000033725
+shader_parameter/rf_switch_esque_blur = 0.370000017575
+shader_parameter/white_noise_rate = 0.0
+
+[node name="SortDataLake" type="Node2D" unique_id=1202158375]
+
+[node name="Window" type="Sprite2D" parent="." unique_id=2119563632]
+position = Vector2(312, 192)
+texture = ExtResource("1_gaqwx")
+
+[node name="Background" type="ColorRect" parent="." unique_id=704383912]
+offset_left = 136.0
+offset_top = 64.0
+offset_right = 523.0
+offset_bottom = 278.0
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1316719933]
+
+[node name="TrashImages" parent="Node2D" unique_id=2060377089 instance=ExtResource("2_degft")]
+position = Vector2(201, 165)
+
+[node name="TrashIso" parent="Node2D" unique_id=636086082 instance=ExtResource("2_degft")]
+position = Vector2(284, 165)
+
+[node name="TrashVideo" parent="Node2D" unique_id=680962905 instance=ExtResource("2_degft")]
+position = Vector2(369, 165)
+
+[node name="TrashVirus" parent="Node2D" unique_id=1763431805 instance=ExtResource("2_degft")]
+position = Vector2(459, 165)
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=113389305]
+position = Vector2(326, 242)
+
+[node name="File" parent="." unique_id=178891746 instance=ExtResource("4_degft")]
+position = Vector2(327, 243)
+
+[node name="OldWindoeEffect" type="ColorRect" parent="." unique_id=1787152359]
+material = SubResource("ShaderMaterial_ostoq")
+offset_left = 136.0
+offset_top = 64.0
+offset_right = 523.0
+offset_bottom = 278.0
+mouse_filter = 2

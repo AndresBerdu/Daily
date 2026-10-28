@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ShopEntry" format=3 uid="uid://116nfbmguw6"]
+
+[ext_resource type="Resource" uid="uid://fviwyt4t8jm5" path="res://src/components/items/props/image_iso.tres" id="1_54cua"]
+[ext_resource type="Script" uid="uid://d3c7fdr3l0sa" path="res://src/components/items/items_resource/shop_entry.gd" id="2_fvl60"]
+
+[resource]
+script = ExtResource("2_fvl60")
+item = ExtResource("1_54cua")

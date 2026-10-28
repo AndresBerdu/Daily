@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://iw3o5ayaxfq2"]
+
+[ext_resource type="Script" uid="uid://cfqq51h83h0eq" path="res://src/entities/lobby/quee.gd" id="1_kskyn"]
+[ext_resource type="Texture2D" uid="uid://bfwriluy2m70f" path="res://assets/sprites/characters/npc/quee/quee.png" id="1_sybj6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajtct"]
+size = Vector2(20, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
+size = Vector2(32, 160)
+
+[node name="Quee" type="StaticBody2D" unique_id=2031508538]
+script = ExtResource("1_kskyn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=285003424]
+texture = ExtResource("1_sybj6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=850341008]
+shape = SubResource("RectangleShape2D_ajtct")
+debug_color = Color(0.9734989, 0, 0.43693095, 0.41960785)
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1386381607]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=74476796]
+shape = SubResource("RectangleShape2D_ostoq")

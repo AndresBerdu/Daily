@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://fhp8eo47hkf5"]
+
+[ext_resource type="Texture2D" uid="uid://0o3j5cnb28dl" path="res://assets/sprites/items/suits/item_suit_tech.png" id="1_3eoq0"]
+[ext_resource type="Script" uid="uid://csr0bmafqnr7x" path="res://src/components/items/items_resource/item_data.gd" id="2_p2e7d"]
+[ext_resource type="Texture2D" uid="uid://bwewqutl8tot" path="res://assets/sprites/characters/player/tech/idle/character_player_tech_idle_down.png" id="3_wkh4n"]
+[ext_resource type="Texture2D" uid="uid://c6h7m4p8p46no" path="res://assets/sprites/characters/player/tech/idle/character_player_tech_idle_side.png" id="4_5r0u4"]
+[ext_resource type="Texture2D" uid="uid://okgb87wid5j8" path="res://assets/sprites/characters/player/tech/idle/character_player_tech_idle_up.png" id="5_6kptg"]
+[ext_resource type="Script" uid="uid://bpfmt8tnsrgx3" path="res://src/components/items/items_resource/outfit_sheet.gd" id="6_hg11l"]
+[ext_resource type="Texture2D" uid="uid://bwxlqpg4epani" path="res://assets/sprites/characters/player/tech/walk/character_player_tech_down_run.png" id="7_3qqh4"]
+[ext_resource type="Texture2D" uid="uid://dgppg6vju7jw7" path="res://assets/sprites/characters/player/tech/walk/character_player_tech_side_run.png" id="8_veuji"]
+[ext_resource type="Texture2D" uid="uid://dukgmq3sdpmuv" path="res://assets/sprites/characters/player/tech/walk/character_player_tech_up_run.png" id="9_kvxjb"]
+
+[sub_resource type="Resource" id="Resource_n7e5a"]
+script = ExtResource("6_hg11l")
+idle_down = ExtResource("3_wkh4n")
+idle_up = ExtResource("5_6kptg")
+idle_side = ExtResource("4_5r0u4")
+walk_down = ExtResource("7_3qqh4")
+walk_up = ExtResource("9_kvxjb")
+walk_side = ExtResource("8_veuji")
+metadata/_custom_type_script = "uid://bpfmt8tnsrgx3"
+
+[resource]
+script = ExtResource("2_p2e7d")
+id = "suit_tech"
+display_name = "Traje de técnico"
+description = "Traje de tecnico para tecnicos"
+icon = ExtResource("1_3eoq0")
+category = 0
+slot = 1
+speed_multiplier = 0.0
+suit_sheets = SubResource("Resource_n7e5a")
+heal_amount = 0

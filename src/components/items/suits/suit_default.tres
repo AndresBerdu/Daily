@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cqlkg31ntscmv"]
+
+[ext_resource type="Texture2D" uid="uid://dor4pewv8tpry" path="res://assets/sprites/items/suits/item_suit_default.png" id="1_sdpbt"]
+[ext_resource type="Script" uid="uid://csr0bmafqnr7x" path="res://src/components/items/items_resource/item_data.gd" id="2_2x0pe"]
+[ext_resource type="Texture2D" uid="uid://bk36l7d8s850f" path="res://assets/sprites/characters/player/default/idle/character_player_idle_down.png" id="3_mu7t4"]
+[ext_resource type="Texture2D" uid="uid://d3kvhqkrvkdhk" path="res://assets/sprites/characters/player/default/idle/character_player_idle_side.png" id="4_uyoiv"]
+[ext_resource type="Texture2D" uid="uid://dssueaxtp0u1n" path="res://assets/sprites/characters/player/default/idle/character_player_idle_up.png" id="5_krmld"]
+[ext_resource type="Script" uid="uid://bpfmt8tnsrgx3" path="res://src/components/items/items_resource/outfit_sheet.gd" id="6_a7fdt"]
+[ext_resource type="Texture2D" uid="uid://cl1bnqvhmjl55" path="res://assets/sprites/characters/player/default/walk/character_player_down_run.png" id="7_s2ypt"]
+[ext_resource type="Texture2D" uid="uid://rfgyj1gqvpos" path="res://assets/sprites/characters/player/default/walk/character_player_side_run.png" id="8_jevnp"]
+[ext_resource type="Texture2D" uid="uid://fuhrvmmegypu" path="res://assets/sprites/characters/player/default/walk/character_player_up_run.png" id="9_11pxu"]
+
+[sub_resource type="Resource" id="Resource_ostoq"]
+script = ExtResource("6_a7fdt")
+idle_down = ExtResource("3_mu7t4")
+idle_up = ExtResource("5_krmld")
+idle_side = ExtResource("4_uyoiv")
+walk_down = ExtResource("7_s2ypt")
+walk_up = ExtResource("9_11pxu")
+walk_side = ExtResource("8_jevnp")
+metadata/_custom_type_script = "uid://bpfmt8tnsrgx3"
+
+[resource]
+script = ExtResource("2_2x0pe")
+id = "suit_default"
+display_name = "Traje Formal"
+icon = ExtResource("1_sdpbt")
+category = 0
+slot = 1
+suit_sheets = SubResource("Resource_ostoq")

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dxyh84747ql2x"]
+
+[ext_resource type="Texture2D" uid="uid://dcwncb61aeypk" path="res://assets/sprites/props/packet/virus_packet.png" id="1_gwq7q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_degft"]
+size = Vector2(38.75, 35)
+
+[node name="File" type="Node2D" unique_id=178891746]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2066259584]
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("1_gwq7q")
+
+[node name="DraggableArea" type="Area2D" parent="." unique_id=1743308766]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DraggableArea" unique_id=504334537]
+shape = SubResource("RectangleShape2D_degft")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1226216120]

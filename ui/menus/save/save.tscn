@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://caqw4t8r0ity2" path="res://ui/menus/save/save.gd" id="1_8rs2d"]
 [ext_resource type="FontFile" uid="uid://dhuiae4jqwh0y" path="res://assets/fonts/determination.ttf" id="1_lva22"]
-[ext_resource type="Texture2D" uid="uid://bk36l7d8s850f" path="res://assets/sprites/characters/player/idle/character_player_idle_down.png" id="2_2e3yr"]
+[ext_resource type="Texture2D" uid="uid://bk36l7d8s850f" path="res://assets/sprites/characters/player/default/idle/character_player_idle_down.png" id="2_2e3yr"]
 
 [node name="Save" type="CanvasLayer" unique_id=1324698705]
 script = ExtResource("1_8rs2d")

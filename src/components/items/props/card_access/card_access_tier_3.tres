@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dqgcgb6i3xdhw"]
+
+[ext_resource type="Texture2D" uid="uid://6ck55j20mhk2" path="res://assets/sprites/props/cards_access/card_access_tier_3.png" id="1_a2aic"]
+[ext_resource type="Script" uid="uid://csr0bmafqnr7x" path="res://src/components/items/items_resource/item_data.gd" id="2_m030q"]
+
+[resource]
+script = ExtResource("2_m030q")
+id = "card_access_tier_3"
+display_name = "Tarjeta de acceso nivel 3"
+icon = ExtResource("1_a2aic")
+speed_multiplier = 0.0
+heal_amount = 0

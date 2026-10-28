@@ -2,12 +2,13 @@ extends CanvasLayer
 
 @onready var list: VBoxContainer = $InventoryContainer/MarginContainer/ScrollContainer/VBoxContainer
 @onready var slot_template: Control = list.get_node("ItemSlot")
+@onready var label_empty: Control = find_child("LabelEmpty", true, false)
 
-var ids: Array[String] = []   # id de cada fila, en orden
+var ids: Array[String] = []
 var selected := 0
 
 func _ready() -> void:
-	process_mode = Node.PROCESS_MODE_ALWAYS   # sigue recibiendo input en pausa
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	slot_template.hide()
 	hide()
 	InventoryManager.inventory_changed.connect(_refresh)
@@ -15,6 +16,9 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory") and not event.is_echo():
+		# Si la tienda esta abierta (juego en pausa), el inventario no se abre
+		if get_tree().paused and not visible:
+			return
 		_toggle()
 		get_viewport().set_input_as_handled()
 		return
@@ -25,9 +29,9 @@ func _input(event: InputEvent) -> void:
 		_move(1)
 	elif event.is_action_pressed("ui_up"):
 		_move(-1)
-	elif event.is_action_pressed("ui_accept"):
+	elif event.is_action_pressed("ui_accept") and not event.is_echo():
 		if selected < ids.size():
-			InventoryManager.toggle_equip(ids[selected])
+			InventoryManager.activate(ids[selected])
 	elif event.is_action_pressed("ui_cancel"):
 		_toggle()
 	else:
@@ -37,6 +41,7 @@ func _input(event: InputEvent) -> void:
 func _toggle() -> void:
 	visible = not visible
 	get_tree().paused = visible
+	
 	if visible:
 		selected = 0
 		_refresh()
@@ -44,6 +49,7 @@ func _toggle() -> void:
 func _move(step: int) -> void:
 	if ids.is_empty():
 		return
+		
 	selected = wrapi(selected + step, 0, ids.size())
 	_highlight()
 
@@ -54,18 +60,31 @@ func _refresh() -> void:
 
 	ids.clear()
 	for id in InventoryManager.items:
-		var data: Dictionary = InventoryManager.items[id]
+		var entry: Dictionary = InventoryManager.items[id]
+		var data: ItemData = entry["data"]
 		var slot := slot_template.duplicate() as Control
 		slot.show()
-		slot.get_node("Icon").texture = data["icon"]
-		slot.get_node("LabelName").text = data["name"]
-		slot.get_node("LabelQuantity").text = "x%d" % data["quantity"]
-		slot.get_node("LabelEquipped").text = "Equipado" if InventoryManager.is_equipped(id) else ""
+		slot.get_node("Icon").texture = data.icon
+		slot.get_node("LabelName").text = data.display_name
+		slot.get_node("LabelQuantity").text = ("x%d" % entry["quantity"]) if data.is_stackable() else ""
+		slot.get_node("LabelEquipped").text = _tag(id, data)
 		list.add_child(slot)
 		ids.append(id)
 
 	selected = clampi(selected, 0, max(ids.size() - 1, 0))
+	
+	if label_empty:
+		label_empty.visible = ids.is_empty()
+		
 	_highlight()
+
+# Etiqueta segun el tipo de objeto
+func _tag(id: String, data: ItemData) -> String:
+	if data.is_equippable():
+		return "Equipado" if InventoryManager.is_equipped(id) else "Equipar"
+	if data.category == ItemData.Category.CONSUMABLE:
+		return "Usar"
+	return ""   # coleccionable: solo existe
 
 func _highlight() -> void:
 	var index := 0

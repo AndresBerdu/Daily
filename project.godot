@@ -95,7 +95,7 @@ inventory={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://escenes/lobby/dialogues/recepcionist_2/recepcionist_2.dialogue", "res://escenes/lobby/dialogues/recepcionist/recepcionist.dialogue", "res://escenes/lobby/dialogues/items/cv_software_engineer.dialogue", "res://escenes/level_01/dialogues/boss_01_dialogue_01.dialogue", "res://escenes/level_01/dialogues/sara_dialogue_01.dialogue", "res://escenes/level_01/dialogues/box_dialogue_01.dialogue", "res://escenes/level_03/dialogues/no_item.dialogue")
+locale/translations_pot_files=PackedStringArray("res://escenes/lobby/dialogues/items/cv_software_engineer.dialogue", "res://escenes/level_01/dialogues/boss_01_dialogue_01.dialogue", "res://escenes/level_01/dialogues/sara_dialogue_01.dialogue", "res://escenes/level_03/dialogues/no_item.dialogue", "res://escenes/lobby/dialogues/npc/recepcionist.dialogue", "res://escenes/lobby/dialogues/npc/recepcionist_2.dialogue", "res://escenes/lobby/dialogues/quee/quee.dialogue", "res://escenes/lobby/dialogues/first_job.dialogue", "res://escenes/level_01/dialogues/items_dialogues/money_sticked.dialogue", "res://escenes/level_01/dialogues/items_dialogues/usb_get.dialogue", "res://escenes/level_01/dialogues/items_dialogues/box_with_tech_suit.dialogue", "res://escenes/level_01/dialogues/items_dialogues/release_agent_for_money.dialogue", "res://escenes/level_01/dialogues/sellder_01.dialogue", "res://escenes/level_01/dialogues/java_junkie_01.dialogue")
 
 [physics]
 

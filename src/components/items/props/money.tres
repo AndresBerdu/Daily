@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://lmvjmys0cqxb"]
+
+[ext_resource type="Script" uid="uid://csr0bmafqnr7x" path="res://src/components/items/items_resource/item_data.gd" id="1_rvw7d"]
+
+[resource]
+script = ExtResource("1_rvw7d")
+id = "money"
+display_name = "money"
+description = "money"
+speed_multiplier = 0.0
+heal_amount = 0

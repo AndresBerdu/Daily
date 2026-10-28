@@ -10,12 +10,9 @@ signal collected(item: Item)
 
 @export_group("Inventario")
 @export var pickable := false
-@export var item_id := ""
-@export var item_name := ""
-@export var item_icon: Texture2D
+@export var item_data: ItemData        # que objeto entrega al recogerlo
 @export var quantity := 1
 @export var disappear_after := true
-@export_enum("none", "suit", "shoes", "tools") var equip_slot := "none"
 
 @onready var interaction_area: Area2D = $InteractionArea
 @onready var sfx_sound: AudioStreamPlayer = $sfx
@@ -26,6 +23,7 @@ var busy := false
 func _ready() -> void:
 	if item_texture:
 		$Sprite2D.texture = item_texture
+		
 	DialogueManager.dialogue_ended.connect(func(_r): busy = false)
 	set_enabled(start_enabled)
 
@@ -60,8 +58,14 @@ func interact() -> void:
 func collect() -> void:
 	if not pickable or not enabled:
 		return
-	var slot := "" if equip_slot == "none" else equip_slot
-	InventoryManager.add_item(item_id, item_name, item_icon, quantity, slot)
+	if item_data == null:
+		push_error("%s: esta marcado como pickable pero no tiene Item Data" % name)
+		return
+	if not InventoryManager.add_data(item_data, quantity):
+		push_warning("%s: no se pudo agregar '%s' al inventario" % [name, item_data.id])
+		return
+
+	print("Recogido: ", item_data.id, " | inventario: ", InventoryManager.items.keys())
 	sfx_sound.play()
 	collected.emit(self)
 	if disappear_after:

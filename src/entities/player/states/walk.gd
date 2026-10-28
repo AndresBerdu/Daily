@@ -25,5 +25,5 @@ func physics_update(_delta: float) -> void:
 		anim.play("walk_d")
 		actor.set_meta("facing", "d")
 
-	actor.velocity = dir * SPEED
+	actor.velocity = dir * SPEED * InventoryManager.get_speed_multiplier()
 	actor.move_and_slide()
