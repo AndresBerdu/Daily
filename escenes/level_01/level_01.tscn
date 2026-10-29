@@ -3328,8 +3328,8 @@ item_data = ExtResource("17_m5gn8")
 position = Vector2(696, 144)
 dialogue_resource = ExtResource("21_uauq3")
 item_texture = ExtResource("18_d3gol")
+coin_value = 10
 pickable = true
-item_data = ExtResource("23_uge7h")
 
 [node name="Moneda2" parent="Items" unique_id=1548284831 instance=ExtResource("8_135ep")]
 position = Vector2(103, -1466)
@@ -3527,7 +3527,7 @@ position = Vector2(512, -1008)
 position = Vector2(394, -378)
 
 [node name="Player" parent="." unique_id=1866043696 instance=ExtResource("1_ut7rv")]
-position = Vector2(170, -376)
+position = Vector2(89, 100)
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=189404224]
 stream = ExtResource("8_ldqyh")

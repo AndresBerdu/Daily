@@ -7,6 +7,7 @@ signal collected(item: Item)
 @export var dialogue_start := "start"
 @export var item_texture: Texture2D
 @export var start_enabled := true
+@export var coin_value := 0   
 
 @export_group("Inventario")
 @export var pickable := false
@@ -47,6 +48,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	interact()
 
 func interact() -> void:
+	print("interact: ", name, " | dialogo=", dialogue_resource != null, " | pickable=", pickable)
 	if dialogue_resource:
 		busy = true
 		DialogueManager.show_dialogue_balloon(
@@ -58,14 +60,20 @@ func interact() -> void:
 func collect() -> void:
 	if not pickable or not enabled:
 		return
-	if item_data == null:
-		push_error("%s: esta marcado como pickable pero no tiene Item Data" % name)
-		return
-	if not InventoryManager.add_data(item_data, quantity):
-		push_warning("%s: no se pudo agregar '%s' al inventario" % [name, item_data.id])
+	if item_data == null and coin_value <= 0:
+		push_error("%s: esta marcado como pickable pero no tiene Item Data ni Coin Value" % name)
 		return
 
-	print("Recogido: ", item_data.id, " | inventario: ", InventoryManager.items.keys())
+	# Objeto de inventario (opcional)
+	if item_data != null:
+		if not InventoryManager.add_data(item_data, quantity):
+			push_warning("%s: no se pudo agregar '%s' al inventario" % [name, item_data.id])
+			return
+
+	# Monedas (opcional)
+	if coin_value > 0:
+		GameManager.add_coins(coin_value)
+
 	sfx_sound.play()
 	collected.emit(self)
 	if disappear_after:

@@ -1,0 +1,7 @@
+~ start
+*Te has encontrado una moneda de 10 pesos
+- Recoger
+	*Has recogido una moneda de 10 pesos
+	do collect()
+- Dejar
+=> END

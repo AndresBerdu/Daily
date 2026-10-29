@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dufna5kkrabsb"]
+
+[ext_resource type="Texture2D" uid="uid://b4jtthqoriv1v" path="res://assets/sprites/characters/workers/worker_bald.png" id="1_phypt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
+size = Vector2(37, 32)
+
+[node name="BaldWorkers" type="StaticBody2D" unique_id=1091431170]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2083208622]
+texture = ExtResource("1_phypt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2140446921]
+position = Vector2(-0.5, -2)
+shape = SubResource("RectangleShape2D_ostoq")

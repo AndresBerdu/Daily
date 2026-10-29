@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cd56t084sxgtn"]
+
+[ext_resource type="Texture2D" uid="uid://bi564h4wmpi0e" path="res://assets/sprites/items/ticket_golden.png" id="1_yhxbc"]
+[ext_resource type="Script" uid="uid://csr0bmafqnr7x" path="res://src/components/items/items_resource/item_data.gd" id="2_gv0y4"]
+
+[resource]
+script = ExtResource("2_gv0y4")
+id = "golden_ticket"
+display_name = "Boleto Dorado"
+icon = ExtResource("1_yhxbc")

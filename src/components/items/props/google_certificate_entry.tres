@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ShopEntry" format=3 uid="uid://caoguqkspjhm"]
+
+[ext_resource type="Resource" uid="uid://dej654lgboadm" path="res://src/components/items/props/google_certificate.tres" id="1_1ebf7"]
+[ext_resource type="Script" uid="uid://d3c7fdr3l0sa" path="res://src/components/items/items_resource/shop_entry.gd" id="2_kmd7s"]
+
+[resource]
+script = ExtResource("2_kmd7s")
+item = ExtResource("1_1ebf7")
+required_flags = Array[String](["card5_given"])

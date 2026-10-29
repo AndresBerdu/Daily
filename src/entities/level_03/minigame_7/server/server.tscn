@@ -7,7 +7,7 @@
 size = Vector2(24, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajtct"]
-size = Vector2(31, 43)
+size = Vector2(31, 64)
 
 [node name="Server" type="StaticBody2D" unique_id=78144769]
 script = ExtResource("1_xcwio")
@@ -22,6 +22,6 @@ shape = SubResource("RectangleShape2D_ostoq")
 [node name="InteractionArea" type="Area2D" parent="." unique_id=1215381708]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1259856590]
-position = Vector2(0.5, 11.5)
+position = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_ajtct")
 debug_color = Color(0.8871554, 0.203287, 0.6488899, 0.41960785)

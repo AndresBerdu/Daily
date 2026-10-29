@@ -31,6 +31,7 @@ func _init(template: Control, grid: GridContainer, index: int, id: int, data: Di
 	for i in ordered.size():
 		var cell := ordered[i]
 		template.remove_child(cell)
+		cell.owner = null 
 		grid.add_child(cell)
 		grid.move_child(cell, index + i)
 		cell.modulate.a = 0.0

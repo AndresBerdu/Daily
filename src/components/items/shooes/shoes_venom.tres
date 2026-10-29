@@ -11,4 +11,4 @@ icon = ExtResource("1_mfu42")
 category = 0
 price = 10
 slot = 2
-speed_multiplier = 2.0
+speed_multiplier = 1.2

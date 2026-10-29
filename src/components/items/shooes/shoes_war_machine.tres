@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b8dikg8lan43c"]
+
+[ext_resource type="Texture2D" uid="uid://debsq3kvntxk8" path="res://assets/sprites/items/boats_machine_war.png" id="1_morgg"]
+[ext_resource type="Script" uid="uid://csr0bmafqnr7x" path="res://src/components/items/items_resource/item_data.gd" id="2_cq7l6"]
+
+[resource]
+script = ExtResource("2_cq7l6")
+id = "shoes_war_machine"
+display_name = "Maquina de guerra"
+icon = ExtResource("1_morgg")
+category = 0
+price = 10
+slot = 2
+speed_multiplier = 1.5

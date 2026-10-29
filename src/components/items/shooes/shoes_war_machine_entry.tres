@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ShopEntry" format=3 uid="uid://2smxk36wvrip"]
+
+[ext_resource type="Resource" uid="uid://b8dikg8lan43c" path="res://src/components/items/shooes/shoes_war_machine.tres" id="1_8vsff"]
+[ext_resource type="Script" uid="uid://d3c7fdr3l0sa" path="res://src/components/items/items_resource/shop_entry.gd" id="2_7aq1v"]
+
+[resource]
+script = ExtResource("2_7aq1v")
+item = ExtResource("1_8vsff")
+required_flags = Array[String](["minigame_5_done"])

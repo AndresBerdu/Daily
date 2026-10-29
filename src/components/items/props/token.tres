@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://h32mvoh55y87"]
+
+[ext_resource type="Texture2D" uid="uid://d2dsn12v05b8p" path="res://assets/sprites/items/token/token.png" id="1_yfw10"]
+[ext_resource type="Script" uid="uid://csr0bmafqnr7x" path="res://src/components/items/items_resource/item_data.gd" id="2_h2s6g"]
+
+[resource]
+script = ExtResource("2_h2s6g")
+id = "token"
+display_name = "Token"
+icon = ExtResource("1_yfw10")

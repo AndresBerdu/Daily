@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://dk8bl8jpscf3o"
+path="res://.godot/imported/item_money.dialogue-04b3c1add90058a8c212cd7a4bfc6d81.tres"
+
+[deps]
+
+source_file="res://escenes/item_money.dialogue"
+dest_files=["res://.godot/imported/item_money.dialogue-04b3c1add90058a8c212cd7a4bfc6d81.tres"]
+
+[params]
+
+defaults=true

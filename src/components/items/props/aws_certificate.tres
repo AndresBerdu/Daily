@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dfu0paxxmyyql"]
+
+[ext_resource type="Texture2D" uid="uid://boy3wdq4ullv5" path="res://assets/sprites/items/aws_certificate.png" id="1_4cu7r"]
+[ext_resource type="Script" uid="uid://csr0bmafqnr7x" path="res://src/components/items/items_resource/item_data.gd" id="2_jegni"]
+
+[resource]
+script = ExtResource("2_jegni")
+id = "aws_certificate"
+display_name = "Certificado de AWS"
+icon = ExtResource("1_4cu7r")
+price = 10

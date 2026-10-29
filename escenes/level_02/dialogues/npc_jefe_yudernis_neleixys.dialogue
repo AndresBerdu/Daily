@@ -4,23 +4,34 @@ if minigame_6_done
 	Jefe Yudernis Neleixys: Ahora sí, ve al siguiente nivel en el ascensor y ponte a programar tranquilo.
 	Jugador: ¡Por fin!
 	do open_elevator()
-elif card6_given
+elif is_belt_ready()
 	Jefe Yudernis Neleixys: Todavía no terminas de verificar los paquetes. Fíjate bien en el contenido, el color de la etiqueta y la IP antes de decidir.
 	Jefe Yudernis Neleixys: Vuelve a intentarlo, y cuando termines habla conmigo.
 	do request_belt_minigame()
-elif minigame_5_done
-	Jefe Yudernis Neleixys: Buen trabajo al eliminar a esos intrusos de nuestra nube. En este caso, con el IAM es muy importante tener solo a las personas que están trabajando en la empresa.
-	Jefe Yudernis Neleixys: Ahora necesito que vayas arriba del todo para la siguiente tarea y allá te explico qué debes hacer. De una vez te voy a entregar la tarjeta de nivel 6.
-	*Has obtenido la tarjeta de nivel 6.
-	do give_card_tier_6()
+elif card6_given and has_aws_cert()
+	Jefe Yudernis Neleixys: Perfecto, ya tienes el certificado de AWS. Ven, vamos a la sala de verificación.
 	do teleport_to_belt()
 	Jefe Yudernis Neleixys: Muy bien, el siguiente trabajo es verificar que los paquetes que llegan a nuestro servidor sean válidos y no tengan contenido malicioso.
 	Jefe Yudernis Neleixys: Debes fijarte en tres cosas esenciales: qué tiene el paquete, el color de la etiqueta central y la IP (si es válida). Recuerda que una IP válida va de 0.0.0.0 a 255.255.255.255.
-	Jefe Yudernis Neleixys: Cuando termines habla conmigo de nuevo para que puedas subir al siguiente nivel y, ahora sí, ir a programar tranquilo.
+	Jefe Yudernis Neleixys: Para poder inspecionar los paquetes acercate al pc a tu derecha posicionate en frente del pc y abre los paquetes. Presta atencion a lo que te digo porque sino no sabras donde mantar los paquetes
+	Jefe Yudernis Neleixys: Los paquetes malos van a la "DERECHA" y los paquetes que sean normales van a la "IZQUIERDA", entendido?
+	Jugador: Si, entendido.
+	Jefe Yudernis Neleixys: Bien, cuando termines habla conmigo de nuevo para que puedas subir al siguiente nivel y, ahora sí, ir a programar tranquilo.
 	Jugador: ¡Qué bien, así sí me gusta!
 	do request_belt_minigame()
+elif card6_given
+	Jefe Yudernis Neleixys: Sin el certificado de AWS no puedo dejarte tocar esos paquetes. Cómpralo en la tienda y vuelve conmigo.
+elif minigame_5_done
+	Jefe Yudernis Neleixys: Buen trabajo al eliminar a esos intrusos de nuestra nube. En este caso, con el IAM es muy importante tener solo a las personas que están trabajando en la empresa.
+	Jefe Yudernis Neleixys: Para la siguiente tarea necesitas el certificado de AWS. Cómpralo en la tienda con lo que has ganado y vuelve conmigo.
+	Jefe Yudernis Neleixys: Mientras tanto, te entrego la tarjeta de nivel 6 para que puedas pasar por los torniquetes.
+	*Has obtenido la tarjeta de nivel 6.
+	do give_card_tier_6()
+elif card5_given and has_google_cert()
+	Jefe Yudernis Neleixys: Ya tienes el certificado de Google. Ve al computador de la sala y empieza cuando quieras.
 elif card5_given
-	Jefe Yudernis Neleixys: ¿Qué esperas? Mientras estás acá se nos están metiendo intrusos.
+	Jefe Yudernis Neleixys: Ah, se me olvidó mencionarte algo: para usar ese computador necesitas el certificado de Google.
+	Jefe Yudernis Neleixys: Lo compras en la tienda. Cuando lo tengas, ve directo al computador y empieza.
 elif minigame_4_done
 	Jefe Yudernis Neleixys: Ok, muy bien hecho. Acá tienes tu tarjeta de nivel 5.
 	Jefe Yudernis Neleixys: Tu siguiente tarea es muy fácil: ve a la sala de arriba y llega a tu cuarto de trabajo.
@@ -28,6 +39,8 @@ elif minigame_4_done
 	Jefe Yudernis Neleixys: ¡JAJAJAJAJA! No me hagas reír, acá no hay espacio para eso. Tienes que llevar al menos 1 año en la empresa para tener uno.
 	Jugador: Bueno, al menos me recuerda a Betty la fea en Ecomoda.
 	Jefe Yudernis Neleixys: ¿Muy novelero, eh? Bueno, cuando estés en tu cuarto de trabajo empezarán a llegar usuarios a conectarse a nuestra nube.
+	Jefe Yudernis Neleixys: Cada vez que identidiques a un usuario con un nombre raro o correo que no sean normales, eliminalos. Eso si ten cuidado con borrar a nuestros usuario.
+	Jefe Yudernis Neleixys: Te dare un tip porque me caistes bien, fijate en la fecha de cada usaurio eso ayuda agilizar el proceso
 	Jefe Yudernis Neleixys: Tu trabajo es identificar qué usuarios se colaron en nuestra empresa.
 	Jefe Yudernis Neleixys: Te veré en tu cuarto de trabajo... o sea, el «buscavidas» de Don Armando. ¡JAJAJAJAJA!
 	*Has obtenido la tarjeta de nivel 5.
@@ -46,7 +59,7 @@ else
 	Jefe Yudernis Neleixys: Como eres nuevo, te voy a dar una tarea muy fácil: arriba hay una PC en la cual tienes que enviar unos paquetes con información a otro servidor.
 	Jefe Yudernis Neleixys: El problema es que últimamente hay muchos hackers que quieren ese paquete, que es muy importante. Tu tarea es evitar que eso pase.
 	Jefe Yudernis Neleixys: Ten cuidado también, porque si te pasas dejando que el malware o un hacker accedan al paquete, te puedo despedir.
-	Jefe Yudernis Neleixys: Por último, ve por tu uniforme y tu tarjeta de acceso, están en el cuarto del fondo a la derecha. Ah, y ten cuidado, no sé por qué, pero por alguna razón hay unos pinchos saliendo del suelo.
+	Jefe Yudernis Neleixys: Por último, ve por tu unifaorme y tu tarjeta de acceso, están en el cuarto del fondo a la derecha. Ah, y ten cuidado, no sé por qué, pero por alguna razón hay unos pinchos saliendo del suelo.
 	Jugador: Bueno, está bien, ya me pondré en camino.
 	Jefe Yudernis Neleixys: Ok, cuando recojas tus cosas ve a la sala de arriba en el pasillo, ahí estaré y te asignaré tu siguiente trabajo.
 	do delete_boxes()

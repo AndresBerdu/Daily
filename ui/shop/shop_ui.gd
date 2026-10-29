@@ -5,6 +5,7 @@ signal closed
 signal purchased(data: ItemData)
 
 const COLOR_SELECTED := Color(1.0, 0.9, 0.1)
+const COLOR_LOCKED_ICON := Color(0.15, 0.15, 0.15)
 
 @onready var list: VBoxContainer = $ShopContainer/MarginContainer/ScrollContainer/VBoxContainer
 @onready var slot_template: Control = list.get_node("ItemSlot")
@@ -26,8 +27,13 @@ func setup(shop_entries: Array[ShopEntry], shop_remaining: Array[int]) -> void:
 	entries = shop_entries
 	remaining = shop_remaining
 	for i in entries.size():
-		if entries[i] != null and entries[i].item != null:
-			rows.append(i)
+		var entry := entries[i]
+		if entry == null or entry.item == null:
+			continue
+		# Los bloqueados con "ocultar" no aparecen en la lista
+		if entry.hide_when_locked and not entry.is_unlocked():
+			continue
+		rows.append(i)
 	_build()
 	selected = 0
 	_refresh()
@@ -58,31 +64,38 @@ func _set_text(slot: Control, node_name: String, text: String) -> void:
 func _refresh() -> void:
 	for i in rows.size():
 		var idx := rows[i]
-		var data := entries[idx].item
+		var entry := entries[idx]
+		var data := entry.item
 		var slot := slots[i]
+		var locked := not entry.is_unlocked()
 
+		# Icono: oscuro mientras esta bloqueado
 		var icon := slot.find_child("Icon", true, false) as TextureRect
 		if icon:
 			icon.texture = data.icon
+			icon.modulate = COLOR_LOCKED_ICON if locked else Color.WHITE
 
-		# Nombre: amarillo si es el seleccionado
+		# Nombre: "???" si esta bloqueado; amarillo si es el seleccionado
 		var name_label := _get_label(slot, "LabelName")
 		if name_label:
-			name_label.text = data.display_name
+			name_label.text = "???" if locked else data.display_name
 			if i == selected:
 				name_label.add_theme_color_override("font_color", COLOR_SELECTED)
 			else:
 				name_label.remove_theme_color_override("font_color")
 
-		# Cantidad: unidades que quedan en la tienda (vacio si es ilimitado)
+		# Cantidad y precio: ocultos mientras esta bloqueado
 		var left := remaining[idx]
-		_set_text(slot, "LabelQuantity", ("x%d" % left) if left >= 0 else "")
-		_set_text(slot, "LabelPrice", "%d$" % data.price)
+		_set_text(slot, "LabelQuantity", "" if locked or left < 0 else "x%d" % left)
+		_set_text(slot, "LabelPrice", "" if locked else "%d$" % data.price)
 		_set_text(slot, "LabelStatus", _status(idx))
 
 # Vacio por defecto; solo aparece texto si hay algo que avisar
 func _status(idx: int) -> String:
-	var data := entries[idx].item
+	var entry := entries[idx]
+	var data := entry.item
+	if not entry.is_unlocked():
+		return entry.locked_hint
 	if not data.is_stackable() and InventoryManager.has_item(data.id):
 		return "Comprado"
 	if remaining[idx] == 0:
@@ -92,7 +105,10 @@ func _status(idx: int) -> String:
 	return ""
 
 func _can_buy(idx: int) -> bool:
-	var data := entries[idx].item
+	var entry := entries[idx]
+	var data := entry.item
+	if not entry.is_unlocked():
+		return false                                   # bloqueado por progreso
 	if remaining[idx] == 0:
 		return false                                   # sin unidades en la tienda
 	if not data.is_stackable() and InventoryManager.has_item(data.id):

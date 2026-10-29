@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cq3bhqrw34e3l"]
+
+[ext_resource type="Texture2D" uid="uid://dim2maadtugrj" path="res://assets/sprites/items/boats_diamond.png" id="1_gat2f"]
+[ext_resource type="Script" uid="uid://csr0bmafqnr7x" path="res://src/components/items/items_resource/item_data.gd" id="2_qxk4d"]
+
+[resource]
+script = ExtResource("2_qxk4d")
+id = "shoes_diamond"
+display_name = "Botas de diamante"
+icon = ExtResource("1_gat2f")
+category = 0
+price = 10
+slot = 2
+speed_multiplier = 2.0

@@ -31,6 +31,7 @@ func apply_save(data: Dictionary) -> void:
 	coins_changed.emit(coins)
 	hearts_changed.emit(hearts)
 	InventoryManager.load_save_data(data.get("inventory", {}))
+	GameManager.flags = data.get("flags", {})
 
 func add_coins(amount: int) -> void:
 	coins += amount
@@ -63,3 +64,17 @@ func reset_run() -> void:
 	coins = 0
 	hearts_changed.emit(hearts)
 	coins_changed.emit(coins)
+
+signal flag_changed(flag: String)
+
+var flags := {}      # nombre -> true
+
+func set_flag(flag_name: String, value := true) -> void:
+	if value:
+		flags[flag_name] = true
+	else:
+		flags.erase(flag_name)
+	flag_changed.emit(flag_name)
+
+func has_flag(flag_name: String) -> bool:
+	return flags.has(flag_name)

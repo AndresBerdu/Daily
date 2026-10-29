@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ShopEntry" format=3 uid="uid://ctm7t8ulxphph"]
+
+[ext_resource type="Resource" uid="uid://cq3bhqrw34e3l" path="res://src/components/items/shooes/shoes_diamond.tres" id="1_adfeh"]
+[ext_resource type="Script" uid="uid://d3c7fdr3l0sa" path="res://src/components/items/items_resource/shop_entry.gd" id="2_us02o"]
+
+[resource]
+script = ExtResource("2_us02o")
+item = ExtResource("1_adfeh")

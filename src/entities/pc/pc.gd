@@ -6,7 +6,11 @@ signal completed      # el jugador completo el minijuego
 signal failed         # el minijuego fallo (se puede reintentar)
 signal closed         # se cerro la ventana, por el motivo que sea
 
-@export_category("Pc Atributes")
+@export_category("Requisitos")
+@export var required_item_id := ""     # vacio = sin requisito
+@export var locked_text := "Te falta un certificado para usar este PC."
+
+@export_category("Pc Atributos")
 @export var pc_texture: Texture2D
 @export var minigame_escene: PackedScene     # se deja el nombre para no perder lo asignado
 
@@ -24,7 +28,7 @@ var is_done := false
 var layer: CanvasLayer
 var game: Node
 var session := 0        # identifica cada apertura, para ignorar temporizadores viejos
-
+var locked_label: Label
 
 func _ready() -> void:
 	if pc_texture:
@@ -38,6 +42,7 @@ func _player_inside() -> bool:
 	return false
 
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	# Con el minijuego abierto, Esc lo cierra (sin marcarlo como completado)
 	if is_open:
@@ -46,15 +51,35 @@ func _unhandled_input(event: InputEvent) -> void:
 			_close()
 		return
 
+	# Ya completado, o no es la tecla de interactuar
 	if (one_time and is_done) or not event.is_action_pressed("interact") or event.is_echo():
 		return
-		
 	if not _player_inside():
 		return
 
 	get_viewport().set_input_as_handled()
+
+	# Sin el objeto requerido, el PC no abre
+	if required_item_id != "" and not InventoryManager.has_item(required_item_id):
+		_show_locked_text()
+		return
+
 	_open_game()
 
+# Aviso flotante cuando falta el objeto requerido
+func _show_locked_text() -> void:
+	if is_instance_valid(locked_label):
+		return
+	locked_label = Label.new()
+	locked_label.text = locked_text
+	locked_label.position = Vector2(-60, -48)     # ajusta segun el tamano de tu PC
+	locked_label.z_index = 10
+	add_child(locked_label)
+
+	var tween := locked_label.create_tween()
+	tween.tween_interval(1.2)
+	tween.tween_property(locked_label, "modulate:a", 0.0, 0.4)
+	tween.tween_callback(locked_label.queue_free)
 
 # --- Apertura ---
 func _open_game() -> void:

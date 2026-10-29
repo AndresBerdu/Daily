@@ -8,6 +8,9 @@ signal minigame_completed(number: int)
 const COIN_REWARD := 10
 const YUDERNIS_SIDE := preload("res://assets/sprites/characters/npc/yudernis_neleixys/character_boss_yudernis_nileixys_idle_side.png")
 const YUDERNIS_DOWN := preload("res://assets/sprites/characters/npc/yudernis_neleixys/character_boss_yudernis_neleixys_idle_down.png")
+const GOLDEN_TICKET := preload("res://src/components/items/props/golden_ticket.tres")
+const GOOGLE_CERT_ID := "google_certificate"
+const AWS_CERT_ID := "aws_certificate"
 
 # ============================================================
 # NODOS
@@ -70,6 +73,9 @@ var belt_ready := false       # true cuando el jugador ya fue llevado a la sala 
 var rewarded := {}  
 
 func _ready() -> void:
+	minigame_5.required_item_id = GOOGLE_CERT_ID
+	minigame_5.locked_text = "Necesitas el certificado de Google."
+	
 	minigame_4.completed.connect(_on_minigame_4_completed)
 	minigame_5.completed.connect(_on_minigame_5_completed)
 	minigame_6.completed.connect(_on_belt_completed)
@@ -146,6 +152,7 @@ func _complete_minigame(number: int) -> void:
 		5: minigame_5_done = true
 		6: minigame_6_done = true
 
+	GameManager.set_flag("minigame_%d_done" % number)
 	GameManager.add_coins(COIN_REWARD)
 	minigame_completed.emit(number)
 
@@ -156,7 +163,7 @@ func _on_belt_failed() -> void:
 
 # La llama el dialogo: solo marca la peticion. Arranca al cerrarse el dialogo
 func request_belt_minigame() -> void:
-	if belt_ready and not belt_started:
+	if belt_ready and not belt_started and has_aws_cert():
 		minigame_6_requested = true
 
 
@@ -182,6 +189,7 @@ func give_card_tier_5() -> void:
 	if card5_given:
 		return
 	card5_given = true
+	GameManager.set_flag("card5_given")
 	InventoryManager.add_data(card_access_tier_5, 1)
 	ticket_gate_2.open_ticket_gate()
 
@@ -227,3 +235,31 @@ func open_elevator() -> void:
 func has_card_tier_4_and_suit() -> bool:
 	return InventoryManager.has_item("card_access_tier_4") \
 			and InventoryManager.has_item("suit_security")
+
+func has_token() -> bool:
+	print("has_token llamado | inventario: ", InventoryManager.items.keys())
+	return InventoryManager.has_item("token")
+
+
+func give_golden_ticket_to_charlie() -> void:
+	InventoryManager.remove_item("token", 1)
+	InventoryManager.add_data(GOLDEN_TICKET, 1)
+
+
+func give_token_to_suspect() -> void:
+	if not InventoryManager.remove_item("token"):
+		return
+	GameManager.add_coins(999)
+
+
+func has_google_cert() -> bool:
+	return InventoryManager.has_item(GOOGLE_CERT_ID)
+
+
+func has_aws_cert() -> bool:
+	return InventoryManager.has_item(AWS_CERT_ID)
+
+
+# true cuando el jugador ya fue llevado a la sala del minijuego 6
+func is_belt_ready() -> bool:
+	return belt_ready

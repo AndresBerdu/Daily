@@ -1,11 +1,18 @@
 [gd_scene format=3 uid="uid://dxyh84747ql2x"]
 
+[ext_resource type="Script" uid="uid://drno2pilg71ij" path="res://src/entities/level_03/minigame_9/file/file.gd" id="1_a0yx7"]
 [ext_resource type="Texture2D" uid="uid://dcwncb61aeypk" path="res://assets/sprites/props/packet/virus_packet.png" id="1_gwq7q"]
+[ext_resource type="Script" uid="uid://bugurv12g5iec" path="res://src/components/state_machine/state_machine.gd" id="2_d1417"]
+[ext_resource type="Script" uid="uid://djlu63u6lgal0" path="res://src/entities/level_03/minigame_9/file/states/idle.gd" id="3_a0yx7"]
+[ext_resource type="Script" uid="uid://dv36id1av1q1p" path="res://src/entities/level_03/minigame_9/file/states/drag.gd" id="4_8x8i4"]
+[ext_resource type="Script" uid="uid://bxdhh3m1ft1gc" path="res://src/entities/level_03/minigame_9/file/states/return.gd" id="5_hr7jb"]
+[ext_resource type="Script" uid="uid://b1ubs62xo1qaq" path="res://src/entities/level_03/minigame_9/file/states/sorted.gd" id="6_6eq57"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_degft"]
 size = Vector2(38.75, 35)
 
 [node name="File" type="Node2D" unique_id=178891746]
+script = ExtResource("1_a0yx7")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2066259584]
 scale = Vector2(2.25, 2.25)
@@ -17,3 +24,19 @@ texture = ExtResource("1_gwq7q")
 shape = SubResource("RectangleShape2D_degft")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1226216120]
+
+[node name="StateMachine" type="Node" parent="." unique_id=1558952452 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_d1417")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1297740375]
+script = ExtResource("3_a0yx7")
+
+[node name="Drag" type="Node" parent="StateMachine" unique_id=466713833]
+script = ExtResource("4_8x8i4")
+
+[node name="Return" type="Node" parent="StateMachine" unique_id=1434898028]
+script = ExtResource("5_hr7jb")
+
+[node name="Sorted" type="Node" parent="StateMachine" unique_id=1392827896]
+script = ExtResource("6_6eq57")

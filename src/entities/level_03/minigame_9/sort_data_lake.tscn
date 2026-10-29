@@ -1,9 +1,21 @@
 [gd_scene format=3 uid="uid://dn3vdd8pucipt"]
 
+[ext_resource type="Script" uid="uid://cg8176gtpkl51" path="res://src/entities/level_03/minigame_9/sort_data_lake.gd" id="1_72nvo"]
 [ext_resource type="Texture2D" uid="uid://bcvb05d7wimjf" path="res://assets/sprites/hud/window/window.png" id="1_gaqwx"]
 [ext_resource type="PackedScene" uid="uid://bcllu0aylhsv2" path="res://src/entities/level_03/minigame_9/trash/trash.tscn" id="2_degft"]
 [ext_resource type="Shader" uid="uid://bcbm0d5w2tvhx" path="res://src/entities/level_02/minigame_4/old_window.gdshader" id="3_72nvo"]
+[ext_resource type="Texture2D" uid="uid://cpc1phkk0exkp" path="res://assets/sprites/props/trash/image_icon.png" id="3_gtfi4"]
 [ext_resource type="PackedScene" uid="uid://dxyh84747ql2x" path="res://src/entities/level_03/minigame_9/file/file.tscn" id="4_degft"]
+[ext_resource type="Texture2D" uid="uid://ctqvrsmifmajq" path="res://assets/sprites/props/trash/video_icon.png" id="4_xajg1"]
+[ext_resource type="Texture2D" uid="uid://4pqtpxq5b8ay" path="res://assets/sprites/items/normal_props/image_iso.png" id="5_vbuky"]
+[ext_resource type="Texture2D" uid="uid://dcwncb61aeypk" path="res://assets/sprites/props/packet/virus_packet.png" id="6_rj4jj"]
+[ext_resource type="Texture2D" uid="uid://67u5w4ne8yd7" path="res://assets/sprites/props/packet/worm_packet.png" id="7_6kcmq"]
+[ext_resource type="Texture2D" uid="uid://dbpu6paykh1k0" path="res://assets/sprites/props/packet/corrupt_note.png" id="8_8qraj"]
+[ext_resource type="Script" uid="uid://bl448vvuryg50" path="res://src/entities/level_03/minigame_9/bin/bin.gd" id="11_rltv5"]
+[ext_resource type="Texture2D" uid="uid://6ewblfc2rpel" path="res://assets/sprites/props/trash/paper_images.png" id="12_x63gd"]
+[ext_resource type="Texture2D" uid="uid://dv1jxyp4pptvt" path="res://assets/sprites/props/trash/paper_iso.png" id="13_j6emu"]
+[ext_resource type="Texture2D" uid="uid://lvxmu3x2ns1y" path="res://assets/sprites/props/trash/paper_video.png" id="14_o8hmd"]
+[ext_resource type="Texture2D" uid="uid://cqagxd2s5iitp" path="res://assets/sprites/props/trash/paper_virus.png" id="15_8tq1o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ostoq"]
 shader = ExtResource("3_72nvo")
@@ -15,6 +27,17 @@ shader_parameter/rf_switch_esque_blur = 0.370000017575
 shader_parameter/white_noise_rate = 0.0
 
 [node name="SortDataLake" type="Node2D" unique_id=1202158375]
+script = ExtResource("1_72nvo")
+file_scene = ExtResource("4_degft")
+images_texture = ExtResource("3_gtfi4")
+videos_texture = ExtResource("4_xajg1")
+iso_texture = ExtResource("5_vbuky")
+virus_textures = Array[Texture2D]([ExtResource("6_rj4jj"), ExtResource("7_6kcmq"), ExtResource("8_8qraj")])
+good_needed = null
+bad_chance = null
+wrong_costs_heart = null
+next_delay = null
+auto_start = null
 
 [node name="Window" type="Sprite2D" parent="." unique_id=2119563632]
 position = Vector2(312, 192)
@@ -26,25 +49,33 @@ offset_top = 64.0
 offset_right = 523.0
 offset_bottom = 278.0
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1316719933]
+[node name="bins" type="Node2D" parent="." unique_id=1316719933]
 
-[node name="TrashImages" parent="Node2D" unique_id=2060377089 instance=ExtResource("2_degft")]
+[node name="TrashImages" parent="bins" unique_id=2060377089 instance=ExtResource("2_degft")]
 position = Vector2(201, 165)
+script = ExtResource("11_rltv5")
+bin_texture = ExtResource("12_x63gd")
 
-[node name="TrashIso" parent="Node2D" unique_id=636086082 instance=ExtResource("2_degft")]
+[node name="TrashIso" parent="bins" unique_id=636086082 instance=ExtResource("2_degft")]
 position = Vector2(284, 165)
+script = ExtResource("11_rltv5")
+accepts = 2
+bin_texture = ExtResource("13_j6emu")
 
-[node name="TrashVideo" parent="Node2D" unique_id=680962905 instance=ExtResource("2_degft")]
+[node name="TrashVideo" parent="bins" unique_id=680962905 instance=ExtResource("2_degft")]
 position = Vector2(369, 165)
+script = ExtResource("11_rltv5")
+accepts = 1
+bin_texture = ExtResource("14_o8hmd")
 
-[node name="TrashVirus" parent="Node2D" unique_id=1763431805 instance=ExtResource("2_degft")]
+[node name="TrashVirus" parent="bins" unique_id=1763431805 instance=ExtResource("2_degft")]
 position = Vector2(459, 165)
+script = ExtResource("11_rltv5")
+accepts = 3
+bin_texture = ExtResource("15_8tq1o")
 
-[node name="Marker2D" type="Marker2D" parent="." unique_id=113389305]
+[node name="SpawnFiles" type="Marker2D" parent="." unique_id=113389305]
 position = Vector2(326, 242)
-
-[node name="File" parent="." unique_id=178891746 instance=ExtResource("4_degft")]
-position = Vector2(327, 243)
 
 [node name="OldWindoeEffect" type="ColorRect" parent="." unique_id=1787152359]
 material = SubResource("ShaderMaterial_ostoq")

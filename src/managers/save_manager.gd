@@ -21,7 +21,8 @@ func save_game(slot: int) -> bool:
 		"level_path": scene.scene_file_path,
 		"level_name": scene.name,
 		"appearance_seed": GameManager.appearance_seed,
-		"inventory": InventoryManager.to_save_data()
+		"inventory": InventoryManager.to_save_data(),
+		"flags": GameManager.flags,
 	}
 	var file := FileAccess.open(_path(slot), FileAccess.WRITE)
 	if file == null:

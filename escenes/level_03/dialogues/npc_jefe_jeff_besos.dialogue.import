@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://l0eot3pi8q10"
+path="res://.godot/imported/npc_jefe_jeff_besos.dialogue-81a3ee60b10f711b90fe040405ebadd8.tres"
+
+[deps]
+
+source_file="res://escenes/level_03/dialogues/npc_jefe_jeff_besos.dialogue"
+dest_files=["res://.godot/imported/npc_jefe_jeff_besos.dialogue-81a3ee60b10f711b90fe040405ebadd8.tres"]
+
+[params]
+
+defaults=true

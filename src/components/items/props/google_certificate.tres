@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dej654lgboadm"]
+
+[ext_resource type="Texture2D" uid="uid://ddotm3x4x7q0o" path="res://assets/sprites/items/google_certificate.png" id="1_8ww73"]
+[ext_resource type="Script" uid="uid://csr0bmafqnr7x" path="res://src/components/items/items_resource/item_data.gd" id="2_ls5td"]
+
+[resource]
+script = ExtResource("2_ls5td")
+id = "google_certificate"
+display_name = "Certificado de Google"
+icon = ExtResource("1_8ww73")
+price = 10
