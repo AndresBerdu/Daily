@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://ikicdc2ljni1"
+path="res://.godot/imported/npc_recepcionist_blonde.dialogue-5c060e4a3c5deff4ddd0f84347f0f92a.tres"
+
+[deps]
+
+source_file="res://escenes/lobby/dialogues/npc/npc_recepcionist_blonde.dialogue"
+dest_files=["res://.godot/imported/npc_recepcionist_blonde.dialogue-5c060e4a3c5deff4ddd0f84347f0f92a.tres"]
+
+[params]
+
+defaults=true

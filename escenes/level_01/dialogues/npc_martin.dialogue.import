@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://genqea4wmenb"
+path="res://.godot/imported/npc_martin.dialogue-d7396e8eddfe4db5ded1cdb982a3f9b4.tres"
+
+[deps]
+
+source_file="res://escenes/level_01/dialogues/npc_martin.dialogue"
+dest_files=["res://.godot/imported/npc_martin.dialogue-d7396e8eddfe4db5ded1cdb982a3f9b4.tres"]
+
+[params]
+
+defaults=true

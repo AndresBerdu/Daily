@@ -1,0 +1,9 @@
+~ start
+Desconocido: ¡Ah, hola! ¿Quién eres?
+Jugador: Hola, soy [Nombre del Jugador]. ¿Quién eres tú?
+Charlie: Mi nombre es Charlie; vine con un amigo llamado Willy Wonka.
+Jugador: Ah, sí, acabo de hablar con él en el pasillo de abajo. Me dijo que hablara contigo y que volvieras con él.
+Charlie: Bueno, pero tengo un problema: ese tipo con gabardina nos robó un token de la fábrica de chocolate.
+Charlie: Si encuentras el token por ahí, tráelo, por favor. Te daremos una recompensa por recuperarlo.
+Jugador: OK. Adiós.
+=> END

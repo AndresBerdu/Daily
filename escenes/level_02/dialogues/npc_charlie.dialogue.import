@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://cggwtk4rflai3"
+path="res://.godot/imported/npc_charlie.dialogue-6d45b23d95f984ee1c593e87f031e2c9.tres"
+
+[deps]
+
+source_file="res://escenes/level_02/dialogues/npc_charlie.dialogue"
+dest_files=["res://.godot/imported/npc_charlie.dialogue-6d45b23d95f984ee1c593e87f031e2c9.tres"]
+
+[params]
+
+defaults=true

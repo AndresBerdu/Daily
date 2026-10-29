@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://dyov6p70mir8q"
+path="res://.godot/imported/item_cv.dialogue-36e2a4ce6fd8d920194bc4845767d0e4.tres"
+
+[deps]
+
+source_file="res://escenes/lobby/dialogues/items/item_cv.dialogue"
+dest_files=["res://.godot/imported/item_cv.dialogue-36e2a4ce6fd8d920194bc4845767d0e4.tres"]
+
+[params]
+
+defaults=true

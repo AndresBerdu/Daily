@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://co1ncmtxapv3l"
+path="res://.godot/imported/npc_jefe_yudernis_neleixys.dialogue-cfea868c5cf0d23d3ab63d8c4286c474.tres"
+
+[deps]
+
+source_file="res://escenes/level_02/dialogues/npc_jefe_yudernis_neleixys.dialogue"
+dest_files=["res://.godot/imported/npc_jefe_yudernis_neleixys.dialogue-cfea868c5cf0d23d3ab63d8c4286c474.tres"]
+
+[params]
+
+defaults=true

@@ -2,10 +2,13 @@ class_name Player
 extends CharacterBody2D
 
 @export var frame_width := 0               # ancho de UN frame en pixeles; 0 = igual a la altura de la hoja
+@export var invulnerable_time := 1.0     # tiempo sin poder recibir otro golpe
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var anim: AnimationPlayer = $AnimationPlayer
 @onready var state_machine: StateMachine = $StateMachine
+
+var invulnerable := false
 
 func _ready() -> void:
 	process_priority = 100                  # corre despues de la animacion
@@ -48,3 +51,16 @@ func _apply_outfit() -> void:
 	sprite.vframes = 1
 	var w := frame_width if frame_width > 0 else tex.get_height()
 	sprite.hframes = maxi(1, tex.get_width() / w)
+
+# La llaman los pinchos (y cualquier otro peligro)
+func take_damage(amount := 1) -> void:
+	if invulnerable:
+		return
+	invulnerable = true
+
+	for i in amount:
+		GameManager.lose_heart()
+	state_machine.current_state.transitioned.emit("hurt")
+
+	await get_tree().create_timer(invulnerable_time).timeout
+	invulnerable = false

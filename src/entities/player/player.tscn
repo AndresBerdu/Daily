@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bugurv12g5iec" path="res://src/components/state_machine/state_machine.gd" id="4_ketdh"]
 [ext_resource type="Script" uid="uid://dfam8d3trnwfw" path="res://src/entities/player/states/walk.gd" id="5_0mfjg"]
 [ext_resource type="Texture2D" uid="uid://fuhrvmmegypu" path="res://assets/sprites/characters/player/default/walk/character_player_up_run.png" id="6_4f0qm"]
+[ext_resource type="Script" uid="uid://dskawdpawrm6a" path="res://src/entities/player/states/hurt.gd" id="6_oih67"]
 [ext_resource type="Script" uid="uid://c1o7e31vp5a23" path="res://src/entities/player/states/idle.gd" id="8_4f0qm"]
 [ext_resource type="PackedScene" uid="uid://ca4rjeb4gnuay" path="res://ui/hud/hud.tscn" id="10_tk761"]
 
@@ -170,6 +171,9 @@ script = ExtResource("8_4f0qm")
 
 [node name="Walk" type="Node" parent="StateMachine" unique_id=237896410]
 script = ExtResource("5_0mfjg")
+
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=2145707067]
+script = ExtResource("6_oih67")
 
 [node name="Hud" parent="." unique_id=559625638 instance=ExtResource("10_tk761")]
 metadata/_edit_use_anchors_ = true

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://tq68bymx862k"
+path="res://.godot/imported/item_token.dialogue-bbe0ae6ccfbe2d4ad81f4eae7376b694.tres"
+
+[deps]
+
+source_file="res://escenes/level_02/dialogues/item_token.dialogue"
+dest_files=["res://.godot/imported/item_token.dialogue-bbe0ae6ccfbe2d4ad81f4eae7376b694.tres"]
+
+[params]
+
+defaults=true

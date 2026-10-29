@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bb67bd3rsqgl"]
+
+[ext_resource type="Texture2D" uid="uid://doblkpcf6vmf8" path="res://assets/sprites/props/cards_access/card_access_tier_5.png" id="1_w7c27"]
+[ext_resource type="Script" uid="uid://csr0bmafqnr7x" path="res://src/components/items/items_resource/item_data.gd" id="2_codlx"]
+
+[resource]
+script = ExtResource("2_codlx")
+id = "card_access_tier_5"
+display_name = "Tarjeta de acceso nivel 5"
+icon = ExtResource("1_w7c27")

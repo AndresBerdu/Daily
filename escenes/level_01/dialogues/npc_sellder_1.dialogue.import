@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://bra14r020xhcx"
+path="res://.godot/imported/npc_sellder_1.dialogue-3b1e6edc7733365ca27c122facbeb2a6.tres"
+
+[deps]
+
+source_file="res://escenes/level_01/dialogues/npc_sellder_1.dialogue"
+dest_files=["res://.godot/imported/npc_sellder_1.dialogue-3b1e6edc7733365ca27c122facbeb2a6.tres"]
+
+[params]
+
+defaults=true

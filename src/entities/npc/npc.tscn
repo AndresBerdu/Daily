@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dqinf3ok8v043"]
 
 [ext_resource type="Script" uid="uid://cug1gahmik01w" path="res://src/entities/npc/npc.gd" id="1_pdcmu"]
-[ext_resource type="Texture2D" uid="uid://cnxx5taj5kvr" path="res://assets/sprites/characters/npc/boss_level_01/idle/character_boss_level_01_idle_side.png" id="2_nmtqg"]
+[ext_resource type="Texture2D" uid="uid://cnxx5taj5kvr" path="res://assets/sprites/characters/npc/martin/idle/character_boss_level_01_idle_side.png" id="2_nmtqg"]
 [ext_resource type="Script" uid="uid://bugurv12g5iec" path="res://src/components/state_machine/state_machine.gd" id="2_pdcmu"]
 
 [sub_resource type="Animation" id="Animation_pdcmu"]

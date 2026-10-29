@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b8e8ns7h6y8cp"]
+
+[ext_resource type="Texture2D" uid="uid://cbwphwpboar3d" path="res://assets/sprites/items/suits/item_suit_security.png" id="1_7r4dc"]
+[ext_resource type="Script" uid="uid://csr0bmafqnr7x" path="res://src/components/items/items_resource/item_data.gd" id="2_1dgqq"]
+[ext_resource type="Texture2D" uid="uid://bdv8d8yc2odhc" path="res://assets/sprites/characters/player/security/idle/character_player_security_idle_down.png" id="3_gk8lu"]
+[ext_resource type="Texture2D" uid="uid://52e5t3xik8ah" path="res://assets/sprites/characters/player/security/idle/character_plaer_security_idle_side.png" id="4_meb5b"]
+[ext_resource type="Texture2D" uid="uid://fmxaxx8k3k71" path="res://assets/sprites/characters/player/security/idle/character_player_security_idle_up.png" id="5_y4ydi"]
+[ext_resource type="Script" uid="uid://bpfmt8tnsrgx3" path="res://src/components/items/items_resource/outfit_sheet.gd" id="6_hls4a"]
+[ext_resource type="Texture2D" uid="uid://t8nuvpnq18vw" path="res://assets/sprites/characters/player/security/walk/character_player_security_down_run.png" id="7_80s2e"]
+[ext_resource type="Texture2D" uid="uid://dgxxps4l5hk2f" path="res://assets/sprites/characters/player/security/walk/character_player_security_side_run.png" id="8_jnef7"]
+[ext_resource type="Texture2D" uid="uid://jee3ofvu77gw" path="res://assets/sprites/characters/player/security/walk/character_player_security_up_run.png" id="9_haelp"]
+
+[sub_resource type="Resource" id="Resource_yhrcb"]
+script = ExtResource("6_hls4a")
+idle_down = ExtResource("3_gk8lu")
+idle_up = ExtResource("5_y4ydi")
+idle_side = ExtResource("4_meb5b")
+walk_down = ExtResource("7_80s2e")
+walk_up = ExtResource("9_haelp")
+walk_side = ExtResource("8_jnef7")
+metadata/_custom_type_script = "uid://bpfmt8tnsrgx3"
+
+[resource]
+script = ExtResource("2_1dgqq")
+id = "suit_security"
+display_name = "Traje de ciberseguridad"
+icon = ExtResource("1_7r4dc")
+category = 0
+slot = 1
+suit_sheets = SubResource("Resource_yhrcb")

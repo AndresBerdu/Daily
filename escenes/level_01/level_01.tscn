@@ -19,24 +19,25 @@
 [ext_resource type="PackedScene" uid="uid://bvnvusnoknb88" path="res://src/entities/level_01/minigame_2/desktop/desktop.tscn" id="11_gtdxa"]
 [ext_resource type="PackedScene" uid="uid://dqinf3ok8v043" path="res://src/entities/npc/npc.tscn" id="12_fbh7g"]
 [ext_resource type="PackedScene" uid="uid://ct4nht0h86lrj" path="res://src/entities/level_01/minigame_3/new_pc/new_pc.tscn" id="12_jsl6l"]
-[ext_resource type="Texture2D" uid="uid://cnxx5taj5kvr" path="res://assets/sprites/characters/npc/boss_level_01/idle/character_boss_level_01_idle_side.png" id="13_fbh7g"]
-[ext_resource type="Resource" uid="uid://genqea4wmenb" path="res://escenes/level_01/dialogues/boss_01_dialogue_01.dialogue" id="14_8ajf4"]
-[ext_resource type="Resource" uid="uid://dybl2y8hx4wav" path="res://escenes/level_01/dialogues/sara_dialogue_01.dialogue" id="15_8ajf4"]
+[ext_resource type="Texture2D" uid="uid://cnxx5taj5kvr" path="res://assets/sprites/characters/npc/martin/idle/character_boss_level_01_idle_side.png" id="13_fbh7g"]
+[ext_resource type="Resource" uid="uid://genqea4wmenb" path="res://escenes/level_01/dialogues/npc_martin.dialogue" id="14_8ajf4"]
+[ext_resource type="Resource" uid="uid://dybl2y8hx4wav" path="res://escenes/level_01/dialogues/npc_sara.dialogue" id="15_8ajf4"]
 [ext_resource type="Texture2D" uid="uid://chosbuoc7qmmc" path="res://assets/sprites/characters/npc/sara/idle/character_sara_idle_down.png" id="16_ua715"]
 [ext_resource type="Resource" uid="uid://fhp8eo47hkf5" path="res://src/components/items/suits/suit_tech.tres" id="17_m5gn8"]
-[ext_resource type="Resource" uid="uid://bra14r020xhcx" path="res://escenes/level_01/dialogues/sellder_01.dialogue" id="17_ql0yl"]
+[ext_resource type="Resource" uid="uid://bra14r020xhcx" path="res://escenes/level_01/dialogues/npc_sellder_1.dialogue" id="17_ql0yl"]
 [ext_resource type="Texture2D" uid="uid://chnmkllf4lnob" path="res://assets/sprites/items/normal_props/coin_floor.png" id="18_d3gol"]
-[ext_resource type="Resource" uid="uid://58w7dbedp3p7" path="res://escenes/level_01/dialogues/java_junkie_01.dialogue" id="18_n8tjx"]
-[ext_resource type="Resource" uid="uid://ciyfu1bo37mr6" path="res://escenes/level_01/dialogues/items_dialogues/box_with_tech_suit.dialogue" id="18_ynnr0"]
+[ext_resource type="Resource" uid="uid://58w7dbedp3p7" path="res://escenes/level_01/dialogues/npc_java_junkie.dialogue" id="18_n8tjx"]
+[ext_resource type="Resource" uid="uid://ciyfu1bo37mr6" path="res://escenes/level_01/dialogues/items_dialogues/item_suit_tech.dialogue" id="18_ynnr0"]
+[ext_resource type="Texture2D" uid="uid://cleoo1d3rgp06" path="res://assets/sprites/characters/npc/sellder/character_sellder_idle_down.png" id="19_dvly0"]
 [ext_resource type="Texture2D" uid="uid://27vm4xb0lroj" path="res://assets/sprites/items/box/box.png" id="20_ppvlf"]
-[ext_resource type="Resource" uid="uid://bwja2y4aa5o6w" path="res://escenes/level_01/dialogues/items_dialogues/money_sticked.dialogue" id="21_uauq3"]
-[ext_resource type="Resource" uid="uid://dwk0garq1lquf" path="res://escenes/level_01/dialogues/items_dialogues/usb_get.dialogue" id="23_i5ecw"]
+[ext_resource type="Resource" uid="uid://bwja2y4aa5o6w" path="res://escenes/level_01/dialogues/items_dialogues/item_money_sticked.dialogue" id="21_uauq3"]
+[ext_resource type="Resource" uid="uid://dwk0garq1lquf" path="res://escenes/level_01/dialogues/items_dialogues/item_usb.dialogue" id="23_i5ecw"]
 [ext_resource type="Resource" uid="uid://lmvjmys0cqxb" path="res://src/components/items/props/money.tres" id="23_uge7h"]
 [ext_resource type="Texture2D" uid="uid://b0dmdcndjrb43" path="res://assets/sprites/items/normal_props/usb.png" id="23_vq8wf"]
 [ext_resource type="PackedScene" uid="uid://dsbaswiwvlyhh" path="res://src/entities/shop/shop.tscn" id="25_u7g5p"]
 [ext_resource type="Resource" uid="uid://cht1ipnhert7v" path="res://src/components/items/props/usb.tres" id="25_uauq3"]
 [ext_resource type="Texture2D" uid="uid://07linsq655gh" path="res://assets/sprites/items/normal_props/release_agent.png" id="26_2wl45"]
-[ext_resource type="Resource" uid="uid://wxxsvb8sy3la" path="res://escenes/level_01/dialogues/items_dialogues/release_agent_for_money.dialogue" id="26_eib23"]
+[ext_resource type="Resource" uid="uid://wxxsvb8sy3la" path="res://escenes/level_01/dialogues/items_dialogues/item_release_agent.dialogue" id="26_eib23"]
 [ext_resource type="Resource" uid="uid://csq7a5h1sefpe" path="res://src/components/items/props/release_agent.tres" id="27_eib23"]
 [ext_resource type="Script" uid="uid://d3c7fdr3l0sa" path="res://src/components/items/items_resource/shop_entry.gd" id="33_cq27e"]
 [ext_resource type="Resource" uid="uid://coe3ns7my061j" path="res://src/components/items/shooes/shoes_venom_entry.tres" id="34_ql0yl"]
@@ -3308,6 +3309,7 @@ sprite_texture = ExtResource("16_ua715")
 [node name="Sellder" parent="Npcs" unique_id=1370025146 instance=ExtResource("12_fbh7g")]
 position = Vector2(96, -432)
 dialogue_resource = ExtResource("17_ql0yl")
+sprite_texture = ExtResource("19_dvly0")
 
 [node name="JavaJunkie" parent="Npcs" unique_id=1117054359 instance=ExtResource("12_fbh7g")]
 position = Vector2(252, 86)
@@ -3324,6 +3326,13 @@ item_data = ExtResource("17_m5gn8")
 
 [node name="Moneda" parent="Items" unique_id=608901302 instance=ExtResource("8_135ep")]
 position = Vector2(696, 144)
+dialogue_resource = ExtResource("21_uauq3")
+item_texture = ExtResource("18_d3gol")
+pickable = true
+item_data = ExtResource("23_uge7h")
+
+[node name="Moneda2" parent="Items" unique_id=1548284831 instance=ExtResource("8_135ep")]
+position = Vector2(103, -1466)
 dialogue_resource = ExtResource("21_uauq3")
 item_texture = ExtResource("18_d3gol")
 pickable = true
@@ -3518,7 +3527,7 @@ position = Vector2(512, -1008)
 position = Vector2(394, -378)
 
 [node name="Player" parent="." unique_id=1866043696 instance=ExtResource("1_ut7rv")]
-position = Vector2(92, 87)
+position = Vector2(170, -376)
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=189404224]
 stream = ExtResource("8_ldqyh")

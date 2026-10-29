@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://b401kajxiprs7"
+path="res://.godot/imported/item_card_access_4.dialogue-e952a77fcfa44b0767642abe3d86086f.tres"
+
+[deps]
+
+source_file="res://escenes/level_02/dialogues/item_card_access_4.dialogue"
+dest_files=["res://.godot/imported/item_card_access_4.dialogue-e952a77fcfa44b0767642abe3d86086f.tres"]
+
+[params]
+
+defaults=true

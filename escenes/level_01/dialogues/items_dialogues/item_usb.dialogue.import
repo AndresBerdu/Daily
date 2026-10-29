@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://dwk0garq1lquf"
+path="res://.godot/imported/item_usb.dialogue-4015a7f393bb1b1d70f4435c65b45137.tres"
+
+[deps]
+
+source_file="res://escenes/level_01/dialogues/items_dialogues/item_usb.dialogue"
+dest_files=["res://.godot/imported/item_usb.dialogue-4015a7f393bb1b1d70f4435c65b45137.tres"]
+
+[params]
+
+defaults=true

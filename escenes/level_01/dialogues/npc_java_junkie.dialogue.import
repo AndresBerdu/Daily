@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://58w7dbedp3p7"
+path="res://.godot/imported/npc_java_junkie.dialogue-c6df3a6b9e66a7a2c86edb004a20974d.tres"
+
+[deps]
+
+source_file="res://escenes/level_01/dialogues/npc_java_junkie.dialogue"
+dest_files=["res://.godot/imported/npc_java_junkie.dialogue-c6df3a6b9e66a7a2c86edb004a20974d.tres"]
+
+[params]
+
+defaults=true

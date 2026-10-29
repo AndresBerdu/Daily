@@ -1,0 +1,7 @@
+~ start
+Has encontrado un traje de ciberseguridad
+- Recoger traje
+	Has obtenido el traje de ciberseguridad
+	do collect()
+- dejarlo
+=> END

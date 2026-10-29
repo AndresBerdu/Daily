@@ -7,18 +7,20 @@ var current_state: State # Estado actual
 var states: Dictionary = {} # Todos los estados creados
 
 func _ready() -> void:
-	var actor := get_parent() # Tipo del nodo
-	
-	# Iteración para obtener todos los estados y agregarlso al diccionario
+	var actor := get_parent()
+
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child
 			child.actor = actor
 			child.transitioned.connect(_on_transition)
-	
-	# --- Configuración del estado ---
+
 	if initial_state == null and get_child_count() > 0:
 		initial_state = get_child(0) as State
+
+	# Espera a que el actor termine su propio _ready() (y sus @onready)
+	if not actor.is_node_ready():
+		await actor.ready
 
 	if initial_state:
 		current_state = initial_state

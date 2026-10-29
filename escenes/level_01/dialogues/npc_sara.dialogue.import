@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://dybl2y8hx4wav"
+path="res://.godot/imported/npc_sara.dialogue-3dc952a295059ba61685d7dbd18c2856.tres"
+
+[deps]
+
+source_file="res://escenes/level_01/dialogues/npc_sara.dialogue"
+dest_files=["res://.godot/imported/npc_sara.dialogue-3dc952a295059ba61685d7dbd18c2856.tres"]
+
+[params]
+
+defaults=true

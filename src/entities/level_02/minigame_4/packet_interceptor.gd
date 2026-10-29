@@ -1,7 +1,8 @@
 class_name PacketInterceptor
-extends Node2D
+extends Control
 
 signal completed       # el jugador sobrevivió
+signal failed          # te quedaste sin corazones
 signal car_hit         # el camión chocó (la carrera se reinicia)
 
 @export var ground_obstacles: Array[PackedScene]   # virus, bomb, wall
@@ -27,6 +28,8 @@ signal car_hit         # el camión chocó (la carrera se reinicia)
 @onready var btn_on: BaseButton = $BtnOn
 @onready var playfield: Control = $Playfield
 
+@export var hit_costs_heart := true    # cada choque quita un corazón
+
 var spawn_timer := Timer.new()
 var running := false
 var finished := false
@@ -42,6 +45,7 @@ func _ready() -> void:
 	spawn_timer.one_shot = true
 	spawn_timer.timeout.connect(_spawn_obstacle)
 	add_child(spawn_timer)
+	GameManager.game_over.connect(_on_game_over)
 
 func _on_power_on() -> void:
 	btn_on.hide()
@@ -100,9 +104,27 @@ func _on_car_hit() -> void:
 	get_tree().call_group("packet_obstacle", "set_speed", 0.0)
 	car_hit.emit()
 
+	if hit_costs_heart:
+		GameManager.lose_heart()      # si era el ultimo, dispara game_over
+
+	if finished:
+		return                         # game_over ya cerro el minijuego
+
 	await get_tree().create_timer(restart_delay).timeout
 	if not finished:
-		_start_run()
+		_start_run()                   # reinicia solo la carrera, no el nivel
+
+# Sin corazones: detiene todo y avisa al PC
+func _on_game_over() -> void:
+	if finished:
+		return
+	finished = true
+	running = false
+	spawn_timer.stop()
+	car.stop()
+	get_tree().call_group("packet_obstacle", "queue_free")
+	shutdown.show()
+	failed.emit()
 
 func _win() -> void:
 	finished = true
@@ -112,3 +134,8 @@ func _win() -> void:
 	get_tree().call_group("packet_obstacle", "queue_free")
 	shutdown.show()          # el PC se apaga al terminar
 	completed.emit()
+
+func get_board_rect() -> Rect2:
+	var frame := $Window as Sprite2D
+	var r := frame.get_rect()
+	return Rect2(frame.position + r.position * frame.scale, r.size * frame.scale)

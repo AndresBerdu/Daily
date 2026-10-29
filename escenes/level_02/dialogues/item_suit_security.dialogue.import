@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://i2jpukksxytl"
+path="res://.godot/imported/item_suit_security.dialogue-2a8e6c97a7d3b582f85a8607b94606d0.tres"
+
+[deps]
+
+source_file="res://escenes/level_02/dialogues/item_suit_security.dialogue"
+dest_files=["res://.godot/imported/item_suit_security.dialogue-2a8e6c97a7d3b582f85a8607b94606d0.tres"]
+
+[params]
+
+defaults=true

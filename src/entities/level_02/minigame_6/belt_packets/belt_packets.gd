@@ -237,3 +237,9 @@ func _clear_packets() -> void:
 				child.queue_free()
 	queue.clear()
 	queue_changed.emit()
+
+# Detiene el minijuego y limpia los paquetes sin emitir completed ni failed
+func stop() -> void:
+	running = false
+	spawn_timer.stop()
+	_clear_packets()

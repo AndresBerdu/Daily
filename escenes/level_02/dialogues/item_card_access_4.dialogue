@@ -1,0 +1,7 @@
+~ start
+Miras al suelo y te encuentras con una tarjeta de acceso de nivel 4
+- Recoger
+	Has obtenido la tarjeta de acceso de nivel 4
+	do collect()
+- Dejar
+=> END

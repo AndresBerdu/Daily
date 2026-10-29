@@ -1,0 +1,54 @@
+~ start
+if minigame_6_done
+	Jefe Yudernis Neleixys: Buen trabajo. Los paquetes que llegan a nuestro servidor ya están verificados.
+	Jefe Yudernis Neleixys: Ahora sí, ve al siguiente nivel en el ascensor y ponte a programar tranquilo.
+	Jugador: ¡Por fin!
+	do open_elevator()
+elif card6_given
+	Jefe Yudernis Neleixys: Todavía no terminas de verificar los paquetes. Fíjate bien en el contenido, el color de la etiqueta y la IP antes de decidir.
+	Jefe Yudernis Neleixys: Vuelve a intentarlo, y cuando termines habla conmigo.
+	do request_belt_minigame()
+elif minigame_5_done
+	Jefe Yudernis Neleixys: Buen trabajo al eliminar a esos intrusos de nuestra nube. En este caso, con el IAM es muy importante tener solo a las personas que están trabajando en la empresa.
+	Jefe Yudernis Neleixys: Ahora necesito que vayas arriba del todo para la siguiente tarea y allá te explico qué debes hacer. De una vez te voy a entregar la tarjeta de nivel 6.
+	*Has obtenido la tarjeta de nivel 6.
+	do give_card_tier_6()
+	do teleport_to_belt()
+	Jefe Yudernis Neleixys: Muy bien, el siguiente trabajo es verificar que los paquetes que llegan a nuestro servidor sean válidos y no tengan contenido malicioso.
+	Jefe Yudernis Neleixys: Debes fijarte en tres cosas esenciales: qué tiene el paquete, el color de la etiqueta central y la IP (si es válida). Recuerda que una IP válida va de 0.0.0.0 a 255.255.255.255.
+	Jefe Yudernis Neleixys: Cuando termines habla conmigo de nuevo para que puedas subir al siguiente nivel y, ahora sí, ir a programar tranquilo.
+	Jugador: ¡Qué bien, así sí me gusta!
+	do request_belt_minigame()
+elif card5_given
+	Jefe Yudernis Neleixys: ¿Qué esperas? Mientras estás acá se nos están metiendo intrusos.
+elif minigame_4_done
+	Jefe Yudernis Neleixys: Ok, muy bien hecho. Acá tienes tu tarjeta de nivel 5.
+	Jefe Yudernis Neleixys: Tu siguiente tarea es muy fácil: ve a la sala de arriba y llega a tu cuarto de trabajo.
+	Jugador: ¿Cómo que cuarto de trabajo? ¿Es que no tengo un cubículo como los demás?
+	Jefe Yudernis Neleixys: ¡JAJAJAJAJA! No me hagas reír, acá no hay espacio para eso. Tienes que llevar al menos 1 año en la empresa para tener uno.
+	Jugador: Bueno, al menos me recuerda a Betty la fea en Ecomoda.
+	Jefe Yudernis Neleixys: ¿Muy novelero, eh? Bueno, cuando estés en tu cuarto de trabajo empezarán a llegar usuarios a conectarse a nuestra nube.
+	Jefe Yudernis Neleixys: Tu trabajo es identificar qué usuarios se colaron en nuestra empresa.
+	Jefe Yudernis Neleixys: Te veré en tu cuarto de trabajo... o sea, el «buscavidas» de Don Armando. ¡JAJAJAJAJA!
+	*Has obtenido la tarjeta de nivel 5.
+	do give_card_tier_5()
+elif has_card_tier_4_and_suit()
+	Jefe Yudernis Neleixys: Recuerda que tienes que ir al computador y realizar la tarea. Cuando termines, vuelve conmigo, te diré qué debes hacer y te daré tu tarjeta de nivel 5.
+elif talk_first_boss
+	Jefe Yudernis Neleixys: Ve por tu uniforme y tu tarjeta de acceso, están en el cuarto del fondo a la derecha. Cuando los tengas, te espero en la sala de arriba.
+else
+	Jefe Yudernis Neleixys: ¡Ah, hola! ¿Tú eres el nuevo empleado que acaba de llegar, verdad?
+	Jugador: Sí, soy yo, me llamo [Nombre del Jugador]. Dime, ¿qué debo programar?
+	Jefe Yudernis Neleixys: ¡JAJAJAJAJA! ¿Programar acá? No se hace eso, o al menos tú no lo vas a hacer ahora mismo.
+	Jugador: ¿Cómo que no? Si Martín me dijo que tenía que ir directamente al segundo piso para que me asignaran tareas de programación.
+	Jefe Yudernis Neleixys: Pues te mintió, ¡y muy buena! No importa, yo también tengo la capacidad de despedir, así que mira...
+	Jefe Yudernis Neleixys: Soy Yudernis Neleixys y soy la jefa del área de ciberseguridad. Acá nos encargamos de que la empresa esté protegida de los ciberdelincuentes que tratan de buscar información de nuestra empresa, ya sean datos de clientes, vulnerabilidades, estafas, correos falsos o los mismos empleados que quieren vender la información a otras empresas.
+	Jefe Yudernis Neleixys: Como eres nuevo, te voy a dar una tarea muy fácil: arriba hay una PC en la cual tienes que enviar unos paquetes con información a otro servidor.
+	Jefe Yudernis Neleixys: El problema es que últimamente hay muchos hackers que quieren ese paquete, que es muy importante. Tu tarea es evitar que eso pase.
+	Jefe Yudernis Neleixys: Ten cuidado también, porque si te pasas dejando que el malware o un hacker accedan al paquete, te puedo despedir.
+	Jefe Yudernis Neleixys: Por último, ve por tu uniforme y tu tarjeta de acceso, están en el cuarto del fondo a la derecha. Ah, y ten cuidado, no sé por qué, pero por alguna razón hay unos pinchos saliendo del suelo.
+	Jugador: Bueno, está bien, ya me pondré en camino.
+	Jefe Yudernis Neleixys: Ok, cuando recojas tus cosas ve a la sala de arriba en el pasillo, ahí estaré y te asignaré tu siguiente trabajo.
+	do delete_boxes()
+	set talk_first_boss = true
+=> END

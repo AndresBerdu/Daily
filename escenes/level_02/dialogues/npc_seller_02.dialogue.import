@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://hg630b053xl8"
+path="res://.godot/imported/npc_seller_02.dialogue-018371e31a1a8d2aa4ef70772fb1fba3.tres"
+
+[deps]
+
+source_file="res://escenes/level_02/dialogues/npc_seller_02.dialogue"
+dest_files=["res://.godot/imported/npc_seller_02.dialogue-018371e31a1a8d2aa4ef70772fb1fba3.tres"]
+
+[params]
+
+defaults=true
