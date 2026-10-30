@@ -1,15 +1,15 @@
 ~ start
 if has_curriculum()
 	El nuevo: Hola, mira, acá tengo mi currículum totalmente hecho por mí.
-	Recepcionista rubia: Ok, señor Solid Snake Armstrong, puedes pasar, ya estás contratado.
+	Recepcionista rubia: Ok, señor Solid Snake Armstrong. Puedes pasar, ya estás contratado.
 	El nuevo: Ah, ok, eso fue muy fácil. ¿En serio ya tengo trabajo?
-	Recepcionista rubia: Claro que sí, en esta empresa apenas si duran 10 minutos los nuevos, y si duran más que eso es porque son muy buenos.
+	Recepcionista rubia: Claro que sí. En esta empresa apenas duran 10 minutos los nuevos y, si duran más que eso, es porque son muy buenos.
 	Recepcionista rubia: Y no creo que tengas problemas si tienes tremendo currículum como desarrollador senior, con más de 10 años de experiencia en entornos de desarrollo con programación reactiva, conocimientos en la nube y demás cosas que suenan muy complicadas...
 	Recepcionista rubia: Como sea, solo sube por el ascensor al primer piso.
 	El nuevo: OK... Este currículum es muy bueno, pero ¿ese nombre qué? ¿Quién le pone ese nombre a su hijo? Espero que no me pongan mucha carga de trabajo por este currículum.
 	do open_elevator()
 else
-	Desconocido: (Miras al lado del computador y la recepcionista se está pintando las uñas).
-	Recepcionista rubia: (Habla con acento prepotente) Trae un currículum, si no, no te atenderé.
+	Desconocido: (Miras al lado del computador y la recepcionista se está pintando las uñas.)
+	Recepcionista rubia: (Habla con acento prepotente) Trae un currículum; si no, no te atenderé.
 	El nuevo: Tengo que conseguir un currículum; seguro que por acá hay uno que pueda utilizar para conseguir mi primer trabajo.
 => END

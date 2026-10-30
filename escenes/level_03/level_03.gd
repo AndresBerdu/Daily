@@ -200,6 +200,7 @@ func _spawn_servers() -> void:
 			push_error("server.tscn: la raíz debe tener cable_server.gd")
 			return
 		add_child(server)
+		move_child(server, $Player.get_index())     # antes del Player: el jugador se dibuja encima
 		server.global_position = (spots[i] as Marker2D).global_position
 		server.repaired.connect(_on_server_repaired)
 		servers.append(server)

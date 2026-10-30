@@ -61,7 +61,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ketdh"]
-size = Vector2(16, 18)
+size = Vector2(19, 26)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0mfjg"]
 radius = 24.0
@@ -78,7 +78,7 @@ hframes = 3
 libraries/ = SubResource("AnimationLibrary_r7l4f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=872239534]
-position = Vector2(0, 1)
+position = Vector2(-0.5, -1)
 shape = SubResource("RectangleShape2D_ketdh")
 debug_color = Color(0.56206334, 0.5554356, 0.19401139, 0.41960785)
 

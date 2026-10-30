@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://b8b641y6b108g" path="res://assets/sprites/hud/buttons/btn_on/button_on.png" id="9_erpam"]
 [ext_resource type="Texture2D" uid="uid://c14i46llpr4hi" path="res://assets/sprites/hud/buttons/btn_on/button_on_pressed.png" id="10_7nhgd"]
 [ext_resource type="Texture2D" uid="uid://dpa5n18viif8k" path="res://assets/sprites/hud/buttons/btn_on/button_on_hover.png" id="11_hyiqr"]
+[ext_resource type="AudioStream" uid="uid://bdko7sr04ddvn" path="res://assets/audio/sfx/button_sfx.ogg" id="button_sfx"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/hit_packet_car_sfx.ogg" id="hit_sfx"]
 [ext_resource type="PackedScene" uid="uid://ca4rjeb4gnuay" path="res://ui/hud/hud.tscn" id="12_bjq3h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ostoq"]
@@ -92,3 +94,11 @@ texture_hover = ExtResource("11_hyiqr")
 
 [node name="Hud" parent="." unique_id=917611303 instance=ExtResource("12_bjq3h")]
 visible = false
+
+[node name="ButtonSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("button_sfx")
+bus = &"SFX"
+
+[node name="HitSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("hit_sfx")
+bus = &"SFX"

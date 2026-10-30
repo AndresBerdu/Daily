@@ -1,0 +1,6 @@
+~ start
+Miras al suelo y encuentras una moneda de 10 pesotes.
+- Recoger Moneda
+	Tratas de agarrar la moneda, pero está pegada al suelo. Miras al lado y hay una nota que dice «Al parecer tenemos una persona codiciosa».
+- Dejar moneda
+=> END

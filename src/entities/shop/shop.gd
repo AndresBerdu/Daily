@@ -11,18 +11,26 @@ const COMMON_ENTRIES: Array[ShopEntry] = [
 @export var shop_name := "Tienda"
 @export var entries: Array[ShopEntry]    # lo que vende ESTA tienda
 @export var sell_common_items := true    # agrega lo que se vende en todas las tiendas (COMMON_ENTRIES)
+@export var common_stock := -1           # unidades de los articulos comunes en ESTA tienda (-1 = las de su recurso)
 
 @onready var area: Area2D = $InteractionArea
 
 var remaining: Array[int] = []           # unidades que quedan de cada entrada
+var initial_stock: Array[int] = []       # unidades con las que empieza cada entrada
 var is_open := false
 
 func _ready() -> void:
 	entries = entries.duplicate()          # no modifica la lista guardada en la escena
+	var first_common := entries.size()
 	if sell_common_items:
 		entries.append_array(COMMON_ENTRIES)
-	for entry in entries:
-		remaining.append(entry.stock if entry != null else 0)
+	for i in entries.size():
+		var entry := entries[i]
+		var units := entry.stock if entry != null else 0
+		if i >= first_common and common_stock >= 0:
+			units = common_stock
+		remaining.append(units)
+	initial_stock = remaining.duplicate()
 	_restore_stock()
 
 # Id unico de esta tienda dentro del juego
@@ -39,6 +47,9 @@ func _restore_stock() -> void:
 		if int(saved[i]) < 0 and remaining[i] >= 0:
 			continue
 		remaining[i] = int(saved[i])
+		# Un guardado viejo con mas unidades de las permitidas ahora no las conserva
+		if initial_stock[i] >= 0 and remaining[i] > initial_stock[i]:
+			remaining[i] = initial_stock[i]
 
 func _store_stock() -> void:
 	GameManager.story[_stock_key()] = remaining.duplicate()

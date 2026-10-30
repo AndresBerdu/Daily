@@ -1,5 +1,5 @@
 ~ start
-Miras al suelo y te encuentras con una tarjeta de acceso de nivel 4
+Miras al suelo y te encuentras con una tarjeta de acceso de nivel 4.
 - Recoger
 	*Has recogido la tarjeta de acceso de nivel 4.
 	do collect()

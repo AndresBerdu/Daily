@@ -1,5 +1,5 @@
 ~ start
-Has encontrado un traje de ciberseguridad
+Has encontrado un traje de ciberseguridad.
 - Recoger traje
 	*Has recogido el traje de ciberseguridad.
 	do collect()

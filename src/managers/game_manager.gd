@@ -13,6 +13,7 @@ var coins := 0
 var play_time := 0.0              # segundos jugados en total
 var player_name := "Técnico"
 var appearance_seed := 0
+var game_over_is_ending := false  # true si el game over actual es un final
 var story := {}                   # progreso de cada nivel: ruta de la escena -> {variable: valor}
 
 func _ready() -> void:
@@ -63,12 +64,15 @@ func lose_heart() -> void:
 	heart_lost.emit()
 	
 	if hearts <= 0:
+		game_over_is_ending = false
 		game_over.emit()
 
 # Pierde todas las vidas de golpe (pantalla de game over)
-func force_game_over() -> void:
+## is_ending = true: el game over es un final (se borra la partida al terminar)
+func force_game_over(is_ending := false) -> void:
 	if hearts <= 0:
 		return
+	game_over_is_ending = is_ending
 	hearts = 0
 	hearts_changed.emit(hearts)
 	game_over.emit()
@@ -85,6 +89,7 @@ func new_game() -> void:
 func reset_run() -> void:
 	hearts = MAX_HEARTS
 	coins = 0
+	game_over_is_ending = false
 	hearts_changed.emit(hearts)
 	coins_changed.emit(coins)
 

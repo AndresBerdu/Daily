@@ -41,7 +41,7 @@ func _unhandled_input(event: InputEvent) -> void:
 # El jugador se arrepiente y se va: al terminar el dialogo aparece el game over
 func _leave_building() -> void:
 	DialogueManager.show_dialogue_balloon(DIALOGUE_EXIT, "start")
-	LevelUtils.after_dialogue(GameManager.force_game_over)
+	LevelUtils.after_dialogue(GameManager.force_game_over.bind(true))
 
 func has_curriculum() -> bool:
 	return InventoryManager.has_item("curriculum")

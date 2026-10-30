@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://5bry6qe6kmfg" path="res://src/entities/level_02/minigame_6/packet/states/travel.gd" id="7_btfg7"]
 [ext_resource type="Script" uid="uid://cpdm7op3fyw7f" path="res://src/entities/level_02/minigame_6/packet/states/waiting.gd" id="8_52kwv"]
 [ext_resource type="Script" uid="uid://bps5rrfujmxby" path="res://src/entities/level_02/minigame_6/packet/states/exiting.gd" id="9_sarey"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/packet_open_sfx.ogg" id="packet_open_sfx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
 size = Vector2(16, 16)
@@ -67,3 +68,7 @@ script = ExtResource("8_52kwv")
 
 [node name="Exiting" type="Node" parent="StateMachine" unique_id=844764937]
 script = ExtResource("9_sarey")
+
+[node name="PacketOpenSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("packet_open_sfx")
+bus = &"SFX"

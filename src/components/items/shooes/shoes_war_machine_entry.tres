@@ -6,4 +6,4 @@
 [resource]
 script = ExtResource("2_7aq1v")
 item = ExtResource("1_8vsff")
-required_flags = Array[String](["minigame_5_done"])
+required_flags = Array[String]([])

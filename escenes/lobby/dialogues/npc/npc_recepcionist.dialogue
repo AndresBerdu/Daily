@@ -2,10 +2,10 @@
 if GameManager.has_flag("receptionist_met")
 	Recepcionista: Te dije que hablaras con mi hermana, la que está a tu lado derecho.
 else
-	Recepcionista: ¡Oh! Hola, ¿cómo estás? Bienvenido a Software Engineer Shine, ¿cómo te puedo ayudar?
+	Recepcionista: ¡Oh! Hola, ¿cómo estás? Bienvenido a Software Engineer Shine. ¿Cómo te puedo ayudar?
 	El nuevo: Hola, yo bien, ¿y tú cómo estás? Estoy acá por la entrevista como desarrollador.
 	Recepcionista: Ah, eres otro aspirante. Perfecto, te pregunto: ¿tienes tu currículum a la mano?
-	El nuevo: Eh..., de hecho no, no tengo currículum a la mano en este momento.
+	El nuevo: Eh... de hecho no, no tengo currículum a la mano en este momento.
 	Recepcionista: Ah, ok, no hay problema. Puedes llenar un formulario con todos tus datos que, obviamente, la empresa no usará para llenar otros repositorios de datos.
 	El nuevo: Ok... Bueno, entonces dame la hoja, la lleno.
 	Recepcionista: Lo siento, pero tienes que hacer la fila de la gente que no tiene currículum, aunque te informo que no creo que te dé tiempo de llegar acá de primero.

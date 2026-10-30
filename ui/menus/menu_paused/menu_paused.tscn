@@ -13,16 +13,16 @@
 [ext_resource type="Texture2D" uid="uid://cvs1arac81i8w" path="res://assets/sprites/hud/buttons/btn_exit/button_salir.png" id="11_elg8u"]
 [ext_resource type="Texture2D" uid="uid://bgot2ff8sbb7e" path="res://assets/sprites/hud/buttons/btn_exit/button_salir_pressed.png" id="12_w4dnf"]
 [ext_resource type="Texture2D" uid="uid://cu0eeero74163" path="res://assets/sprites/hud/buttons/btn_exit/button_salir_hover.png" id="13_rghoj"]
-[ext_resource type="Script" path="res://ui/menus/menu_paused/menu_paused.gd" id="paused_script"]
+[ext_resource type="Script" uid="uid://3svnjt53t7ko" path="res://ui/menus/menu_paused/menu_paused.gd" id="paused_script"]
 
 [node name="MenuPaused" type="Control" unique_id=527308124]
-script = ExtResource("paused_script")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("paused_script")
 
 [node name="Alpha" type="ColorRect" parent="." unique_id=1928222121]
 layout_mode = 1
@@ -32,6 +32,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.4509804)
+metadata/_edit_use_anchors_ = true
+
+[node name="Outline" type="ColorRect" parent="Alpha" unique_id=335133072]
+layout_mode = 0
+anchor_left = 0.325
+anchor_top = 0.08888889
+anchor_right = 0.675
+anchor_bottom = 0.8888889
 metadata/_edit_use_anchors_ = true
 
 [node name="MenuPaused" type="ColorRect" parent="Alpha" unique_id=126172694]

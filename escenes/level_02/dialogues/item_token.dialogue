@@ -1,5 +1,5 @@
 ~ start
-*Has encontrado un token
+*Has encontrado un token.
 - Recogerlo
 	*Has recogido un token.
 	do collect()

@@ -1,7 +1,7 @@
 ~ start
-*Has encontrado un token
+*Has encontrado un token.
 - Recogerlo
-	*Has conseguido un token
+	*Has conseguido un token.
 	do collect()
 - Dejarlo
 => END

@@ -21,6 +21,7 @@ signal closed          # se cerro (completado o con Esc)
 @export var finish_delay := 0.6
 
 @onready var tips_node: Node = $Tips
+@onready var cable_connected_sfx: AudioStreamPlayer = $CableConnectedSfx
 @onready var inputs_node: Node = $Inputs
 @onready var background: Control = $background
 
@@ -107,6 +108,7 @@ func _on_released(tip: CableTip) -> void:
 		dragging_tip = null
 
 func _on_plugged(_tip: CableTip) -> void:
+	cable_connected_sfx.play()
 	plugged_count += 1
 	if plugged_count >= tips.size() and not done:
 		done = true

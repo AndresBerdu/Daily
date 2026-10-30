@@ -6,6 +6,7 @@ var car: PacketCar:
 func enter() -> void:
 	car.vy = car.jump_velocity
 	car.play_anim("jump")
+	car.jump_sfx.play()
 
 func physics_update(delta: float) -> void:
 	if not car.active:

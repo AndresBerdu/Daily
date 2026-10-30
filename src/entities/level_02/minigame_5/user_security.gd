@@ -13,6 +13,7 @@ const WARN_SCENE: PackedScene = preload("res://src/entities/level_02/minigame_5/
 @export var auto_start := true
 
 @onready var list: GridContainer = $ScrollContainer/UserList
+@onready var user_delete_sfx: AudioStreamPlayer = $UserDeleteSfx
 
 var spawn_timer := Timer.new()
 var queue: Array[Dictionary] = []
@@ -82,6 +83,7 @@ func _on_delete_pressed(entry: UserEntry) -> void:
 	if not running:
 		return
 
+	user_delete_sfx.play()
 	if entry.is_intruder:
 		intruders -= 1
 	else:

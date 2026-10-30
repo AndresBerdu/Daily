@@ -9,6 +9,8 @@ extends CharacterBody2D
 @export_range(0.2, 0.9) var shrink_height_ratio := 0.5
 
 @onready var state_machine: StateMachine = $StateMachine
+@onready var jump_sfx: AudioStreamPlayer = $JumpSfx
+@onready var shrink_sfx: AudioStreamPlayer = $ShrinkSfx
 
 var active := false
 var vy := 0.0

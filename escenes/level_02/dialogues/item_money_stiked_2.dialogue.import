@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://ciubpwynhaqty"
+path="res://.godot/imported/item_money_stiked_2.dialogue-8725d2f30b0e79c8c1ee25412d13c9b0.tres"
+
+[deps]
+
+source_file="res://escenes/level_02/dialogues/item_money_stiked_2.dialogue"
+dest_files=["res://.godot/imported/item_money_stiked_2.dialogue-8725d2f30b0e79c8c1ee25412d13c9b0.tres"]
+
+[params]
+
+defaults=true

@@ -6,7 +6,7 @@ if minigame_6_done
 	do open_elevator()
 elif is_belt_ready()
 	Jefe Yudernis Neleixys: Todavía no terminas de verificar los paquetes. Fíjate bien en el contenido, el color de la etiqueta y la IP antes de decidir.
-	Jefe Yudernis Neleixys: Vuelve a intentarlo, y cuando termines habla conmigo.
+	Jefe Yudernis Neleixys: Vuelve a intentarlo, y cuando termines, habla conmigo.
 	do request_belt_minigame()
 elif card6_given and has_aws_cert()
 	Jefe Yudernis Neleixys: Perfecto, ya tienes el certificado de AWS. Ven, vamos a la sala de verificación.
@@ -15,13 +15,13 @@ elif card6_given and has_aws_cert()
 	Jefe Yudernis Neleixys: En ciberseguridad esto se llama inspección de paquetes. En la vida real, los firewalls y los sistemas de detección de intrusos revisan el contenido, el origen y la dirección IP de cada paquete para bloquear el malware antes de que llegue a los servidores.
 	Jefe Yudernis Neleixys: Debes fijarte en tres cosas esenciales: qué tiene el paquete, el color de la etiqueta central y la IP (si es válida). Recuerda que una IP válida va de 0.0.0.0 a 255.255.255.255.
 	Jefe Yudernis Neleixys: Para poder inspeccionar los paquetes, acércate al PC que está a tu derecha, ponte frente a él y abre los paquetes. Presta atención a lo que te digo, porque si no, no sabrás dónde mandar los paquetes.
-	Jefe Yudernis Neleixys: Los paquetes malos van a la "DERECHA" y los paquetes que sean normales van a la "IZQUIERDA", ¿Entendido?
+	Jefe Yudernis Neleixys: Los paquetes malos van a la «DERECHA» y los paquetes que sean normales van a la «IZQUIERDA». ¿Entendido?
 	El nuevo: Sí, entendido.
-	Jefe Yudernis Neleixys: Bien, cuando termines habla conmigo de nuevo para que puedas subir al siguiente nivel y, ahora sí, ir a programar tranquilo.
+	Jefe Yudernis Neleixys: Bien, cuando termines, habla conmigo de nuevo para que puedas subir al siguiente nivel y, ahora sí, ir a programar tranquilo.
 	El nuevo: ¡Qué bien, así sí me gusta!
 	do request_belt_minigame()
 elif card6_given
-	Jefe Yudernis Neleixys: Sin el certificado de AWS no puedo dejarte tocar esos paquetes. Cómpralo en la tienda y vuelve conmigo.
+	Jefe Yudernis Neleixys: Sin el certificado de AWS, no puedo dejarte tocar esos paquetes. Cómpralo en la tienda y vuelve conmigo.
 elif minigame_5_done
 	Jefe Yudernis Neleixys: Buen trabajo al eliminar a esos intrusos de nuestra nube. En este caso, con el IAM es muy importante tener solo a las personas que están trabajando en la empresa.
 	Jefe Yudernis Neleixys: Para la siguiente tarea necesitas el certificado de AWS. Cómpralo en la tienda con lo que has ganado y vuelve conmigo.
@@ -39,18 +39,18 @@ elif minigame_4_done
 	El nuevo: ¿Cómo que cuarto de trabajo? ¿Es que no tengo un cubículo como los demás?
 	Jefe Yudernis Neleixys: ¡JAJAJAJAJA! No me hagas reír, acá no hay espacio para eso. Tienes que llevar al menos 1 año en la empresa para tener uno.
 	El nuevo: Bueno, al menos me recuerda a Betty la fea en Ecomoda.
-	Jefe Yudernis Neleixys: ¿Muy novelero, eh? Bueno, cuando estés en tu cuarto de trabajo empezarán a llegar usuarios a conectarse a nuestra nube.
+	Jefe Yudernis Neleixys: ¿Muy novelero, eh? Bueno, cuando estés en tu cuarto de trabajo, empezarán a llegar usuarios a conectarse a nuestra nube.
 	Jefe Yudernis Neleixys: Esto se llama gestión de identidades y accesos, o IAM. En la vida real, cada persona debe tener solo los permisos que necesita, y las cuentas sospechosas o de gente que ya no trabaja en la empresa se revisan y se eliminan para que nadie entre sin permiso.
 	Jefe Yudernis Neleixys: Cada vez que identifiques a un usuario con un nombre raro o un correo que no parezca normal, elimínalo. Eso sí, ten cuidado de no borrar a nuestros usuarios.
 	Jefe Yudernis Neleixys: Te daré un tip porque me caíste bien: fíjate en la fecha de cada usuario, eso ayuda a agilizar el proceso.
 	Jefe Yudernis Neleixys: Tu trabajo es identificar qué usuarios se colaron en nuestra empresa.
-	Jefe Yudernis Neleixys: Te veré en tu cuarto de trabajo... o sea, el «buscavidas» de Don Armando. ¡JAJAJAJAJA!
+	Jefe Yudernis Neleixys: Te veré en tu cuarto de trabajo... o sea, el almacén de Don Armando. ¡JAJAJAJAJA!
 	*Has obtenido la tarjeta de nivel 5.
 	do give_card_tier_5()
 elif has_card_tier_4_and_suit()
-	Jefe Yudernis Neleixys: Recuerda que tienes que ir al computador y realizar la tarea. Cuando termines, vuelve conmigo, te diré qué debes hacer y te daré tu tarjeta de nivel 5.
+	Jefe Yudernis Neleixys: Recuerda que tienes que ir al computador y realizar la tarea. Cuando termines, vuelve conmigo; te diré qué debes hacer y te daré tu tarjeta de nivel 5.
 elif talk_first_boss
-	Jefe Yudernis Neleixys: Ve por tu uniforme y tu tarjeta de acceso, están en el cuarto del fondo a la derecha. Cuando los tengas, te espero en la sala de arriba.
+	Jefe Yudernis Neleixys: Ve por tu uniforme y tu tarjeta de acceso; están en el cuarto del fondo a la derecha. Cuando los tengas, te espero en la sala de arriba.
 else
 	Jefe Yudernis Neleixys: ¡Ah, hola! ¿Tú eres el nuevo empleado que acaba de llegar, verdad?
 	El nuevo: Sí, soy yo, el nuevo. Dime, ¿qué debo programar?
@@ -62,9 +62,9 @@ else
 	Jefe Yudernis Neleixys: Esto es seguridad de redes. En la vida real, cuando una empresa envía datos entre servidores, esos datos viajan por redes que pueden ser interceptadas. Por eso se protegen con cifrado, firewalls y antivirus, y se vigila que ningún atacante o malware llegue al paquete.
 	Jefe Yudernis Neleixys: El problema es que últimamente hay muchos hackers que quieren ese paquete, que es muy importante. Tu tarea es evitar que eso pase.
 	Jefe Yudernis Neleixys: Ten cuidado también, porque si te pasas dejando que el malware o un hacker accedan al paquete, te puedo despedir.
-	Jefe Yudernis Neleixys: Por último, ve por tu uniforme y tu tarjeta de acceso, están en el cuarto del fondo a la derecha. Ah, y ten cuidado, no sé por qué, pero por alguna razón hay unos pinchos saliendo del suelo.
+	Jefe Yudernis Neleixys: Por último, ve por tu uniforme y tu tarjeta de acceso, están en el cuarto del fondo a la derecha. Ah, y ten cuidado: no sé por qué, pero por alguna razón hay unos pinchos saliendo del suelo.
 	El nuevo: Bueno, está bien, ya me pondré en camino.
-	Jefe Yudernis Neleixys: Ok, cuando recojas tus cosas ve a la sala de arriba en el pasillo, ahí estaré y te asignaré tu siguiente trabajo.
+	Jefe Yudernis Neleixys: Ok, cuando recojas tus cosas, ve a la sala de arriba en el pasillo; ahí estaré y te asignaré tu siguiente trabajo.
 	do delete_boxes()
 	set talk_first_boss = true
 => END

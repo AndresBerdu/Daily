@@ -50,6 +50,8 @@ const COUNTRIES := [
 @export var jitter_ms := 4.0
 
 @onready var flag_marker: Marker2D = $Marker2D
+@onready var bad_zone_sfx: AudioStreamPlayer = $BadZoneSfx
+@onready var correct_zone_sfx: AudioStreamPlayer = $CorrectZoneSfx
 @onready var zones_node: Node = $Zones
 
 var zones: Array[LatencyZone] = []
@@ -160,7 +162,10 @@ func _resolve(chosen: LatencyZone) -> void:
 	_refresh_labels(true)
 	round_finished.emit(correct)
 
-	if not correct:
+	if correct:
+		correct_zone_sfx.play()
+	else:
+		bad_zone_sfx.play()
 		GameManager.lose_heart()
 
 	await get_tree().create_timer(result_delay).timeout

@@ -5,8 +5,8 @@ extends Node2D
 const ENDING_DIALOGUE: DialogueResource = preload("res://escenes/top_floor/dialogues/ending.dialogue")
 
 # Puntos de entrada del dialogo final (ver ending.dialogue)
-const TITLE_HIRED := "hired"        # se lo diste a Charlie: te contratan
-const TITLE_FIRED := "fired"        # se lo diste a un extraño: te despiden
+const TITLE_HIRED := "hired"        # a Charlie o a nadie: te contratan
+const TITLE_FIRED := "fired"        # se lo diste al hombre de la gabardina: te despiden
 
 @onready var trigger: Area2D = $EndingTrigger
 
@@ -28,6 +28,6 @@ func _on_trigger_entered(body: Node) -> void:
 	LevelUtils.after_dialogue(GameFlow.finish_game.bind(not hired))
 
 
-# Solo te contratan si el token termino en manos de Charlie
+# Final bueno salvo que el token termine en manos del hombre de la gabardina
 func _is_hired() -> bool:
-	return GameManager.has_flag(GameFlow.FLAG_TOKEN_TO_CHARLIE)
+	return not GameManager.has_flag(GameFlow.FLAG_TOKEN_TO_STRANGER)

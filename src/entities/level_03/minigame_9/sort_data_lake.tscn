@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://dv1jxyp4pptvt" path="res://assets/sprites/props/trash/paper_iso.png" id="13_j6emu"]
 [ext_resource type="Texture2D" uid="uid://lvxmu3x2ns1y" path="res://assets/sprites/props/trash/paper_video.png" id="14_o8hmd"]
 [ext_resource type="Texture2D" uid="uid://cqagxd2s5iitp" path="res://assets/sprites/props/trash/paper_virus.png" id="15_8tq1o"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/correct_bit_sfx.ogg" id="correct_bit_sfx"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/bad_bit_sfx.ogg" id="bad_bit_sfx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ostoq"]
 shader = ExtResource("3_72nvo")
@@ -84,3 +86,11 @@ offset_top = 64.0
 offset_right = 523.0
 offset_bottom = 278.0
 mouse_filter = 2
+
+[node name="CorrectBitSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("correct_bit_sfx")
+bus = &"SFX"
+
+[node name="BadBitSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("bad_bit_sfx")
+bus = &"SFX"

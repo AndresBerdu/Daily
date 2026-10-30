@@ -1,17 +1,18 @@
 extends Control
 ## Pantalla de game over. GameFlow la muestra cuando se acaban las vidas.
+## Cuando termina la musica avisa con `finished` y GameFlow decide a donde ir.
 
-signal respawn_requested
+signal finished
 
-var _used := false     # evita doble clic
+const MIN_SECONDS := 2.0     # por si la musica no tiene duracion
+
+@onready var music: AudioStreamPlayer = $Music
 
 
 func _ready() -> void:
-	($Background/BtnRespawn as BaseButton).pressed.connect(_on_respawn)
-
-
-func _on_respawn() -> void:
-	if _used:
-		return
-	_used = true
-	respawn_requested.emit()
+	var seconds := MIN_SECONDS
+	if music.stream:
+		seconds = maxf(music.stream.get_length(), MIN_SECONDS)
+	# El temporizador ignora la pausa: el juego esta detenido mientras se ve esta pantalla
+	await get_tree().create_timer(seconds, true).timeout
+	finished.emit()

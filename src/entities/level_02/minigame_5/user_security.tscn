@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://bcbm0d5w2tvhx" path="res://src/entities/level_02/minigame_4/old_window.gdshader" id="2_14mb8"]
 [ext_resource type="Texture2D" uid="uid://ywhmne74r7as" path="res://assets/sprites/backgrounds/bg_IAM.png" id="2_jf7he"]
 [ext_resource type="FontFile" uid="uid://dhuiae4jqwh0y" path="res://assets/fonts/determination.ttf" id="3_jf7he"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/user_delete_sfx.ogg" id="user_delete_sfx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ostoq"]
 shader = ExtResource("2_14mb8")
@@ -118,3 +119,7 @@ mouse_filter = 2
 
 [node name="WarnMarket" type="Marker2D" parent="." unique_id=109882982]
 position = Vector2(339, 174)
+
+[node name="UserDeleteSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("user_delete_sfx")
+bus = &"SFX"

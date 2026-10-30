@@ -27,6 +27,8 @@ signal car_hit         # el camión chocó (la carrera se reinicia)
 @onready var shutdown: Control = $WindowShutDown
 @onready var btn_on: BaseButton = $BtnOn
 @onready var playfield: Control = $Playfield
+@onready var button_sfx: AudioStreamPlayer = $ButtonSfx
+@onready var hit_sfx: AudioStreamPlayer = $HitSfx
 
 @export var hit_costs_heart := true    # cada choque quita un corazón
 
@@ -48,6 +50,7 @@ func _ready() -> void:
 	GameManager.game_over.connect(_on_game_over)
 
 func _on_power_on() -> void:
+	button_sfx.play()
 	btn_on.hide()
 	shutdown.hide()
 	_start_run()
@@ -101,6 +104,7 @@ func _on_car_hit() -> void:
 	running = false
 	spawn_timer.stop()
 	car.stop()
+	hit_sfx.play()
 	get_tree().call_group("packet_obstacle", "set_speed", 0.0)
 	car_hit.emit()
 

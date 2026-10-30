@@ -2,9 +2,10 @@
 if has_token()
 	Charlie: ¡Ese es el token! ¿Me lo vas a dar?
 	- Dar token
-		Charlie: Gracias por encontrar el token, créeme que es muy valioso para mí y para Wonka.
+		Charlie: Gracias por encontrar el token. Créeme, es muy valioso para mí y para Wonka.
 		Charlie: Como te prometí, acá tengo tu recompensa por traerme el token de vuelta.
 		*Has obtenido un boleto dorado.
+		Charlie: Cuida este boleto; va a ser muy importante para el camino que quieres tomar.
 		do give_golden_ticket_to_charlie()
 		=> END
 	- Irse

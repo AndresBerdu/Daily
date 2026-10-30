@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://hj5wsk40eogp" path="res://assets/sprites/props/inputs/ethernet_input.png" id="11_x8l2i"]
 [ext_resource type="Texture2D" uid="uid://bdwbomt7lpc3j" path="res://assets/sprites/props/inputs/hdmi_input.png" id="12_1xg5g"]
 [ext_resource type="Texture2D" uid="uid://cwlsej5xlfo6v" path="res://assets/sprites/props/inputs/usb_input.png" id="13_l5t64"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/cable_connected_sfx.ogg" id="cable_connected_sfx"]
 
 [node name="ConnectAllCables" type="Node2D" unique_id=1215166395]
 script = ExtResource("1_33qft")
@@ -62,3 +63,7 @@ position = Vector2(-38, 64)
 
 [node name="Input5" type="Marker2D" parent="Inputs" unique_id=731014070]
 position = Vector2(-38, 128)
+
+[node name="CableConnectedSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("cable_connected_sfx")
+bus = &"SFX"

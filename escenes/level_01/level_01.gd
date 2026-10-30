@@ -11,6 +11,7 @@ signal minigame2_finished                            # Se emite al instalar los 
 # ============================================================
 # CONSTANTES
 # ============================================================
+const MINIGAME1_REWARD := 35            # Cubre ISO (10) + zapatos (10) + 1 pocion (15), sin depender de la moneda del suelo
 const COIN_REWARD := 20               # Monedas que se dan al completar cada minijuego
 const MINIGAME1_DURATION := 60.0      # Duración del minijuego 1 en segundos (1 minuto)
 const ISO_ID := "image_iso"           # Id del ItemData de la imagen ISO
@@ -21,7 +22,8 @@ const USB_ID := "usb"                 # Id de la USB que se le entrega a Sara
 const SAVED_VARS := [
 	"suit_obtained", "box_open", "sara_taking", "martin_taking",
 	"card2_given", "card3_given", "elevator_opened",
-	"minigame1_done", "installed_count", "repaired_new_pcs",
+	"minigame1_done", "minigame2_started", "installed_count", "installed_desktops",
+	"repaired_new_pcs",
 ]
 
 # ============================================================
@@ -90,6 +92,7 @@ var spawn_timer := Timer.new()        # Controla cuándo aparece el siguiente pr
 var desktops: Array[Desktop] = []
 var installed_count := 0              # PCs instalados hasta ahora
 var minigame2_started := false
+var installed_desktops: Array = []     # nombres de los PCs ya instalados (para el guardado)
 
 # --- Minijuego 3 ---
 var repaired_new_pcs: Array = []      # nombres de los PCs ya reparados (se guarda con la partida)
@@ -160,6 +163,21 @@ func _apply_loaded_state() -> void:
 	for child in new_pcs_node.get_children():
 		if child is NewPc and repaired_new_pcs.has(str(child.name)):
 			child.mark_done()
+	_restore_minigame2()
+
+
+# Minijuego 2 a medias: los PCs ya instalados quedan listos y el resto se vuelve a desbloquear
+func _restore_minigame2() -> void:
+	# Guardados anteriores no recordaban que el minijuego ya habia empezado:
+	# con la tarjeta de nivel 2 entregada y la instalacion sin terminar, sigue en marcha
+	if card2_given and not minigame2_started and installed_desktops.size() < desktops.size():
+		minigame2_started = true
+	for d in desktops:
+		if installed_desktops.has(str(d.name)):
+			d.mark_done()
+		elif minigame2_started:
+			d.activate()
+	installed_count = installed_desktops.size()
 
 
 # ============================================================
@@ -251,7 +269,7 @@ func _finish(won: bool) -> void:
 		minigame1_done = true
 		minigame_finished_sfx.play()
 		InventoryManager.remove_item(USB_ID)       # Sara se queda con la USB
-		earned = COIN_REWARD
+		earned = MINIGAME1_REWARD
 		GameManager.add_coins(earned)
 	else:
 		minigame1_started = false   # Permite hablar con Sara y reintentar
@@ -290,8 +308,9 @@ func _on_desktop_repair_failed(_d: Desktop) -> void:
 
 
 # Un PC terminó de instalarse; al completar todos se da la recompensa
-func _on_desktop_installed(_d: Desktop) -> void:
-	installed_count += 1
+func _on_desktop_installed(d: Desktop) -> void:
+	installed_desktops.append(str(d.name))
+	installed_count = installed_desktops.size()
 
 	if installed_count >= desktops.size():
 		InventoryManager.remove_item(ISO_ID)       # la imagen ISO ya se instalo en los PCs
@@ -299,6 +318,15 @@ func _on_desktop_installed(_d: Desktop) -> void:
 		minigame2_finished.emit()
 		GameManager.add_coins(COIN_REWARD)
 		print("Minijuego 2 completado")
+
+
+# True cuando todos los PCs del minijuego 3 estan reparados
+func is_minigame3_done() -> bool:
+	var total := 0
+	for child in new_pcs_node.get_children():
+		if child is NewPc:
+			total += 1
+	return total > 0 and repaired_new_pcs.size() >= total
 
 
 # ============================================================

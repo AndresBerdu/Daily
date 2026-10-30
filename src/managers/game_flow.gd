@@ -122,11 +122,19 @@ func _on_game_over() -> void:
 	_game_over_layer.process_mode = Node.PROCESS_MODE_ALWAYS
 
 	var screen := GAME_OVER_SCENE.instantiate()
-	screen.respawn_requested.connect(respawn)
+	screen.finished.connect(_on_game_over_finished)
 	_game_over_layer.add_child(screen)
 
 	get_tree().root.add_child(_game_over_layer)
 	get_tree().paused = true
+
+
+# Termino la pantalla: un final borra la partida y va al menu; una derrota normal reaparece
+func _on_game_over_finished() -> void:
+	if GameManager.game_over_is_ending:
+		finish_game(true)
+	else:
+		respawn()
 
 
 # ============================================================

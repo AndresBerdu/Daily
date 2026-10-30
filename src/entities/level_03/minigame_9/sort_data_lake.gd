@@ -19,6 +19,8 @@ signal progress_changed(current: int, total: int)
 @export var auto_start := false
 
 @onready var spawn_marker: Marker2D = $SpawnFiles
+@onready var correct_bit_sfx: AudioStreamPlayer = $CorrectBitSfx
+@onready var bad_bit_sfx: AudioStreamPlayer = $BadBitSfx
 @onready var bins_node: Node = $bins     # contenedor de los cuatro SortBin
 
 var bins: Array[SortBin] = []
@@ -101,6 +103,7 @@ func _on_dropped(file: SortFile) -> void:
 		return
 
 	if bin.accepts == file.kind:
+		correct_bit_sfx.play()
 		if file.kind != SortFile.Kind.VIRUS:
 			sorted_good += 1
 			progress_changed.emit(sorted_good, good_needed)
@@ -109,6 +112,7 @@ func _on_dropped(file: SortFile) -> void:
 		file.go("sorted")
 	else:
 		file.go("return")
+		bad_bit_sfx.play()
 		if wrong_costs_heart:
 			GameManager.lose_heart()
 

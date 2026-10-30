@@ -4,16 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://c82irrccbigux" path="res://assets/sprites/hud/buttons/btn_save/button_guardar.png" id="2_p86vr"]
 [ext_resource type="Texture2D" uid="uid://bl3otoqgl5m30" path="res://assets/sprites/hud/buttons/btn_save/button_guardar_pressed.png" id="3_4tiuo"]
 [ext_resource type="Texture2D" uid="uid://d4adj10tpjqlc" path="res://assets/sprites/hud/buttons/btn_save/button_guardar_hover.png" id="4_kmdw2"]
-[ext_resource type="Script" path="res://ui/menus/settings/settings.gd" id="settings_script"]
+[ext_resource type="Script" uid="uid://d4hiqpwygpblo" path="res://ui/menus/settings/settings.gd" id="settings_script"]
 
 [node name="Settings" type="Control" unique_id=1417455387]
-script = ExtResource("settings_script")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("settings_script")
 
 [node name="Alpha" type="ColorRect" parent="." unique_id=1240905017]
 layout_mode = 1
@@ -23,6 +23,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.4509804)
+
+[node name="Outline" type="ColorRect" parent="." unique_id=1005590783]
+layout_mode = 0
+anchor_left = 0.275
+anchor_top = 0.047222223
+anchor_right = 0.725
+anchor_bottom = 0.95555556
+metadata/_edit_use_anchors_ = true
 
 [node name="SettingsContainer" type="ColorRect" parent="." unique_id=1800812823]
 layout_mode = 0

@@ -8,6 +8,7 @@ signal finished(packet: BeltPacket)         # termino el camino elegido
 enum Decision { NONE, GOOD, BAD }
 
 @onready var box: Sprite2D = $Sprite2D
+@onready var open_sfx: AudioStreamPlayer = $PacketOpenSfx
 @onready var content_sprite: Sprite2D = $ContentPacket
 @onready var label_ip: Label = $LabelIp
 @onready var watch: Control = $Watch
@@ -46,6 +47,7 @@ func setup(ip: String, box_texture: Texture2D, content_tex: Texture2D, good: boo
 func open() -> void:
 	opened = true
 	content_sprite.show()
+	open_sfx.play()
 
 func decide(value: Decision) -> void:
 	decision = value

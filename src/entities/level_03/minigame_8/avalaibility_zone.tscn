@@ -6,6 +6,8 @@
 [ext_resource type="Shader" uid="uid://bcbm0d5w2tvhx" path="res://src/entities/level_02/minigame_4/old_window.gdshader" id="2_twfgt"]
 [ext_resource type="Texture2D" uid="uid://dcc3wfru40kvt" path="res://assets/sprites/backgrounds/world_map.png" id="3_d1qn7"]
 [ext_resource type="PackedScene" uid="uid://nap8cevx8nh" path="res://src/entities/level_03/minigame_8/zone/zone.tscn" id="3_twfgt"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/bad_zone_sfx.ogg" id="bad_zone_sfx"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/correct_zone_sfx.ogg" id="correct_zone_sfx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ajtct"]
 shader = ExtResource("2_twfgt")
@@ -70,3 +72,11 @@ offset_top = 64.0
 offset_right = 526.0
 offset_bottom = 279.0
 mouse_filter = 2
+
+[node name="BadZoneSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("bad_zone_sfx")
+bus = &"SFX"
+
+[node name="CorrectZoneSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("correct_zone_sfx")
+bus = &"SFX"

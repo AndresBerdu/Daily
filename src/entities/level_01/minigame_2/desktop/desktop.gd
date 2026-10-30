@@ -57,6 +57,12 @@ func activate() -> void:
 		state = State.IDLE
 		_update_ui()
 
+## Deja el PC como ya instalado (al cargar una partida), sin avisar al nivel
+func mark_done() -> void:
+	state = State.DONE
+	sprite.texture = tex_done if tex_done else tex_normal
+	_update_ui()
+
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
 		player_inside = true

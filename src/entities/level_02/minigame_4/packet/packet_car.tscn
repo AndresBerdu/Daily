@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://cyc160dg2jhqt" path="res://src/entities/level_02/minigame_4/packet/states/drive.gd" id="6_628cc"]
 [ext_resource type="Script" uid="uid://bn8238ieh7u0j" path="res://src/entities/level_02/minigame_4/packet/states/jump.gd" id="7_33u6j"]
 [ext_resource type="Script" uid="uid://d0r1spnjopgik" path="res://src/entities/level_02/minigame_4/packet/states/shrink.gd" id="8_71x53"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/jump_packed_car_sfx.ogg" id="jump_sfx"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/shirink_packet_car_sfx.ogg" id="shrink_sfx"]
 [ext_resource type="Script" uid="uid://kg2hgeb11l20" path="res://src/entities/level_02/minigame_4/packet/states/enlarge.gd" id="9_h3fqw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ec5py"]
@@ -174,3 +176,11 @@ script = ExtResource("8_71x53")
 
 [node name="Enlarge" type="Node" parent="StateMachine" unique_id=1339788457]
 script = ExtResource("9_h3fqw")
+
+[node name="JumpSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("jump_sfx")
+bus = &"SFX"
+
+[node name="ShrinkSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("shrink_sfx")
+bus = &"SFX"
