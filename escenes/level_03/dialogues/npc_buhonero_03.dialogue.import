@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://cvou8wrdse50x"
+path="res://.godot/imported/npc_buhonero_03.dialogue-3248636370ffcdb8d1c4a1877659e492.tres"
+
+[deps]
+
+source_file="res://escenes/level_03/dialogues/npc_buhonero_03.dialogue"
+dest_files=["res://.godot/imported/npc_buhonero_03.dialogue-3248636370ffcdb8d1c4a1877659e492.tres"]
+
+[params]
+
+defaults=true

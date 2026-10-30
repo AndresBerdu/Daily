@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://ckmimf478h0v8"]
+
+[ext_resource type="Texture2D" uid="uid://ltrty5ykl3xr" path="res://assets/sprites/backgrounds/bg_menu.png" id="1_xbyu3"]
+[ext_resource type="Texture2D" uid="uid://5mx0bag6dauw" path="res://assets/sprites/backgrounds/game_title.png" id="2_neplj"]
+[ext_resource type="Texture2D" uid="uid://djwtnjqwenaj3" path="res://assets/sprites/hud/buttons/btn_new_game/button_new_game.png" id="3_md75n"]
+[ext_resource type="Texture2D" uid="uid://bol82mglq2b3v" path="res://assets/sprites/hud/buttons/btn_new_game/button_new_game_pressed.png" id="4_c003a"]
+[ext_resource type="Texture2D" uid="uid://d1uu7v5rof8bq" path="res://assets/sprites/hud/buttons/btn_new_game/button_new_game_hover.png" id="5_mbkk3"]
+[ext_resource type="Texture2D" uid="uid://t6pno8ysc572" path="res://assets/sprites/hud/buttons/btn_load_game/button_load_game.png" id="6_c003a"]
+[ext_resource type="Texture2D" uid="uid://bbhpxloo3rmw6" path="res://assets/sprites/hud/buttons/btn_load_game/button_load_game_pressed.png" id="7_mbkk3"]
+[ext_resource type="Texture2D" uid="uid://b3hvadcew7b8j" path="res://assets/sprites/hud/buttons/btn_load_game/button_load_game_hover.png" id="8_ivf50"]
+[ext_resource type="Texture2D" uid="uid://bton36gt25n4y" path="res://assets/sprites/hud/buttons/btn_settings/button_settings.png" id="9_sx0f5"]
+[ext_resource type="Texture2D" uid="uid://xb0uhxjq2oxd" path="res://assets/sprites/hud/buttons/btn_settings/button_settings_pressed.png" id="10_v0kve"]
+[ext_resource type="Texture2D" uid="uid://cu48y0s3jbfyc" path="res://assets/sprites/hud/buttons/btn_settings/button_settings_hover.png" id="11_peg4s"]
+[ext_resource type="Texture2D" uid="uid://cvs1arac81i8w" path="res://assets/sprites/hud/buttons/btn_exit/button_salir.png" id="12_k48lo"]
+[ext_resource type="Texture2D" uid="uid://bgot2ff8sbb7e" path="res://assets/sprites/hud/buttons/btn_exit/button_salir_pressed.png" id="13_g5jlv"]
+[ext_resource type="Texture2D" uid="uid://cu0eeero74163" path="res://assets/sprites/hud/buttons/btn_exit/button_salir_hover.png" id="14_dkc2p"]
+[ext_resource type="AudioStream" uid="uid://cfu4ccrnuxobt" path="res://assets/audio/music/menu_music.ogg" id="16_peg4s"]
+[ext_resource type="Script" uid="uid://cdatvinr8tdvk" path="res://ui/menus/menu/menu.gd" id="menu_script"]
+
+[node name="Menu" type="Control" unique_id=145541227]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("menu_script")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1129469975]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_xbyu3")
+
+[node name="MainContainer" type="VBoxContainer" parent="." unique_id=794089953]
+layout_mode = 0
+anchor_left = 0.025
+anchor_top = 0.06666667
+anchor_right = 0.3625
+anchor_bottom = 0.95555556
+metadata/_edit_use_anchors_ = true
+
+[node name="TitleGame" type="TextureRect" parent="MainContainer" unique_id=2059658799]
+layout_mode = 2
+texture = ExtResource("2_neplj")
+stretch_mode = 5
+
+[node name="ButtonContainer" type="VBoxContainer" parent="MainContainer" unique_id=555949372]
+layout_mode = 2
+alignment = 1
+
+[node name="BtnNewGame" type="TextureButton" parent="MainContainer/ButtonContainer" unique_id=1064067803]
+layout_mode = 2
+texture_normal = ExtResource("3_md75n")
+texture_pressed = ExtResource("4_c003a")
+texture_hover = ExtResource("5_mbkk3")
+stretch_mode = 3
+
+[node name="BtnLoadGame" type="TextureButton" parent="MainContainer/ButtonContainer" unique_id=1122800666]
+layout_mode = 2
+texture_normal = ExtResource("6_c003a")
+texture_pressed = ExtResource("7_mbkk3")
+texture_hover = ExtResource("8_ivf50")
+stretch_mode = 5
+
+[node name="BtnSettigns" type="TextureButton" parent="MainContainer/ButtonContainer" unique_id=1434983718]
+layout_mode = 2
+texture_normal = ExtResource("9_sx0f5")
+texture_pressed = ExtResource("10_v0kve")
+texture_hover = ExtResource("11_peg4s")
+stretch_mode = 5
+
+[node name="BtnExit" type="TextureButton" parent="MainContainer/ButtonContainer" unique_id=868287792]
+layout_mode = 2
+texture_normal = ExtResource("12_k48lo")
+texture_pressed = ExtResource("13_g5jlv")
+texture_hover = ExtResource("14_dkc2p")
+stretch_mode = 5
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=717268562]
+stream = ExtResource("16_peg4s")
+autoplay = true
+bus = &"Music"
+parameters/looping = true

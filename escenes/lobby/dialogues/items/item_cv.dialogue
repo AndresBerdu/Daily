@@ -1,9 +1,9 @@
 ~ start
-Jugador: Te encontraste un currículum de ingeniero de software.
+Te encontraste un currículum de ingeniero de software.
 - Recoger currículum
 	do collect()
-	Jugador: Es de un tal Solid Snake Armstrong.
-	Jugador: Has obtenido un currículum.
+	El nuevo: Es de un tal Solid Snake Armstrong.
+	*Has recogido un currículum.
 	=> END
 - Dejarlo
 => END

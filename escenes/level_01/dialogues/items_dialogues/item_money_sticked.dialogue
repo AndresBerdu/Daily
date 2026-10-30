@@ -3,9 +3,10 @@ Miras al suelo y encuentras una moneda de 10 pesotes.
 - Recoger Moneda
 	if has_release_agent()
 		Usas el despegante para quitar la moneda pegada del suelo.
-		Has recogido 10 pesotes.
+		*Has recogido 10 pesotes.
+		do use_release_agent()
 		do collect()
 	else
-		Tratas de agarrar la moneda pero esta esta pegada al suelo con pegaloca, miras al lado y hay una nota que dice "JAJAJA Idiota".
+		Tratas de agarrar la moneda, pero está pegada al suelo con Pegaloca. Miras al lado y hay una nota que dice «JAJAJA, idiota».
 - Dejar moneda
 => END

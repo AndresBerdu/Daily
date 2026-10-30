@@ -22,6 +22,8 @@ signal closed         # se cerro la ventana, por el motivo que sea
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var interaction_area: Area2D = $InteractionArea
+@onready var start_minigame_sfx: AudioStreamPlayer = $StartMinigameSfx
+@onready var minigame_finished_sfx: AudioStreamPlayer = $MinigameFinishedSfx
 
 var is_open := false
 var is_done := false
@@ -52,7 +54,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 
 	# Ya completado, o no es la tecla de interactuar
-	if (one_time and is_done) or not event.is_action_pressed("interact") or event.is_echo():
+	if (one_time and is_done) or not PlayerControl.is_interact(event) or event.is_echo():
 		return
 	if not _player_inside():
 		return
@@ -89,7 +91,7 @@ func _open_game() -> void:
 
 	is_open = true
 	session += 1
-	_freeze_player(true)
+	PlayerControl.freeze(self)
 
 	# El minijuego va en un CanvasLayer para verse fijo en pantalla
 	layer = CanvasLayer.new()
@@ -121,6 +123,7 @@ func _open_game() -> void:
 	if game.has_method("start"):
 		game.call("start")
 
+	start_minigame_sfx.play()
 	opened.emit()
 
 
@@ -142,11 +145,17 @@ func _center_game() -> void:
 		(game as Control).position = target
 
 
+## Lo deja como ya completado (se usa al cargar una partida)
+func mark_done() -> void:
+	is_done = true
+
+
 # --- Resultado ---
 func _on_completed() -> void:
 	if is_done and one_time:
 		return
 	is_done = true
+	minigame_finished_sfx.play()
 	completed.emit()
 	_close_later()
 
@@ -168,17 +177,10 @@ func _close() -> void:
 	if not is_open:
 		return
 	is_open = false
-	_freeze_player(false)
+	PlayerControl.unfreeze(self)
 
 	if is_instance_valid(layer):
 		layer.queue_free()      # el minijuego es hijo, se libera con la capa
 	layer = null
 	game = null
 	closed.emit()
-
-
-# Detiene al jugador sin pausar el arbol
-func _freeze_player(frozen: bool) -> void:
-	var player := get_tree().get_first_node_in_group("player")
-	if player:
-		player.process_mode = Node.PROCESS_MODE_DISABLED if frozen else Node.PROCESS_MODE_INHERIT

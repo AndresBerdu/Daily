@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c6ouni4knkwcb" path="res://assets/sprites/items/tools/memory_ram.png" id="1_jyoxs"]
 [ext_resource type="Script" uid="uid://cchirx1ylaw6e" path="res://src/entities/level_01/minigame_3/memory_ram/memory_ram.gd" id="1_ypytx"]
 [ext_resource type="AudioStream" uid="uid://bh6hestckrdtn" path="res://assets/audio/sfx/ram_sfx.ogg" id="3_vbf2s"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/put_ram_sfx.ogg" id="4_putram"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
 size = Vector2(8, 149)
@@ -22,4 +23,8 @@ debug_color = Color(0.8509418, 0.16741684, 0.81157106, 0.41960785)
 
 [node name="ram_sfx" type="AudioStreamPlayer" parent="." unique_id=461233494]
 stream = ExtResource("3_vbf2s")
+bus = &"SFX"
+
+[node name="put_ram_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_putram")
 bus = &"SFX"

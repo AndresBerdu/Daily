@@ -3,16 +3,17 @@ if has_token()
 	Hombre sospechoso: Veo que tienes el token. ¿Me lo vas a dar?
 	- Dar token
 		Hombre sospechoso: Como te prometí, acá tienes tus 999 monedas y no le digas a nadie que me diste el token.
+		*Has obtenido 999 monedas.
 		do give_token_to_suspect()
 		=> END
 	- Irse
 		=> END
 else
 	Hombre sospechoso: Hola, empleado. ¿Has visto a un niño y a un señor raro con sombrero alto?
-	Jugador: Sí, los he visto hace poco, ¿pero por qué me preguntas eso?
+	El nuevo: Sí, los he visto hace poco, ¿pero por qué me preguntas eso?
 	Hombre sospechoso: No, por nada, solo quería saber.
 	Hombre sospechoso: Y dime, ¿te has topado con un token o un dispositivo pequeño?
-	Jugador: No lo he visto, pero ¿para qué lo quieres?
+	El nuevo: No lo he visto, pero ¿para qué lo quieres?
 	Hombre sospechoso: No, solo es algo que se me perdió, pero si lo encuentras, tráeme el objeto. Si me lo das, te daré 999 monedas. ¿Qué te parece?
-	Jugador: ¡¿999 MONEDAS?! Eso es mucho... Bueno, lo pensaré. Adiós.
+	El nuevo: ¡¿999 MONEDAS?! Eso es mucho... Bueno, lo pensaré. Adiós.
 => END

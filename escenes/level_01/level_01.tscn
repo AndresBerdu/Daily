@@ -1,17 +1,17 @@
 [gd_scene format=4 uid="uid://duhm5gftel6fm"]
 
-[ext_resource type="Texture2D" uid="uid://sql5n8lkita8" path="res://assets/sprites/level_01/sprite_sheet_decoration_office.png" id="1_d5ru4"]
+[ext_resource type="Texture2D" uid="uid://sql5n8lkita8" path="res://assets/sprites/tiles/sprite_sheet_decoration_office.png" id="1_d5ru4"]
 [ext_resource type="Script" uid="uid://brs7inuuhsmxe" path="res://escenes/level_01/level_01.gd" id="1_qfv2j"]
 [ext_resource type="PackedScene" uid="uid://dcdogvkuk1jp2" path="res://src/entities/player/player.tscn" id="1_ut7rv"]
 [ext_resource type="Texture2D" uid="uid://c5i364jkbg6xd" path="res://assets/sprites/characters/workers/worker_1.png" id="2_ekaab"]
-[ext_resource type="Texture2D" uid="uid://kixpvit8b8s3" path="res://assets/sprites/level_01/level_01.png" id="2_m7i27"]
+[ext_resource type="Texture2D" uid="uid://kixpvit8b8s3" path="res://assets/sprites/tiles/level_01.png" id="2_m7i27"]
 [ext_resource type="Texture2D" uid="uid://dch1gkcmcrxq3" path="res://assets/sprites/characters/workers/worker_2.png" id="3_3eyl7"]
-[ext_resource type="Texture2D" uid="uid://cal6ljwbbv5jv" path="res://assets/sprites/level_01/Gritty Bathroom Interior Pack Export.png" id="3_5ail7"]
+[ext_resource type="Texture2D" uid="uid://cal6ljwbbv5jv" path="res://assets/sprites/tiles/Gritty Bathroom Interior Pack Export.png" id="3_5ail7"]
 [ext_resource type="PackedScene" uid="uid://dn80ev40ygyxm" path="res://src/entities/level_01/minigame_1/worker/worker.tscn" id="4_h54f8"]
 [ext_resource type="Texture2D" uid="uid://bgyovul4ab6wc" path="res://assets/sprites/characters/workers/worker_4.png" id="4_sarro"]
 [ext_resource type="PackedScene" uid="uid://7u6ws8e716io" path="res://src/entities/item/item.tscn" id="8_135ep"]
 [ext_resource type="AudioStream" uid="uid://h71256pn8xgd" path="res://assets/audio/music/level_01_music.ogg" id="8_ldqyh"]
-[ext_resource type="Texture2D" uid="uid://bdvocg6jnfalw" path="res://assets/sprites/level_01/Office_essentials_spritesheet.png" id="8_tabon"]
+[ext_resource type="Texture2D" uid="uid://bdvocg6jnfalw" path="res://assets/sprites/tiles/Office_essentials_spritesheet.png" id="8_tabon"]
 [ext_resource type="PackedScene" uid="uid://cfsxorgmmmfeo" path="res://src/components/ticket_gate/ticket_gate.tscn" id="9_0rqc7"]
 [ext_resource type="PackedScene" uid="uid://da3h71swts075" path="res://src/components/elevator/elevator.tscn" id="9_grqq0"]
 [ext_resource type="PackedScene" uid="uid://b8lhgqvw4x5tl" path="res://src/entities/saver/saver.tscn" id="9_ldqyh"]
@@ -27,6 +27,7 @@
 [ext_resource type="Resource" uid="uid://bra14r020xhcx" path="res://escenes/level_01/dialogues/npc_sellder_1.dialogue" id="17_ql0yl"]
 [ext_resource type="Texture2D" uid="uid://chnmkllf4lnob" path="res://assets/sprites/items/normal_props/coin_floor.png" id="18_d3gol"]
 [ext_resource type="Resource" uid="uid://58w7dbedp3p7" path="res://escenes/level_01/dialogues/npc_java_junkie.dialogue" id="18_n8tjx"]
+[ext_resource type="Texture2D" path="res://assets/sprites/characters/npc/java_junkie/character_java_junkie_idle_down.png" id="99_junkie"]
 [ext_resource type="Resource" uid="uid://ciyfu1bo37mr6" path="res://escenes/level_01/dialogues/items_dialogues/item_suit_tech.dialogue" id="18_ynnr0"]
 [ext_resource type="Texture2D" uid="uid://cleoo1d3rgp06" path="res://assets/sprites/characters/npc/sellder/character_sellder_idle_down.png" id="19_dvly0"]
 [ext_resource type="Texture2D" uid="uid://27vm4xb0lroj" path="res://assets/sprites/items/box/box.png" id="20_ppvlf"]
@@ -42,6 +43,8 @@
 [ext_resource type="Script" uid="uid://d3c7fdr3l0sa" path="res://src/components/items/items_resource/shop_entry.gd" id="33_cq27e"]
 [ext_resource type="Resource" uid="uid://coe3ns7my061j" path="res://src/components/items/shooes/shoes_venom_entry.tres" id="34_ql0yl"]
 [ext_resource type="Resource" uid="uid://116nfbmguw6" path="res://src/components/items/props/image_iso_entry.tres" id="36_i40s3"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/start_minigame_sfx.ogg" id="start_minigame_sfx"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/minigame_finished_sfx.ogg" id="minigame_finished_sfx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5ru4"]
 texture = ExtResource("2_m7i27")
@@ -3314,6 +3317,7 @@ sprite_texture = ExtResource("19_dvly0")
 [node name="JavaJunkie" parent="Npcs" unique_id=1117054359 instance=ExtResource("12_fbh7g")]
 position = Vector2(252, 86)
 dialogue_resource = ExtResource("18_n8tjx")
+sprite_texture = ExtResource("99_junkie")
 
 [node name="Items" type="Node2D" parent="." unique_id=746241125]
 
@@ -3534,3 +3538,11 @@ stream = ExtResource("8_ldqyh")
 autoplay = true
 bus = &"Music"
 parameters/looping = true
+
+[node name="StartMinigameSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("start_minigame_sfx")
+bus = &"SFX"
+
+[node name="MinigameFinishedSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("minigame_finished_sfx")
+bus = &"SFX"

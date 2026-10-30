@@ -1,0 +1,29 @@
+~ hired
+Jefe Martín: Ahí viene. Todos reunidos, justo a tiempo.
+Jefe Yudernis Neleixys: Pasaste por seguridad, por la nube y por la red sin rendirte. Eso dice mucho de ti.
+Jefe Jeff Besos: Y eso que al principio te dije que no ibas a programar nada. Perdón por la cara de desprecio.
+Jefe Martín: Déjame presentarte a la persona que quería conocerte. Él es Momero, el CEO de la empresa.
+Momero: Mucho gusto. Llevo todo este tiempo viendo cómo resolvías cada tarea, y tengo buenas noticias: por fin te voy a contratar.
+El nuevo: ¿De verdad? ¡Muchas gracias! Pero... yo vine por un puesto de programador.
+Momero: Justamente de eso quería hablarte. Quise que recorrieras cada área para que vieras algo importante.
+Momero: Programar no lo es todo. Un ingeniero de software, o cualquier persona con estudios en tecnología, puede trabajar en muchísimas áreas más.
+Jefe Martín: Soporte técnico, redes y telecomunicaciones, ciberseguridad...
+Jefe Yudernis Neleixys: Infraestructura, bases de datos, análisis de datos, pruebas de calidad...
+Jefe Jeff Besos: Computación en la nube, automatización, diseño de producto, gestión de proyectos, consultoría, enseñanza...
+Momero: Cada una de esas áreas hace falta para que una empresa funcione. Lo importante es seguir aprendiendo y encontrar la que más te apasione.
+El nuevo: Nunca lo había visto así. Ahora entiendo por qué me hicieron pasar por todos los pisos.
+Momero: Bienvenido al equipo. Tu primer día de trabajo de verdad empieza ahora.
+El nuevo: ¡Gracias, jefes! No los voy a defraudar.
+=> END
+
+~ fired
+Jefe Martín: Ahí estás. Tenemos que hablar, y no es una conversación agradable.
+Jefe Yudernis Neleixys: Nos enteramos de lo que pasó con el token. Entregaste información de un cliente a un extraño.
+Jefe Jeff Besos: Estamos muy decepcionados de ti. La información de los clientes es lo más delicado que manejamos.
+El nuevo: Yo... pensé que estaba ayudando. No sabía que era tan grave.
+Momero: Soy Momero, el CEO. Iba a contratarte, pero un error así no se puede pasar por alto.
+Momero: Estás despedido. Este despido es irrevocable.
+Momero: Y como no hay vuelta atrás, tu partida actual será borrada.
+El nuevo: No puede ser...
+Jefe Martín: Que esto te sirva de lección: en tecnología, cuidar los datos de las personas es parte del trabajo.
+=> END

@@ -1,24 +1,27 @@
 [gd_scene format=4 uid="uid://dxrctxh7wa64s"]
 
 [ext_resource type="Script" uid="uid://c3rf7t6kp05hv" path="res://escenes/level_03/level_03.gd" id="1_53mf8"]
-[ext_resource type="Texture2D" uid="uid://cal6ljwbbv5jv" path="res://assets/sprites/level_01/Gritty Bathroom Interior Pack Export.png" id="1_hs65l"]
+[ext_resource type="Texture2D" uid="uid://cal6ljwbbv5jv" path="res://assets/sprites/tiles/Gritty Bathroom Interior Pack Export.png" id="1_hs65l"]
 [ext_resource type="PackedScene" uid="uid://dcdogvkuk1jp2" path="res://src/entities/player/player.tscn" id="2_hs65l"]
-[ext_resource type="Texture2D" uid="uid://bdvocg6jnfalw" path="res://assets/sprites/level_01/Office_essentials_spritesheet.png" id="2_iplxx"]
+[ext_resource type="Texture2D" uid="uid://bdvocg6jnfalw" path="res://assets/sprites/tiles/Office_essentials_spritesheet.png" id="2_iplxx"]
 [ext_resource type="PackedScene" uid="uid://b302rud2h3ppv" path="res://src/entities/level_03/minigame_7/server/server.tscn" id="2_w510t"]
-[ext_resource type="Texture2D" uid="uid://dkhglxnfolp06" path="res://assets/sprites/level_01/trawlertileset.png" id="3_iplxx"]
-[ext_resource type="Texture2D" uid="uid://kixpvit8b8s3" path="res://assets/sprites/level_01/level_01.png" id="4_fvrsq"]
+[ext_resource type="Texture2D" uid="uid://dkhglxnfolp06" path="res://assets/sprites/tiles/trawlertileset.png" id="3_iplxx"]
+[ext_resource type="Texture2D" uid="uid://kixpvit8b8s3" path="res://assets/sprites/tiles/level_01.png" id="4_fvrsq"]
 [ext_resource type="PackedScene" uid="uid://da3h71swts075" path="res://src/components/elevator/elevator.tscn" id="5_pgumx"]
 [ext_resource type="PackedScene" uid="uid://cfsxorgmmmfeo" path="res://src/components/ticket_gate/ticket_gate.tscn" id="6_io85a"]
 [ext_resource type="PackedScene" uid="uid://dqinf3ok8v043" path="res://src/entities/npc/npc.tscn" id="7_h0m06"]
 [ext_resource type="Texture2D" uid="uid://cleoo1d3rgp06" path="res://assets/sprites/characters/npc/sellder/character_sellder_idle_down.png" id="8_38v1q"]
 [ext_resource type="Resource" uid="uid://l0eot3pi8q10" path="res://escenes/level_03/dialogues/npc_jefe_jeff_besos.dialogue" id="8_a44nr"]
+[ext_resource type="Resource" path="res://escenes/level_03/dialogues/npc_buhonero_03.dialogue" id="99_buhonero3"]
 [ext_resource type="Texture2D" uid="uid://dhan4tfqtus76" path="res://assets/sprites/characters/npc/jeff_besos/character_boss_jeff_besos_idle_down.png" id="8_q4vwk"]
+[ext_resource type="PackedScene" uid="uid://cinfmnvco4hmi" path="res://escenes/top_floor/top_floor.tscn" id="8_yti12"]
 [ext_resource type="PackedScene" uid="uid://7u6ws8e716io" path="res://src/entities/item/item.tscn" id="9_38v1q"]
 [ext_resource type="PackedScene" uid="uid://b8lhgqvw4x5tl" path="res://src/entities/saver/saver.tscn" id="10_h0m06"]
 [ext_resource type="PackedScene" uid="uid://dsbaswiwvlyhh" path="res://src/entities/shop/shop.tscn" id="11_38v1q"]
 [ext_resource type="Script" uid="uid://d3c7fdr3l0sa" path="res://src/components/items/items_resource/shop_entry.gd" id="13_6bqxf"]
 [ext_resource type="Resource" uid="uid://ym81k2ctf0pq" path="res://escenes/level_03/dialogues/item_credentials.dialogue" id="14_xt3bh"]
 [ext_resource type="Resource" uid="uid://ctm7t8ulxphph" path="res://src/components/items/shooes/shoes_diamond_entry.tres" id="14_yavux"]
+[ext_resource type="Resource" path="res://src/components/items/suits/suit_agent_entry.tres" id="99_suitagent"]
 [ext_resource type="PackedScene" uid="uid://biixe0c77ab0w" path="res://src/entities/pc/pc.tscn" id="15_o7k7w"]
 [ext_resource type="Texture2D" uid="uid://drq3cvn82ndjs" path="res://assets/sprites/items/notes/note.png" id="15_xftkr"]
 [ext_resource type="Resource" uid="uid://dk8bl8jpscf3o" path="res://escenes/item_money.dialogue" id="16_g2lnl"]
@@ -30,6 +33,9 @@
 [ext_resource type="Texture2D" uid="uid://bn10g4xkt1u35" path="res://assets/sprites/items/box/boxes_tower.png" id="26_6137d"]
 [ext_resource type="PackedScene" uid="uid://dufna5kkrabsb" path="res://src/entities/level_03/minigame_9/bald_workers/bald_workers.tscn" id="27_xftkr"]
 [ext_resource type="PackedScene" uid="uid://dn3vdd8pucipt" path="res://src/entities/level_03/minigame_9/sort_data_lake.tscn" id="29_8wbxm"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/start_minigame_sfx.ogg" id="start_minigame_sfx"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/minigame_finished_sfx.ogg" id="minigame_finished_sfx"]
+[ext_resource type="AudioStream" path="res://assets/audio/music/level_03_music.ogg" id="level_03_music"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fvrsq"]
 texture = ExtResource("1_hs65l")
@@ -1997,7 +2003,10 @@ sources/2 = SubResource("TileSetAtlasSource_g2lnl")
 size = Vector2(20, 33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajtct"]
-size = Vector2(20, 66)
+size = Vector2(32, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jeff2"]
+size = Vector2(32, 19)
 
 [node name="Level03" type="Node2D" unique_id=1334471936 node_paths=PackedStringArray("npc_boss", "minigame_8_pc")]
 script = ExtResource("1_53mf8")
@@ -2051,6 +2060,7 @@ position = Vector2(288, 25)
 
 [node name="Elevator" parent="." unique_id=1140957268 instance=ExtResource("5_pgumx")]
 position = Vector2(-128, -80)
+nex_level = ExtResource("8_yti12")
 
 [node name="TicketGates" type="Node2D" parent="." unique_id=472611522]
 
@@ -2066,6 +2076,7 @@ sprite_texture = ExtResource("8_q4vwk")
 
 [node name="Seller" parent="Npcs" unique_id=1022231584 instance=ExtResource("7_h0m06")]
 position = Vector2(520, -4)
+dialogue_resource = ExtResource("99_buhonero3")
 sprite_texture = ExtResource("8_38v1q")
 
 [node name="Items" type="Node2D" parent="." unique_id=934436033]
@@ -2098,7 +2109,7 @@ position = Vector2(368, -7)
 
 [node name="Shop" parent="." unique_id=527676 instance=ExtResource("11_38v1q")]
 position = Vector2(480, -11)
-entries = Array[ExtResource("13_6bqxf")]([ExtResource("14_yavux")])
+entries = Array[ExtResource("13_6bqxf")]([ExtResource("14_yavux"), ExtResource("99_suitagent")])
 
 [node name="Boxes" type="Node2D" parent="." unique_id=1052647248]
 
@@ -2186,8 +2197,28 @@ minigame_escene = ExtResource("29_8wbxm")
 
 [node name="DetedAreaNpcTp" type="Node2D" parent="." unique_id=1617684369]
 
-[node name="Area2D" type="Area2D" parent="DetedAreaNpcTp" unique_id=1300969826]
+[node name="JeffBesosTp" type="Area2D" parent="DetedAreaNpcTp" unique_id=1300969826]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetedAreaNpcTp/Area2D" unique_id=1971385589]
-position = Vector2(704, 31)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetedAreaNpcTp/JeffBesosTp" unique_id=1971385589]
+position = Vector2(704, 28)
 shape = SubResource("RectangleShape2D_ajtct")
+
+[node name="JeffBesosTp2" type="Area2D" parent="DetedAreaNpcTp" unique_id=862322519]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetedAreaNpcTp/JeffBesosTp2" unique_id=1622238947]
+position = Vector2(864, 430.5)
+shape = SubResource("RectangleShape2D_jeff2")
+
+[node name="StartMinigameSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("start_minigame_sfx")
+bus = &"SFX"
+
+[node name="MinigameFinishedSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("minigame_finished_sfx")
+bus = &"SFX"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("level_03_music")
+autoplay = true
+bus = &"Music"
+parameters/looping = true

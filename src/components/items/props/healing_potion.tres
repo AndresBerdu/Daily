@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/items/healing_potion.png" id="1_icon"]
+[ext_resource type="Script" uid="uid://csr0bmafqnr7x" path="res://src/components/items/items_resource/item_data.gd" id="2_data"]
+
+[resource]
+script = ExtResource("2_data")
+id = "healing_potion"
+display_name = "Poción de curación"
+description = "Cura 1 corazón."
+icon = ExtResource("1_icon")
+category = 1
+price = 15
+heal_amount = 1

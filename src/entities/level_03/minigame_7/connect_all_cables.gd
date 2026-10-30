@@ -116,6 +116,7 @@ func _on_plugged(_tip: CableTip) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel") and not done:
+		get_viewport().set_input_as_handled()     # que ESC no abra tambien el menu de pausa
 		_close()
 
 func _close() -> void:

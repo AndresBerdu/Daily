@@ -5,6 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://cinhlnj66bd2c" path="res://assets/sprites/items/tools/old_termal_grease.png" id="2_pcmow"]
 [ext_resource type="Texture2D" uid="uid://bka15uouuw5cw" path="res://assets/sprites/items/tools/alchol.png" id="3_btqj2"]
 [ext_resource type="Texture2D" uid="uid://b6e760t8jsbi8" path="res://assets/sprites/items/tools/new_thermal_grease.png" id="4_t2htk"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/add_alchol_sfx.ogg" id="5_alcsfx"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/removing_pastal_grease.ogg" id="6_rmsfx"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/add_new_termal_grease.ogg" id="7_newsfx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
 size = Vector2(92, 88)
@@ -31,3 +34,15 @@ texture = ExtResource("4_t2htk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1846203188]
 shape = SubResource("RectangleShape2D_ostoq")
 debug_color = Color(0.7339673, 0.46812218, 0.1444549, 0.41960785)
+
+[node name="AlcoholSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_alcsfx")
+bus = &"SFX"
+
+[node name="RemoveGreaseSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_rmsfx")
+bus = &"SFX"
+
+[node name="NewGreaseSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_newsfx")
+bus = &"SFX"

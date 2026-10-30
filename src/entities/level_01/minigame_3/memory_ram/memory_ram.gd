@@ -15,6 +15,8 @@ enum State { INACTIVE, OLD, MOVING, WAITING_SEAT, DONE }
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var area: Area2D = $InteractionArea
+@onready var remove_sfx: AudioStreamPlayer = $ram_sfx        # al sacar la memoria
+@onready var put_sfx: AudioStreamPlayer = $put_ram_sfx      # al volver a ponerla
 
 var state := State.INACTIVE
 var home_position := Vector2.ZERO
@@ -52,6 +54,7 @@ func _on_input_event(_vp: Node, event: InputEvent, _idx: int) -> void:
 func _lift() -> void:
 	_stop_hint()
 	state = State.MOVING
+	remove_sfx.play()
 	var tween := create_tween().set_trans(Tween.TRANS_SINE)
 	tween.tween_property(self, "position:y", home_position.y - lift_distance, move_time)
 	await tween.finished
@@ -63,6 +66,7 @@ func _lift() -> void:
 func _seat() -> void:
 	_stop_hint()
 	state = State.MOVING
+	put_sfx.play()
 	var tween := create_tween().set_trans(Tween.TRANS_SINE)
 	tween.tween_property(self, "position", home_position, move_time)
 	await tween.finished

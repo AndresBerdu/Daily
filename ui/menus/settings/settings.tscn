@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://d3p7r8aessm"]
+
+[ext_resource type="FontFile" uid="uid://dhuiae4jqwh0y" path="res://assets/fonts/determination.ttf" id="1_cbxox"]
+[ext_resource type="Texture2D" uid="uid://c82irrccbigux" path="res://assets/sprites/hud/buttons/btn_save/button_guardar.png" id="2_p86vr"]
+[ext_resource type="Texture2D" uid="uid://bl3otoqgl5m30" path="res://assets/sprites/hud/buttons/btn_save/button_guardar_pressed.png" id="3_4tiuo"]
+[ext_resource type="Texture2D" uid="uid://d4adj10tpjqlc" path="res://assets/sprites/hud/buttons/btn_save/button_guardar_hover.png" id="4_kmdw2"]
+[ext_resource type="Script" path="res://ui/menus/settings/settings.gd" id="settings_script"]
+
+[node name="Settings" type="Control" unique_id=1417455387]
+script = ExtResource("settings_script")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Alpha" type="ColorRect" parent="." unique_id=1240905017]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4509804)
+
+[node name="SettingsContainer" type="ColorRect" parent="." unique_id=1800812823]
+layout_mode = 0
+anchor_left = 0.2875
+anchor_top = 0.06666667
+anchor_right = 0.7125
+anchor_bottom = 0.93333334
+color = Color(0.18717614, 0.18717614, 0.18717614, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsContainer" unique_id=1844984068]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsContainer/MarginContainer" unique_id=771773707]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Title" type="Label" parent="SettingsContainer/MarginContainer/VBoxContainer" unique_id=553909609]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_cbxox")
+text = "Opciones"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelMaster" type="Label" parent="SettingsContainer/MarginContainer/VBoxContainer" unique_id=1853252443]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_cbxox")
+theme_override_font_sizes/font_size = 10
+text = "Volumen Principal"
+
+[node name="HSliderMaster" type="HSlider" parent="SettingsContainer/MarginContainer/VBoxContainer" unique_id=1588330229]
+layout_mode = 2
+
+[node name="LabelMusic" type="Label" parent="SettingsContainer/MarginContainer/VBoxContainer" unique_id=1879738343]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_cbxox")
+theme_override_font_sizes/font_size = 10
+text = "Musica"
+
+[node name="HSliderMusic" type="HSlider" parent="SettingsContainer/MarginContainer/VBoxContainer" unique_id=1852568821]
+layout_mode = 2
+
+[node name="LabelSFX" type="Label" parent="SettingsContainer/MarginContainer/VBoxContainer" unique_id=761199318]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_cbxox")
+theme_override_font_sizes/font_size = 10
+text = "Efectos de sonido"
+
+[node name="HSliderSFX" type="HSlider" parent="SettingsContainer/MarginContainer/VBoxContainer" unique_id=471000549]
+layout_mode = 2
+
+[node name="HBoxContainerMusicOn" type="HBoxContainer" parent="SettingsContainer/MarginContainer/VBoxContainer" unique_id=1392028902]
+layout_mode = 2
+
+[node name="LabelMusicOn" type="Label" parent="SettingsContainer/MarginContainer/VBoxContainer/HBoxContainerMusicOn" unique_id=2104861822]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_cbxox")
+theme_override_font_sizes/font_size = 10
+text = "Musica"
+horizontal_alignment = 3
+
+[node name="CheckBoxMusic" type="CheckBox" parent="SettingsContainer/MarginContainer/VBoxContainer/HBoxContainerMusicOn" unique_id=401938505]
+layout_mode = 2
+
+[node name="BtnSave" type="TextureButton" parent="SettingsContainer/MarginContainer/VBoxContainer" unique_id=2072367156]
+layout_mode = 2
+texture_normal = ExtResource("2_p86vr")
+texture_pressed = ExtResource("3_4tiuo")
+texture_hover = ExtResource("4_kmdw2")
+stretch_mode = 5

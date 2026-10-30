@@ -45,7 +45,7 @@ func _update_buttons() -> void:
 
 # E tambien abre el paquete actual
 func _unhandled_input(event: InputEvent) -> void:
-	if not event.is_action_pressed("interact") or event.is_echo():
+	if not PlayerControl.is_interact(event) or event.is_echo():
 		return
 	if player_inside and belt and belt.has_front() and not belt.front_is_open():
 		get_viewport().set_input_as_handled()

@@ -19,6 +19,6 @@ func _on_body_exited(body: Node) -> void:
 		player_in_range = false
 
 func _unhandled_input(event: InputEvent) -> void:
-	if player_in_range and event.is_action_pressed("interact"):
+	if player_in_range and PlayerControl.is_interact(event):
 		if dialogue_resource:
 			DialogueManager.show_dialogue_balloon(dialogue_resource, dialogue_start)

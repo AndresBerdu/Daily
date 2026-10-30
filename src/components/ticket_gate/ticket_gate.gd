@@ -13,5 +13,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func open_ticket_gate() -> void:
+	is_open = true
+	LevelUtils.record_open_gate(self)      # queda anotado para restaurarlo al cargar
 	sprite.texture = sprite_open
 	permission_collision.set_deferred("disabled", true)

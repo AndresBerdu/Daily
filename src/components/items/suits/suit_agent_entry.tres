@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ShopEntry" format=3]
+
+[ext_resource type="Resource" path="res://src/components/items/suits/suit_agent.tres" id="1_item"]
+[ext_resource type="Script" uid="uid://d3c7fdr3l0sa" path="res://src/components/items/items_resource/shop_entry.gd" id="2_entry"]
+
+[resource]
+script = ExtResource("2_entry")
+item = ExtResource("1_item")

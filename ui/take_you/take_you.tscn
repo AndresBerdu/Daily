@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://ctuqf3kvewasl"]
+
+[ext_resource type="FontFile" uid="uid://dhuiae4jqwh0y" path="res://assets/fonts/determination.ttf" id="1_lt11q"]
+[ext_resource type="AudioStream" path="res://assets/audio/music/ending_music.ogg" id="2_68w3b"]
+
+[node name="TakeYou" type="Control" unique_id=1175062503]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="." unique_id=2085377327]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.038397167, 0.038397167, 0.03839716, 1)
+
+[node name="LabelTankYou" type="Label" parent="." unique_id=1049016372]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.12421875
+anchor_top = 0.4027778
+anchor_right = 0.87578124
+anchor_bottom = 0.5972222
+offset_left = 174.0
+offset_top = 23.5
+offset_right = -174.0
+offset_bottom = -23.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_lt11q")
+theme_override_font_sizes/font_size = 52
+text = "Gracias Por Jugar"
+metadata/_edit_use_anchors_ = true
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1243425386]
+stream = ExtResource("2_68w3b")
+autoplay = true
+bus = &"Music"
+parameters/looping = false

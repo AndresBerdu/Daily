@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://u0rk57uf0mtg"]
+
+[ext_resource type="FontFile" uid="uid://dhuiae4jqwh0y" path="res://assets/fonts/determination.ttf" id="1_tpdjy"]
+[ext_resource type="Texture2D" uid="uid://drggy8oui2mcm" path="res://assets/sprites/hud/buttons/btn_resum/button_resum.png" id="2_tpdjy"]
+[ext_resource type="Texture2D" uid="uid://c2g62taldbwyd" path="res://assets/sprites/hud/buttons/btn_resum/button_resum_pressed.png" id="3_ttjam"]
+[ext_resource type="Texture2D" uid="uid://c7qiqba2jwbq4" path="res://assets/sprites/hud/buttons/btn_resum/button_resum_hover.png" id="4_ufetl"]
+[ext_resource type="Texture2D" uid="uid://t6pno8ysc572" path="res://assets/sprites/hud/buttons/btn_load_game/button_load_game.png" id="5_8yodr"]
+[ext_resource type="Texture2D" uid="uid://bbhpxloo3rmw6" path="res://assets/sprites/hud/buttons/btn_load_game/button_load_game_pressed.png" id="6_a0jcp"]
+[ext_resource type="Texture2D" uid="uid://b3hvadcew7b8j" path="res://assets/sprites/hud/buttons/btn_load_game/button_load_game_hover.png" id="7_7tdey"]
+[ext_resource type="Texture2D" uid="uid://bton36gt25n4y" path="res://assets/sprites/hud/buttons/btn_settings/button_settings.png" id="8_beu1c"]
+[ext_resource type="Texture2D" uid="uid://xb0uhxjq2oxd" path="res://assets/sprites/hud/buttons/btn_settings/button_settings_pressed.png" id="9_7cv23"]
+[ext_resource type="Texture2D" uid="uid://cu48y0s3jbfyc" path="res://assets/sprites/hud/buttons/btn_settings/button_settings_hover.png" id="10_j3q5g"]
+[ext_resource type="Texture2D" uid="uid://cvs1arac81i8w" path="res://assets/sprites/hud/buttons/btn_exit/button_salir.png" id="11_elg8u"]
+[ext_resource type="Texture2D" uid="uid://bgot2ff8sbb7e" path="res://assets/sprites/hud/buttons/btn_exit/button_salir_pressed.png" id="12_w4dnf"]
+[ext_resource type="Texture2D" uid="uid://cu0eeero74163" path="res://assets/sprites/hud/buttons/btn_exit/button_salir_hover.png" id="13_rghoj"]
+[ext_resource type="Script" path="res://ui/menus/menu_paused/menu_paused.gd" id="paused_script"]
+
+[node name="MenuPaused" type="Control" unique_id=527308124]
+script = ExtResource("paused_script")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Alpha" type="ColorRect" parent="." unique_id=1928222121]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4509804)
+metadata/_edit_use_anchors_ = true
+
+[node name="MenuPaused" type="ColorRect" parent="Alpha" unique_id=126172694]
+layout_mode = 0
+anchor_left = 0.3375
+anchor_top = 0.11111111
+anchor_right = 0.6625
+anchor_bottom = 0.8666667
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Alpha/MenuPaused" unique_id=1493304236]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="BtnContainer" type="VBoxContainer" parent="Alpha/MenuPaused/MarginContainer" unique_id=1847609832]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Alpha/MenuPaused/MarginContainer/BtnContainer" unique_id=262919627]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_tpdjy")
+text = "Pausa"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnResum" type="TextureButton" parent="Alpha/MenuPaused/MarginContainer/BtnContainer" unique_id=1961685534]
+layout_mode = 2
+texture_normal = ExtResource("2_tpdjy")
+texture_pressed = ExtResource("3_ttjam")
+texture_hover = ExtResource("4_ufetl")
+stretch_mode = 5
+
+[node name="BtnLoadGame" type="TextureButton" parent="Alpha/MenuPaused/MarginContainer/BtnContainer" unique_id=558999683]
+layout_mode = 2
+texture_normal = ExtResource("5_8yodr")
+texture_pressed = ExtResource("6_a0jcp")
+texture_hover = ExtResource("7_7tdey")
+stretch_mode = 5
+
+[node name="BtnOptions" type="TextureButton" parent="Alpha/MenuPaused/MarginContainer/BtnContainer" unique_id=2075754694]
+layout_mode = 2
+texture_normal = ExtResource("8_beu1c")
+texture_pressed = ExtResource("9_7cv23")
+texture_hover = ExtResource("10_j3q5g")
+stretch_mode = 5
+
+[node name="BtnExit" type="TextureButton" parent="Alpha/MenuPaused/MarginContainer/BtnContainer" unique_id=317196960]
+layout_mode = 2
+texture_normal = ExtResource("11_elg8u")
+texture_pressed = ExtResource("12_w4dnf")
+texture_hover = ExtResource("13_rghoj")
+stretch_mode = 5

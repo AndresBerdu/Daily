@@ -10,10 +10,18 @@ signal minigame_finished(won: bool)
 # ============================================================
 # CONSTANTES
 # ============================================================
-const COIN_REWARD := 10
+const COIN_REWARD := 40               # Monedas por minijuego completado
 const GAME_DURATION := 120.0      # 2 minutos
 const SERVERS_NEEDED := 4         # servidores dañados que hay que reparar
 const CREDENTIALS_ID := "credentials"
+
+# Variables que se guardan con la partida (ver save_state / _apply_loaded_state)
+const SAVED_VARS := [
+	"met_boss", "boss_at_spawn_1",
+	"minigame_7_done", "minigame_8_done", "boxes_removed",
+	"card7_given", "boss_at_spawn_2", "lake_explained",
+	"minigame_9_done", "elevator_opened",
+]
 
 # ============================================================
 # CONFIGURACIÓN DESDE EL INSPECTOR
@@ -22,15 +30,25 @@ const CREDENTIALS_ID := "credentials"
 @export var npc_boss: Npc                 # el jefe Jeff Besos
 @export var minigame_8_pc: Pc             # PC de las zonas de disponibilidad
 
+@export_group("Tarjetas de acceso")
+@export var card_access_tier_7: ItemData = preload("res://src/components/items/props/card_access/card_access_tier_7.tres")
+
 # ============================================================
 # NODOS
 # ============================================================
+@onready var start_minigame_sfx: AudioStreamPlayer = $StartMinigameSfx            # suena al empezar un minijuego
+@onready var minigame_finished_sfx: AudioStreamPlayer = $MinigameFinishedSfx    # suena al completarlo
 @onready var server_markers_node: Node2D = $ServersSpawner
 @onready var spawn_player_room: Marker2D = $TeleportPlayers/SpawnPlayer1   # sala de servidores
 @onready var spawn_player_boss: Marker2D = $TeleportPlayers/SpawnPlayer2   # junto al jefe
 @onready var boss_spawn_1: Marker2D = $SpawnerNpcs/SpawnerJeffBesos         # 1er lugar del jefe
-@onready var boss_area: Area2D = $DetedAreaNpcTp/Area2D                     # zona que mueve al jefe
+@onready var boss_area: Area2D = $DetedAreaNpcTp/JeffBesosTp                # zona que lleva al jefe a su 1er lugar
+@onready var boss_area_2: Area2D = $DetedAreaNpcTp/JeffBesosTp2            # zona que lo lleva a la sala del data lake
 @onready var boxes_node: Node2D = $Boxes
+@onready var boss_spawn_2: Marker2D = $SpawnerNpcs/SpawnerJeffBesos2       # 2do lugar del jefe (sala del data lake)
+@onready var ticket_gate: TicketGate = $TicketGates/TicketGate             # ultimo torniquete
+@onready var elevator: Elevator = $Elevator
+@onready var minigame_9_pc: Pc = $Pcs/Pc2                                  # PC del data lake
 # ============================================================
 # ESTADO
 # ============================================================
@@ -40,11 +58,16 @@ var boss_at_spawn_1 := false         # el jefe ya está en su primer lugar
 var minigame_7_done := false         # servidores reparados
 var minigame_7_failed := false       # se acabó el tiempo o te quedaste sin corazones
 var minigame_8_done := false         # zonas de disponibilidad completadas
+var boxes_removed := false           # las cajas del camino ya desaparecieron
+var card7_given := false             # el jefe ya entrego la tarjeta del ultimo torniquete
+var boss_at_spawn_2 := false         # el jefe ya esta en la sala del data lake
+var lake_explained := false          # el jefe ya explico el data lake
+var minigame_9_done := false         # data lake organizado
+var elevator_opened := false         # el jefe dejo operativo el ascensor
 
 # --- Minijuego 7 ---
 var running := false
 var started := false                 # el minijuego 7 ya se pidió o arrancó
-var requested := false               # el diálogo lo pidió; arranca al cerrarse
 var time_left := GAME_DURATION
 var repaired := 0
 
@@ -58,7 +81,7 @@ func _ready() -> void:
 			markers.append(child)
 
 	boss_area.body_entered.connect(_on_boss_area_entered)
-	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+	boss_area_2.body_entered.connect(_on_boss_area_2_entered)
 	GameManager.game_over.connect(_on_game_over)
 
 	# El PC del minijuego 8 exige las credenciales
@@ -67,13 +90,47 @@ func _ready() -> void:
 		minigame_8_pc.locked_text = "Necesitas tus credenciales para usar este PC."
 		minigame_8_pc.completed.connect(_on_minigame_8_completed)
 
+	minigame_9_pc.completed.connect(_on_minigame_9_completed)
+
+	# Si se cargo una partida, vuelve a dejar el nivel como estaba
+	LevelUtils.load_state(self, SAVED_VARS)
+	_apply_loaded_state()
+
+
+# ============================================================
+# GUARDADO
+# ============================================================
+
+# La llaman SaveManager al guardar y SceneTransition al salir del nivel
+func save_state() -> void:
+	LevelUtils.store_state(self, SAVED_VARS)
+
+
+# Reaplica en el mundo lo que el progreso guardado ya habia cambiado
+func _apply_loaded_state() -> void:
+	if npc_boss:
+		if boss_at_spawn_2:
+			npc_boss.teleport_to(boss_spawn_2)
+		elif boss_at_spawn_1:
+			npc_boss.teleport_to(boss_spawn_1)
+	if boxes_removed:
+		LevelUtils.remove_node(boxes_node)
+	if minigame_8_done and minigame_8_pc:
+		minigame_8_pc.mark_done()
+	if card7_given:
+		LevelUtils.open_gates([ticket_gate])
+	if minigame_9_done:
+		minigame_9_pc.mark_done()
+	if elevator_opened:
+		elevator.is_elevator_operational = true
+
 
 # ============================================================
 # EL JEFE
 # ============================================================
 
-# Al pisar la zona, el jefe pasa a su primer lugar.
-# Solo cuenta si ya hablaste con él o ya terminaste el minijuego 7
+# JeffBesosTp: el jefe pasa a su 1er lugar.
+# Solo cuenta si ya hablaste con el o ya terminaste el minijuego 7
 func _on_boss_area_entered(body: Node) -> void:
 	if not body.is_in_group("player") or boss_at_spawn_1:
 		return
@@ -82,41 +139,37 @@ func _on_boss_area_entered(body: Node) -> void:
 	_move_boss_to_spawn_1()
 
 
+# JeffBesosTp2: con la tarjeta 7 ya entregada, el jefe pasa a la sala del data lake
+func _on_boss_area_2_entered(body: Node) -> void:
+	if not body.is_in_group("player") or boss_at_spawn_2 or not card7_given:
+		return
+	boss_at_spawn_2 = true
+	if npc_boss:
+		npc_boss.teleport_to(boss_spawn_2)
+
+
 func _move_boss_to_spawn_1() -> void:
 	if npc_boss == null:
 		return
 	boss_at_spawn_1 = true
-	npc_boss.global_position = boss_spawn_1.global_position
-	npc_boss.set_meta("facing", "d")
-	npc_boss.play_anim("idle")
+	npc_boss.teleport_to(boss_spawn_1)
 
-# El jefe empieza a hablar solo, con un título concreto del diálogo
-func _boss_speaks(title: String) -> void:
-	if npc_boss == null or npc_boss.dialogue_resource == null:
-		return
-	DialogueManager.show_dialogue_balloon(npc_boss.dialogue_resource, title, [npc_boss, self])
 # ============================================================
 # FLUJO DEL MINIJUEGO 7
 # ============================================================
 
-# La llama el diálogo del jefe: solo marca la petición.
-# El minijuego arranca cuando el diálogo se cierra
+# La llama el diálogo del jefe: el minijuego arranca cuando el diálogo se cierra
 func request_minigame() -> void:
 	if started:
 		return
+	started = true
 	minigame_7_failed = false
-	requested = true
-
-
-func _on_dialogue_ended(_resource: DialogueResource) -> void:
-	if requested and not started:
-		requested = false
-		started = true
-		_begin_minigame()
+	LevelUtils.after_dialogue(_begin_minigame)
 
 
 func _begin_minigame() -> void:
 	await SceneTransition.play(_enter_room)
+	start_minigame_sfx.play()
 
 	repaired = 0
 	time_left = GAME_DURATION
@@ -126,7 +179,7 @@ func _begin_minigame() -> void:
 
 # Teletransporta al jugador a la sala y coloca los servidores (con la pantalla en negro)
 func _enter_room() -> void:
-	_teleport_player(spawn_player_room)
+	PlayerControl.teleport_to(spawn_player_room)
 	_spawn_servers()
 
 
@@ -196,6 +249,7 @@ func _finish(won: bool) -> void:
 
 	if won:
 		minigame_7_done = true
+		minigame_finished_sfx.play()
 		GameManager.add_coins(COIN_REWARD)
 	else:
 		minigame_7_failed = true
@@ -207,37 +261,16 @@ func _finish(won: bool) -> void:
 
 	# Ganaste: las cajas desaparecen y el camino queda libre
 	if won:
-		_remove_boxes()
-		_boss_speaks("servers_done")
+		boxes_removed = true
+		LevelUtils.remove_node(boxes_node, 0.6)     # el camino queda libre
+		if npc_boss:
+			npc_boss.speak("servers_done")
 
 
 # Devuelve al jugador junto al jefe y retira los servidores
 func _return_to_boss() -> void:
-	_teleport_player(spawn_player_boss)
+	PlayerControl.teleport_to(spawn_player_boss)
 	_clear_servers()    # el jefe siempre está ahí al volver
-
-# Las cajas se desvanecen y se eliminan; su colisión desaparece con ellas
-func _remove_boxes() -> void:
-	if not is_instance_valid(boxes_node):
-		return
-	var tween := create_tween()
-	tween.tween_property(boxes_node, "modulate:a", 0.0, 0.6)
-	tween.tween_callback(boxes_node.queue_free)
-
-# Mueve al jugador a un marcador y reinicia su velocidad y la cámara
-func _teleport_player(target: Marker2D) -> void:
-	var player := get_tree().get_first_node_in_group("player") as Node2D
-	if player == null:
-		return
-
-	player.global_position = target.global_position
-	if player is CharacterBody2D:
-		player.velocity = Vector2.ZERO
-
-	var cam := player.get_node_or_null("Camera2D") as Camera2D
-	if cam:
-		cam.reset_smoothing()
-
 
 # ============================================================
 # MINIJUEGO 8: zonas de disponibilidad
@@ -247,7 +280,34 @@ func _on_minigame_8_completed() -> void:
 	if minigame_8_done:
 		return
 	minigame_8_done = true
+	InventoryManager.remove_item(CREDENTIALS_ID)     # las credenciales se gastan
 	GameManager.add_coins(COIN_REWARD)
+
+
+# ============================================================
+# TARJETA, MINIJUEGO 9 Y ASCENSOR
+# ============================================================
+
+# El jefe entrega la tarjeta y se abre el ultimo torniquete (la llama el dialogo)
+func give_card_tier_7() -> void:
+	if card7_given:
+		return
+	card7_given = true
+	LevelUtils.give_card(card_access_tier_7, [ticket_gate])
+
+
+func _on_minigame_9_completed() -> void:
+	if minigame_9_done:
+		return
+	minigame_9_done = true
+	GameManager.add_coins(COIN_REWARD)
+	# El jefe no habla solo: el jugador debe volver con el para que lo deje ir (abre el ascensor)
+
+
+# Deja operativo el ascensor (la llama el dialogo)
+func open_elevator() -> void:
+	elevator_opened = true
+	elevator.is_elevator_operational = true
 
 
 # ============================================================

@@ -6,6 +6,8 @@
 [ext_resource type="FontFile" uid="uid://dhuiae4jqwh0y" path="res://assets/fonts/determination.ttf" id="3_w75iv"]
 [ext_resource type="Texture2D" uid="uid://qitsmb1xfdry" path="res://assets/sprites/hud/backpack.png" id="5_imuuq"]
 [ext_resource type="PackedScene" uid="uid://bl7hfcdb0ldxp" path="res://ui/inventory/inventory.tscn" id="6_kwc50"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/give_heart_sfx.ogg" id="give_heart_sfx"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/lost_heart_sfx.ogg" id="lost_heart_sfx"]
 
 [node name="Hud" type="CanvasLayer" unique_id=917611303]
 script = ExtResource("1_w75iv")
@@ -82,3 +84,13 @@ text = "R"
 
 [node name="Inventory" parent="." unique_id=1581503205 instance=ExtResource("6_kwc50")]
 visible = false
+
+[node name="GiveHeartSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("give_heart_sfx")
+process_mode = 3
+bus = &"SFX"
+
+[node name="LostHeartSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("lost_heart_sfx")
+process_mode = 3
+bus = &"SFX"

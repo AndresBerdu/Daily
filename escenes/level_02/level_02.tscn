@@ -1,14 +1,14 @@
 [gd_scene format=4 uid="uid://cp3xcx613nmre"]
 
-[ext_resource type="Texture2D" uid="uid://bdvocg6jnfalw" path="res://assets/sprites/level_01/Office_essentials_spritesheet.png" id="1_axv0t"]
+[ext_resource type="Texture2D" uid="uid://bdvocg6jnfalw" path="res://assets/sprites/tiles/Office_essentials_spritesheet.png" id="1_axv0t"]
 [ext_resource type="Script" uid="uid://cwmvd65mwhd5y" path="res://escenes/level_02/level_02.gd" id="1_qkpj8"]
-[ext_resource type="Texture2D" uid="uid://sql5n8lkita8" path="res://assets/sprites/level_01/sprite_sheet_decoration_office.png" id="2_oajor"]
+[ext_resource type="Texture2D" uid="uid://sql5n8lkita8" path="res://assets/sprites/tiles/sprite_sheet_decoration_office.png" id="2_oajor"]
 [ext_resource type="Texture2D" uid="uid://iw28j3jhbmxn" path="res://assets/sprites/sheets/belt.png" id="3_3cwp2"]
 [ext_resource type="PackedScene" uid="uid://dcdogvkuk1jp2" path="res://src/entities/player/player.tscn" id="3_4j2n2"]
-[ext_resource type="Texture2D" uid="uid://kixpvit8b8s3" path="res://assets/sprites/level_01/level_01.png" id="3_m0sy6"]
+[ext_resource type="Texture2D" uid="uid://kixpvit8b8s3" path="res://assets/sprites/tiles/level_01.png" id="3_m0sy6"]
 [ext_resource type="PackedScene" uid="uid://dqinf3ok8v043" path="res://src/entities/npc/npc.tscn" id="4_21h3d"]
 [ext_resource type="AudioStream" uid="uid://d0n4m5gi52ns3" path="res://assets/audio/music/level_02_music.ogg" id="5_oajor"]
-[ext_resource type="Texture2D" uid="uid://cal6ljwbbv5jv" path="res://assets/sprites/level_01/Gritty Bathroom Interior Pack Export.png" id="5_u5dyr"]
+[ext_resource type="Texture2D" uid="uid://cal6ljwbbv5jv" path="res://assets/sprites/tiles/Gritty Bathroom Interior Pack Export.png" id="5_u5dyr"]
 [ext_resource type="PackedScene" uid="uid://csj7wb3rredl5" path="res://src/entities/level_02/minigame_6/security_pc/security_pc.tscn" id="8_7t22e"]
 [ext_resource type="Script" uid="uid://dg66os7ipgfnh" path="res://src/entities/level_02/minigame_6/belt_packets/belt_packets.gd" id="9_7t22e"]
 [ext_resource type="Texture2D" uid="uid://27vm4xb0lroj" path="res://assets/sprites/items/box/box.png" id="11_grab8"]
@@ -58,6 +58,8 @@
 [ext_resource type="PackedScene" uid="uid://7ya6jlho1h51" path="res://src/entities/tramps/spike/spike.tscn" id="48_81hu1"]
 [ext_resource type="Texture2D" uid="uid://dng17nryy16km" path="res://assets/sprites/tramps/spike/Spike Trap.png" id="49_ri126"]
 [ext_resource type="PackedScene" uid="uid://dxrctxh7wa64s" path="res://escenes/level_03/level_03.tscn" id="51_ihbpt"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/start_minigame_sfx.ogg" id="start_minigame_sfx"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/minigame_finished_sfx.ogg" id="minigame_finished_sfx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3cwp2"]
 texture = ExtResource("1_axv0t")
@@ -2226,6 +2228,9 @@ size = Vector2(20, 40)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajtct"]
 size = Vector2(32, 34)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_loq3h"]
+size = Vector2(252, 20)
+
 [node name="Level02" type="Node2D" unique_id=1014958152]
 script = ExtResource("1_qkpj8")
 
@@ -2574,4 +2579,18 @@ position = Vector2(1743, -1304)
 shape = SubResource("RectangleShape2D_ajtct")
 
 [node name="Player" parent="." unique_id=1866043696 instance=ExtResource("3_4j2n2")]
-position = Vector2(1739, -1537)
+position = Vector2(50, 73)
+
+[node name="NoPassBelt" type="StaticBody2D" parent="." unique_id=1268974997]
+position = Vector2(1641, -1611)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoPassBelt" unique_id=1268974998]
+shape = SubResource("RectangleShape2D_loq3h")
+
+[node name="StartMinigameSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("start_minigame_sfx")
+bus = &"SFX"
+
+[node name="MinigameFinishedSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("minigame_finished_sfx")
+bus = &"SFX"

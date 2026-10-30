@@ -6,6 +6,8 @@ signal repaired
 const MOTHERBOARD_SCENE := preload("res://src/entities/level_01/minigame_3/mother_board/mother_board.tscn")  # cambia a tu ruta
 
 @onready var area: Area2D = $InteractionArea
+@onready var start_minigame_sfx: AudioStreamPlayer = $StartMinigameSfx
+@onready var minigame_finished_sfx: AudioStreamPlayer = $MinigameFinishedSfx
 
 var is_repaired := false
 var is_open := false
@@ -17,7 +19,7 @@ func _player_inside() -> bool:
 	return false
 
 func _unhandled_input(event: InputEvent) -> void:
-	if is_repaired or is_open or not event.is_action_pressed("interact"):
+	if is_repaired or is_open or not PlayerControl.is_interact(event):
 		return
 	if not _player_inside():
 		return
@@ -26,23 +28,23 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _open_game() -> void:
 	is_open = true
-	_freeze_player(true)
+	start_minigame_sfx.play()
+	PlayerControl.freeze(self)
 
 	var game := MOTHERBOARD_SCENE.instantiate() as MotherboardGame
 	game.completed.connect(_on_completed)
 	game.closed.connect(_on_closed)
 	get_tree().current_scene.add_child(game)
 
+# Deja el PC como ya reparado (al cargar una partida), sin repetir el minijuego
+func mark_done() -> void:
+	is_repaired = true
+
 func _on_completed() -> void:
 	is_repaired = true
+	minigame_finished_sfx.play()
 	repaired.emit()
 
 func _on_closed() -> void:
 	is_open = false
-	_freeze_player(false)
-
-# Detiene al jugador sin pausar el árbol (la pausa rompería los Area2D del minijuego)
-func _freeze_player(frozen: bool) -> void:
-	var player := get_tree().get_first_node_in_group("player")
-	if player:
-		player.process_mode = Node.PROCESS_MODE_DISABLED if frozen else Node.PROCESS_MODE_INHERIT
+	PlayerControl.unfreeze(self)

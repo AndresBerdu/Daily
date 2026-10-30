@@ -18,6 +18,11 @@ func _ready() -> void:
 	_apply_outfit()
 
 func _process(_delta: float) -> void:
+	# Dialogo, minijuego o transicion abiertos: el jugador pasa al estado "frozen"
+	if PlayerControl.is_frozen() and _current_action() != "frozen":
+		var current := state_machine.current_state
+		if current:
+			current.transitioned.emit("frozen")
 	_apply_outfit()
 
 # Elimina las pistas que cambian la hoja, para que ninguna animacion pise el traje

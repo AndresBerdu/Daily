@@ -21,7 +21,7 @@ func _player_inside() -> bool:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if is_done or is_open or not event.is_action_pressed("interact") or event.is_echo():
+	if is_done or is_open or not PlayerControl.is_interact(event) or event.is_echo():
 		return
 	if not _player_inside():
 		return
@@ -31,7 +31,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _open_game() -> void:
 	is_open = true
-	_freeze_player(true)
+	PlayerControl.freeze(self)
 
 	# El minijuego va en un CanvasLayer para verse fijo en pantalla
 	layer = CanvasLayer.new()
@@ -55,7 +55,7 @@ func _on_closed() -> void:
 		return
 	is_open = false
 	layer = null
-	_freeze_player(false)
+	PlayerControl.unfreeze(self)
 	closed.emit()
 
 
@@ -64,14 +64,8 @@ func force_close() -> void:
 	if not is_open:
 		return
 	is_open = false
-	_freeze_player(false)
+	PlayerControl.unfreeze(self)
 	if is_instance_valid(layer):
 		layer.queue_free()
 	layer = null
 	closed.emit()
-
-
-func _freeze_player(frozen: bool) -> void:
-	var player := get_tree().get_first_node_in_group("player")
-	if player:
-		player.process_mode = Node.PROCESS_MODE_DISABLED if frozen else Node.PROCESS_MODE_INHERIT

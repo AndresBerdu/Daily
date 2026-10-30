@@ -1,0 +1,8 @@
+~ start
+if has_curriculum()
+	El nuevo: ...Mejor me voy. Me da miedo entrar a trabajar, no me siento listo.
+else
+	El nuevo: ...Mejor me voy. Me da miedo entrar a trabajar, no me siento listo.
+	El nuevo: Además, se me olvidó el currículum. ¿Cómo voy a ir a una entrevista sin currículum?
+El nuevo: Hoy no es mi día... Se acabó.
+=> END

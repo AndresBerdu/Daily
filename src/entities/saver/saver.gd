@@ -18,7 +18,7 @@ func _player_inside() -> bool:
 	return false
 
 func _unhandled_input(event: InputEvent) -> void:
-	if menu_open or not event.is_action_pressed("interact"):
+	if menu_open or not PlayerControl.is_interact(event):
 		return
 	if not _player_inside():
 		return

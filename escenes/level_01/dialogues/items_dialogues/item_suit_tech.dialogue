@@ -4,7 +4,7 @@ if is_box_unlocked()
 	Dentro de la caja hay un traje de técnico.
 	- Recoger traje
 		do collect()
-		Has obtenido el traje de técnico.
+		*Has recogido el traje de técnico.
 		=> END
 	- Dejarlo
 		=> END

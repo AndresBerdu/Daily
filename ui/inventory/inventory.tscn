@@ -18,22 +18,22 @@ metadata/_edit_use_anchors_ = true
 
 [node name="InventoryOutline" type="ColorRect" parent="." unique_id=191512318]
 anchors_preset = -1
-anchor_left = 0.35
+anchor_left = 0.225
 anchor_top = 0.13333334
-anchor_right = 0.65
+anchor_right = 0.7859375
 anchor_bottom = 0.9111111
-offset_left = -24.0
-offset_right = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="InventoryContainer" type="ColorRect" parent="." unique_id=1760854897]
 anchors_preset = -1
-anchor_left = 0.3625
+anchor_left = 0.2375
 anchor_top = 0.15555556
-anchor_right = 0.6375
+anchor_right = 0.7734375
 anchor_bottom = 0.8888889
-offset_left = -24.0
-offset_right = 24.0
 color = Color(0.056291588, 0.056291603, 0.056291595, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="InventoryContainer" unique_id=351546586]
 layout_mode = 1
@@ -50,34 +50,45 @@ theme_override_constants/margin_bottom = 8
 [node name="ScrollContainer" type="ScrollContainer" parent="InventoryContainer/MarginContainer" unique_id=2084345994]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="InventoryContainer/MarginContainer/ScrollContainer" unique_id=679408759]
+[node name="ItemGrid" type="GridContainer" parent="InventoryContainer/MarginContainer/ScrollContainer" unique_id=679408759]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 9
+theme_override_constants/v_separation = 6
+columns = 4
 
-[node name="ItemSlot" type="HBoxContainer" parent="InventoryContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1470760871]
+[node name="Icon" type="TextureRect" parent="InventoryContainer/MarginContainer/ScrollContainer/ItemGrid" unique_id=946512501]
 layout_mode = 2
-theme_override_constants/separation = 9
-
-[node name="Icon" type="TextureRect" parent="InventoryContainer/MarginContainer/ScrollContainer/VBoxContainer/ItemSlot" unique_id=946512501]
-layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 texture = ExtResource("1_s83yu")
+stretch_mode = 5
 
-[node name="LabelName" type="Label" parent="InventoryContainer/MarginContainer/ScrollContainer/VBoxContainer/ItemSlot" unique_id=1532833614]
+[node name="LabelName" type="Label" parent="InventoryContainer/MarginContainer/ScrollContainer/ItemGrid" unique_id=1532833614]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_qrt2q")
 theme_override_font_sizes/font_size = 11
 text = "item_01"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="LabelQuantity" type="Label" parent="InventoryContainer/MarginContainer/ScrollContainer/VBoxContainer/ItemSlot" unique_id=1488724718]
+[node name="LabelQuantity" type="Label" parent="InventoryContainer/MarginContainer/ScrollContainer/ItemGrid" unique_id=1488724718]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_qrt2q")
 theme_override_font_sizes/font_size = 11
 text = "x1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="LabelEquipped" type="Label" parent="InventoryContainer/MarginContainer/ScrollContainer/VBoxContainer/ItemSlot" unique_id=2072603729]
+[node name="LabelEquipped" type="Label" parent="InventoryContainer/MarginContainer/ScrollContainer/ItemGrid" unique_id=2072603729]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_qrt2q")
 theme_override_font_sizes/font_size = 11
 text = "Equip"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LabelEmpty" type="Label" parent="InventoryContainer/MarginContainer" unique_id=1706028754]
 layout_mode = 2

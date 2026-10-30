@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Daily Software Engineer"
+run/main_scene="res://ui/menus/menu/menu.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -21,10 +22,14 @@ buses/default_bus_layout="uid://265owrquavu"
 [autoload]
 
 DialogueManager="*uid://c3rodes2l3gxb"
+PlayerControl="*res://src/managers/player_control.gd"
 GameManager="*uid://css6ywtr7qkbl"
 SaveManager="*uid://c4qbuso1iv1s1"
 InventoryManager="*uid://b6mj4oaaxjkq2"
 SceneTransition="*uid://kljn3hgg6f7k"
+SettingsManager="*res://src/managers/settings_manager.gd"
+PauseManager="*res://src/managers/pause_manager.gd"
+GameFlow="*res://src/managers/game_flow.gd"
 
 [dialogue_manager]
 
@@ -84,7 +89,9 @@ key_down={
 }
 interact={
 "deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":16,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194310,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 inventory={
@@ -95,7 +102,7 @@ inventory={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://escenes/lobby/dialogues/quee/quee.dialogue", "res://escenes/lobby/dialogues/first_job.dialogue", "res://escenes/lobby/dialogues/items/item_cv.dialogue", "res://escenes/level_02/dialogues/item_token.dialogue", "res://escenes/level_01/dialogues/items_dialogues/item_release_agent.dialogue", "res://escenes/level_01/dialogues/items_dialogues/item_suit_tech.dialogue", "res://escenes/level_01/dialogues/items_dialogues/item_money_sticked.dialogue", "res://escenes/level_02/dialogues/npc_willy_wonka.dialogue", "res://escenes/level_01/dialogues/npc_sara.dialogue", "res://escenes/level_01/dialogues/npc_java_junkie.dialogue", "res://escenes/level_01/dialogues/npc_martin.dialogue", "res://escenes/level_01/dialogues/items_dialogues/item_usb.dialogue", "res://escenes/level_01/dialogues/npc_sellder_1.dialogue", "res://escenes/lobby/dialogues/npc/npc_recepcionist.dialogue", "res://escenes/lobby/dialogues/npc/npc_recepcionist_blonde.dialogue", "res://escenes/level_02/dialogues/item_card_access_4.dialogue", "res://escenes/level_02/dialogues/npc_jefe_yudernis_neleixys.dialogue", "res://escenes/level_02/dialogues/npc_charlie.dialogue", "res://escenes/level_02/dialogues/npc_hombre_sospechoso.dialogue", "res://escenes/level_02/dialogues/npc_seller_02.dialogue", "res://escenes/level_02/dialogues/item_suit_security.dialogue", "res://item_tokenuntitled.dialogue", "res://escenes/item_money.dialogue", "res://escenes/level_03/dialogues/npc_jefe_jeff_besos.dialogue", "res://escenes/level_03/dialogues/item_credentials.dialogue", "res://escenes/level_03/dialogues/item_money_stiked_3.dialogue")
+locale/translations_pot_files=PackedStringArray("res://escenes/lobby/dialogues/quee/quee.dialogue", "res://escenes/lobby/dialogues/first_job.dialogue", "res://escenes/lobby/dialogues/items/item_cv.dialogue", "res://escenes/level_02/dialogues/item_token.dialogue", "res://escenes/level_01/dialogues/items_dialogues/item_release_agent.dialogue", "res://escenes/level_01/dialogues/items_dialogues/item_suit_tech.dialogue", "res://escenes/level_01/dialogues/items_dialogues/item_money_sticked.dialogue", "res://escenes/level_02/dialogues/npc_willy_wonka.dialogue", "res://escenes/level_01/dialogues/npc_sara.dialogue", "res://escenes/level_01/dialogues/npc_java_junkie.dialogue", "res://escenes/level_01/dialogues/npc_martin.dialogue", "res://escenes/level_01/dialogues/items_dialogues/item_usb.dialogue", "res://escenes/level_01/dialogues/npc_sellder_1.dialogue", "res://escenes/lobby/dialogues/npc/npc_recepcionist.dialogue", "res://escenes/lobby/dialogues/npc/npc_recepcionist_blonde.dialogue", "res://escenes/level_02/dialogues/item_card_access_4.dialogue", "res://escenes/level_02/dialogues/npc_jefe_yudernis_neleixys.dialogue", "res://escenes/level_02/dialogues/npc_charlie.dialogue", "res://escenes/level_02/dialogues/npc_hombre_sospechoso.dialogue", "res://escenes/level_02/dialogues/npc_seller_02.dialogue", "res://escenes/level_02/dialogues/item_suit_security.dialogue", "res://item_tokenuntitled.dialogue", "res://escenes/item_money.dialogue", "res://escenes/level_03/dialogues/npc_jefe_jeff_besos.dialogue", "res://escenes/level_03/dialogues/item_credentials.dialogue", "res://escenes/level_03/dialogues/item_money_stiked_3.dialogue", "res://escenes/lobby/dialogues/exit.dialogue", "res://escenes/top_floor/dialogues/ending.dialogue", "res://escenes/level_03/dialogues/npc_buhonero_03.dialogue")
 
 [physics]
 

@@ -1,7 +1,14 @@
+class_name SlotMenu
 extends CanvasLayer
+## Menu de slots. En modo SAVE guarda en el slot elegido; en modo LOAD carga esa partida.
+## Para usarlo como "cargar": instanciar, poner mode = Mode.LOAD y luego add_child.
 
 signal saved(slot: int)
 signal closed
+
+enum Mode { SAVE, LOAD }
+
+var mode := Mode.SAVE
 
 @onready var slots: Array[Control] = [
 	$BackgroundContainer/Slot1,
@@ -10,9 +17,11 @@ signal closed
 ]
 
 var selected := 0
+var _was_paused := false      # estado de pausa al abrir, para devolverlo al cerrar
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	_was_paused = get_tree().paused
 	get_tree().paused = true
 
 	for i in slots.size():
@@ -46,9 +55,18 @@ func _save_slot(i: int) -> void:
 		_refresh_slot(i)
 		saved.emit(i + 1)
 
+# Segun el modo, elegir un slot guarda o carga
+func _activate(i: int) -> void:
+	match mode:
+		Mode.SAVE:
+			_save_slot(i)
+		Mode.LOAD:
+			if SaveManager.has_save(i + 1):
+				GameFlow.load_slot(i + 1)
+
 func _on_slot_gui_input(event: InputEvent, i: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		_save_slot(i)
+		_activate(i)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_down"):
@@ -56,7 +74,7 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("ui_up"):
 		_select((selected - 1 + slots.size()) % slots.size())
 	elif event.is_action_pressed("ui_accept"):
-		_save_slot(selected)
+		_activate(selected)
 	elif event.is_action_pressed("ui_cancel"):
 		_close()
 	else:
@@ -64,6 +82,6 @@ func _input(event: InputEvent) -> void:
 	get_viewport().set_input_as_handled()
 
 func _close() -> void:
-	get_tree().paused = false
+	get_tree().paused = _was_paused
 	closed.emit()
 	queue_free()

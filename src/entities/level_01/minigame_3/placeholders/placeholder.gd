@@ -17,12 +17,13 @@ enum Kind { SCREW, WELD }
 
 @export_group("Pista visual")
 @export var hint_color := Color(1.0, 0.1, 0.1)
-@export_range(0.0, 1.0) var weld_hint_alpha := 0.3
+@export_range(0.0, 1.0) var weld_hint_alpha := 0.6   # opacidad de la marca de soldadura mientras parpadea (0 = sin pista)
 @export_range(0.0, 1.0) var ghost_alpha := 0.4   # opacidad del tornillo fantasma al rearmar
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var area: Area2D = $InteractionArea
-@onready var sfx: AudioStreamPlayer = $sfx
+@onready var sfx: AudioStreamPlayer = $sfx              # tornillos
+@onready var weld_sfx: AudioStreamPlayer = $weld_sfx    # soldaduras
 
 var is_fixed := false
 var busy := false
@@ -48,7 +49,9 @@ func activate() -> void:
 	if kind == Kind.SCREW:
 		hint_tween = Blink.pulse(sprite, "self_modulate", Color.WHITE, hint_color)
 	elif weld_hint_alpha > 0.0:
-		hint_tween = Blink.pulse(sprite, "modulate:a", 0.0, weld_hint_alpha)
+		# La marca se ve y parpadea en rojo, igual que los tornillos
+		sprite.modulate.a = weld_hint_alpha
+		hint_tween = Blink.pulse(sprite, "self_modulate", Color.WHITE, hint_color)
 
 # Fase final: el tornillo vuelve a su agujero como fantasma y hay que apretarlo
 func activate_reassembly() -> void:
@@ -74,12 +77,9 @@ func _on_input_event(_vp: Node, event: InputEvent, _idx: int) -> void:
 func _start_fix() -> void:
 	busy = true
 	area.input_pickable = false
-	sfx.play()
+	(sfx if kind == Kind.SCREW else weld_sfx).play()
 
-	if kind == Kind.SCREW:
-		Blink.stop(hint_tween, sprite, "self_modulate", Color.WHITE)
-	else:
-		Blink.stop(hint_tween, sprite, "modulate:a")
+	Blink.stop(hint_tween, sprite, "self_modulate", Color.WHITE)
 
 	fix_started.emit(self, fix_duration)
 

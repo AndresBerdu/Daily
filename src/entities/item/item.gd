@@ -20,15 +20,25 @@ signal collected(item: Item)
 
 var enabled := true
 var busy := false
+var collected_key := ""       # bandera que recuerda que ya se recogio (se guarda con la partida)
 
 func _ready() -> void:
 	if item_texture:
 		$Sprite2D.texture = item_texture
 		
 	DialogueManager.dialogue_ended.connect(func(_r): busy = false)
-	set_enabled(start_enabled)
+	collected_key = _make_collected_key()
+	set_enabled(start_enabled)      # si ya se recogio en esta partida, queda desactivado
+
+# Id unico y estable: escena + ruta del nodo dentro de ella
+func _make_collected_key() -> String:
+	var root: Node = owner if owner else get_tree().current_scene
+	return "collected:%s:%s" % [root.scene_file_path, root.get_path_to(self)]
+
 
 func set_enabled(value: bool) -> void:
+	if value and GameManager.has_flag(collected_key):
+		value = false               # ya lo recogiste: no vuelve a aparecer
 	enabled = value
 	visible = value
 	interaction_area.set_deferred("monitoring", value)
@@ -40,7 +50,7 @@ func _player_inside() -> bool:
 	return false
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not enabled or busy or not event.is_action_pressed("interact"):
+	if not enabled or busy or not PlayerControl.is_interact(event):
 		return
 	if not _player_inside():
 		return
@@ -77,4 +87,5 @@ func collect() -> void:
 	sfx_sound.play()
 	collected.emit(self)
 	if disappear_after:
+		GameManager.set_flag(collected_key)
 		set_enabled(false)

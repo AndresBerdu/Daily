@@ -4,54 +4,57 @@ if is_elevator_open()
 elif has_card_tier_3()
 	Sara: Ya tienes tu tarjeta de nivel 3. Ve con Martín, él te está esperando.
 elif is_minigame2_done()
-	Sara: !Bien hecho! los nuevos programas para los empleados esta lista, ahora que terminastes falta un trabajo más.
-	Sara: En la sala número 2 de tecnicos hay unos pc que toca realizarle mantenimiento para que esten de nuevo operativos.
-	Sara: Necesito que vayas y realices este ultimo trabajo. Cuando termines vuelve con Martín el te dira que es lo proximo que debes hacer. Adios ( ˙▿˙ ).
+	Sara: ¡Bien hecho! Los nuevos programas para los empleados están listos. Ahora que terminaste, falta un trabajo más.
+	Sara: En la sala número 2 de técnicos hay unos PC a los que les toca hacer mantenimiento para que estén de nuevo operativos.
+	Sara: El mantenimiento de hardware es una parte clave del soporte técnico. En la vida real consiste en abrir el equipo, revisar que la placa base, los cables y los componentes estén bien conectados, y reparar o reemplazar lo que falle, para que el computador vuelva a funcionar sin perder la información del usuario.
+	Sara: Necesito que vayas y realices este último trabajo. Cuando termines, vuelve con Martín; él te dirá qué es lo próximo que debes hacer. Adiós ( ˙▿˙ ).
 	Sara: Ah, y toma esta tarjeta de acceso de nivel 3. Con ella llegas a la zona del último trabajo.
-	Sara: *Has obtenido tarjeta de acceso de nivel 3
+	*Has obtenido la tarjeta de acceso de nivel 3.
 	do get_card_access_tier_3()
 elif has_card_tier_2()
-	Sara: Ya tienes la tarjeta de nivel 2. Ve a la sala nueva, arriba por el pasillo a la derecha, y acuérdate del botón de "Reboot".
+	Sara: Ya tienes la tarjeta de nivel 2. Ve a la sala nueva, arriba por el pasillo a la derecha, y acuérdate del botón de «Reboot».
 elif is_minigame1_done() and has_image_iso()
 	Sara: Ya tienes la imagen ISO. Ahora ve con Martín, él te dará la tarjeta de acceso de nivel 2.
 elif is_minigame1_done()
-	Sara: Buen trabajo atendiendo los problemas de los empleados me soprende la verdad.
-	Jugador: Si fue muy duro tratar de ayudar a tantas personas y más si te van a despedir si no ayudas a todos.
-	Sara: Muy bien es hora de que continues con tu siguiente trabajo.
-	Jugador: ¿QUÉ MAS TRABAJO?
-	Sara: Claro que si nuevo, que esperabas un descanso con un Café y arepa. Claro que no.
-	Jugador: Ok, ¿Qué es lo siguiente que debo de hacer?
-	Sara: Debes de ir a la nueva Sala que esta arriba por el pasillo a la derecha. Ahí hay unos computadores los cuales deben de tener instalados todos los programas.
-	Sara: Para instalar los programas debes de acercarte al computador y presionar el botón de "Install". Pero ten cuidado durante la instalación, puede que ocurra algo mal durante la instalación.
-	Sara: Tienes que presionar el botón de "Reboot" lo mas rapido posible porque si dejas que el error siga al final el computador quedara en pantalla azul y en ese momento el que te va a reportar sere yo >:) asi que ten cuidado.
-	Jugador: Mmm... Ok entiendo que es lo que debo de hacer.
+	Sara: Buen trabajo atendiendo los problemas de los empleados, me sorprendes la verdad.
+	El nuevo: Sí, fue muy duro tratar de ayudar a tantas personas, y más si te van a despedir si no ayudas a todos.
+	Sara: Muy bien, es hora de que continúes con tu siguiente trabajo.
+	El nuevo: ¿QUÉ MÁS TRABAJO?
+	Sara: Claro que sí, nuevo. ¿Qué esperabas, un descanso con café y arepa? Claro que no.
+	El nuevo: Ok, ¿Qué es lo siguiente que debo de hacer?
+	Sara: Debes ir a la nueva sala que está arriba por el pasillo a la derecha. Ahí hay unos computadores que deben tener instalados todos los programas.
+	Sara: Esto se llama despliegue de software. En la vida real, cuando una empresa tiene decenas de equipos, los técnicos no instalan todo a mano: usan una imagen ISO, que es una copia exacta del sistema y los programas, y la replican en cada computador para que todos queden iguales y listos para trabajar.
+	Sara: Para instalar los programas debes acercarte al computador y presionar el botón de «Install». Pero ten cuidado: durante la instalación puede ocurrir algún error.
+	Sara: Tienes que presionar el botón de «Reboot» lo más rápido posible, porque si dejas que el error siga, al final el computador quedará en pantalla azul y en ese momento la que te va a reportar seré yo >:) Así que ten cuidado.
+	El nuevo: Mmm... Ok, entiendo lo que debo hacer.
 	Sara: Pero antes necesitas una imagen ISO con los programas. Cómprala en la tienda con el dinero que ganaste atendiendo a los empleados.
 	Sara: Cuando la tengas, ve con Martín. Él te dará la tarjeta de acceso de nivel 2 para entrar a esa sala.
-	Jugador: Ok, compro la imagen ISO y voy con Martín.
+	El nuevo: Ok, compro la imagen ISO y voy con Martín.
 elif has_suit() and has_usb() and sara_taking
-	Sara: ¡Genial! Ya tienes el traje y la usb. 
-	Sara: Ahora si podemos empezar a trabajar de verdad, Ahora mismo hay muchas personas que tienen el excel o el word malo, cuando te salha un signo de ! significa que te estan pidiendo ayuda.
-	Sara: Acercate a ellos para ayudarlos y presiona rapidamente la "E"  para ayudarles lo más rapido posible, y sera mejor que sea rapido porque hay 24 personas en esta oficina, apurate.
-	Sara: Una vez que ya este normal el panorama vuelve aqui y te asignare tu siguiente tarea.
+	Sara: ¡Genial! Ya tienes el traje y la USB.
+	Sara: Ahora sí podemos empezar a trabajar de verdad. Ahora mismo hay muchas personas que tienen Excel o Word dañado; cuando te salga un signo de «!» significa que te están pidiendo ayuda.
+	Sara: Lo que vas a hacer se llama soporte técnico o «mesa de ayuda». En la vida real, cuando un empleado reporta una falla, se abre un ticket y el técnico lo atiende según la urgencia: diagnostica el problema, lo repara o reinstala el programa y deja constancia de lo que hizo.
+	Sara: Acércate a ellos para ayudarlos y presiona rápidamente «Espacio» o «Enter» para atenderlos lo más rápido posible. Será mejor que seas rápido, porque hay 24 personas en esta oficina. ¡Apúrate!
+	Sara: Una vez que el panorama esté normal, vuelve aquí y te asignaré tu siguiente tarea.
 	do request_minigame()
 elif sara_taking == false
-	Sara: ¡Ah! Hola, ¿quién eres? 
-	Jugador: Hola, mi nombre es Jugador. Soy el nuevo empleado de la empresa. 
+	Sara: ¡Ah! Hola, ¿quién eres?
+	El nuevo: Hola, soy el nuevo empleado de la empresa.
 	Sara: Ah, ok, no lo sabía. ¿Y qué necesitas? 
-	Jugador: Martín me dijo que viniera acá para que me asignaras una tarea y me dieras mi traje. 
+	El nuevo: Martín me dijo que viniera acá para que me asignaras una tarea y me dieras mi traje. 
 	Sara: Ese Martín siempre me encaja a los nuevos mientras él se queda en el baño jugando Chinpokomon. 
-	Sara: Como sea, estamos muy atareados últimamente. Muchos empleados están reportando fallas con los programas ofimáticos y tendras que instalar de nuevo los programas del Microhard 720. 
+	Sara: Como sea, estamos muy atareados últimamente. Muchos empleados están reportando fallas con los programas ofimáticos y tendrás que reinstalar los programas de Microhard 720. 
 	Sara: Necesito que vayas a las oficinas y los ayudes. Ah, y que no se te olvide tu traje de técnico; si no lo llevas puesto, no te dejarán tocar sus PCs. Está en esa caja que ves en el piso. 
-	Jugador: OK, muchas gracias. Ya me voy a poner a trabajar. 
+	El nuevo: OK, muchas gracias. Ya me voy a poner a trabajar. 
 	Sara: Sí, sí. Solo no vayas a meter la pata dejando mucho tiempo desatendidos a los empleados. Se enojan muy rápido si no les solucionas los problemas y te pueden reportar con Martín. Él despide a la gente en un parpadeo, así que será mejor que te apures si no quieres ser el siguiente.
-	Sara: Por utimilo te hago entrega de la usb con los progra...
+	Sara: Por último, te hago entrega de la USB con los progra...
 	Sara: ...
 	Sara: ...
 	Sara: ...
-	Sara: Bueno al parecer se me perdio la usb trata de buscarla por allá sino Martin me matara.. Que descuido.
-	Jugador: Ok me pondre el traje y buscare la usb
+	Sara: Bueno, al parecer se me perdió la USB. Trata de buscarla por allá, si no Martín me matará... Qué descuido.
+	El nuevo: Ok, me pondré el traje y buscaré la USB.
 	do unlock_box()
 	set sara_taking = true
 else
-	Sara: Que estas esperando agarra el traje y busca la usb
+	Sara: ¿Qué estás esperando? Agarra el traje y busca la USB.
 => END

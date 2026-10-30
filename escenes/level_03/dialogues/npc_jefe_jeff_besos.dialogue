@@ -1,9 +1,39 @@
 ~ start
-if minigame_8_done
-	Jefe Jeff Besos: Buen trabajo con las zonas de disponibilidad. Tu siguiente tarea te la asigno más adelante.
+if minigame_9_done
+	Jefe Jeff Besos: Mira nada más, el data lake quedó ordenado. Y sin virus.
+	Jefe Jeff Besos: Con esto terminas tu trabajo en esta área. Ya puedes ir a la oficina del jefe.
+	Jefe Jeff Besos: Toma el elevador. Yo ya lo dejé operativo.
+	El nuevo: Entendido. Gracias.
+	do open_elevator()
+elif boss_at_spawn_2 and lake_explained
+	Jefe Jeff Besos: ¿Otra vez aquí? Ve al computador y organiza los archivos del data lake en su contenedor.
+	Jefe Jeff Besos: Y si ves un virus o algo extraño, descártalo. No lo mezcles con los datos buenos.
+	Jefe Jeff Besos: Cuando termines, vuelve conmigo para que te deje ir.
+elif boss_at_spawn_2
+	Jefe Jeff Besos: Llegaste. Esta es la sala del data lake.
+	El nuevo: ¿Data lake? ¿Es un lago de verdad?
+	Jefe Jeff Besos: No seas ridículo. Un data lake es un repositorio donde la empresa guarda todos sus datos tal como llegan: imágenes, videos, imágenes ISO, de todo.
+	Jefe Jeff Besos: El problema es que llegan revueltos, y tu tarea es organizarlos.
+	Jefe Jeff Besos: En la vida real, los data lakes se usan para análisis de datos e inteligencia artificial. Los ingenieros de datos clasifican cada archivo y lo escanean en busca de malware antes de usarlo.
+	Jefe Jeff Besos: En el computador te irán apareciendo archivos. Arrastra cada uno al contenedor que le corresponde: imágenes con imágenes, videos con videos e ISO con ISO.
+	Jefe Jeff Besos: Y si identificas un virus o algo extraño, lo descartas en el contenedor de virus. Si lo mezclas con los datos buenos, contaminas todo el lago.
+	Jefe Jeff Besos: Si te equivocas de contenedor, pierdes una vida. Cuando termines, vuelve conmigo y te dejo ir.
+	El nuevo: Entendido, voy al computador.
+	set lake_explained = true
+elif card7_given
+	Jefe Jeff Besos: Ya tienes la tarjeta. Ve a la sala que queda a mano derecha, ahí te veo y te explico tu siguiente tarea.
+elif minigame_8_done
+	Jefe Jeff Besos: Mira nada más. Buen trabajo asignando a cada cliente a la nube que le corresponde.
+	Jefe Jeff Besos: Con eso la latencia baja y la empresa gasta menos. Aunque sigue siendo lo mínimo que se espera de ti.
+	Jefe Jeff Besos: Toma esta tarjeta de acceso. Con ella abres el último torniquete.
+	*Has obtenido la tarjeta de acceso de nivel 7.
+	do give_card_tier_7()
+	Jefe Jeff Besos: Cuando pases al otro lado, nos vemos en la sala que queda a mano derecha. Ahí te asigno lo que sigue.
+	El nuevo: Entendido.
 elif minigame_7_done and not has_credentials()
 	Jefe Jeff Besos: Mira nada más, lograste reparar los 4 servidores. Bien hecho.
 	Jefe Jeff Besos: Tu siguiente tarea es sobre las zonas de disponibilidad. Cuando un usuario se conecta desde un país, su tráfico tiene que ir a la zona con menor latencia.
+	Jefe Jeff Besos: Esto es parte de la alta disponibilidad: las nubes se dividen en regiones y zonas de disponibilidad, que son centros de datos separados. Elegir la zona más cercana baja la latencia y, si una zona falla, el servicio sigue funcionando desde otra.
 	Jefe Jeff Besos: En el computador te van a aparecer unas banderas arriba a la izquierda con el nombre del país. Presiona el botón de la zona de disponibilidad que tenga menos latencia para ese país.
 	Jefe Jeff Besos: Ojo, si eliges la zona equivocada pierdes una vida.
 	Jefe Jeff Besos: Pero primero necesitas tus credenciales. Búscalas en la sala de los servidores de arriba, que es un laberinto, y vuelve cuando las tengas.
@@ -13,24 +43,25 @@ elif minigame_7_failed
 	Jefe Jeff Besos: ¿Ya volviste? ¿Y los servidores? Se acabó el tiempo y siguen dañados.
 	Jefe Jeff Besos: Te dije que eran solo 4 y que arrastraras cada cable a su entrada. No es tan difícil.
 	Jefe Jeff Besos: Por tu descuido vamos a perder dinero. Vuelve a esa sala e inténtalo de nuevo, y esta vez sin excusas.
-	Jugador: Entendido... voy otra vez.
+	El nuevo: Entendido... voy otra vez.
 	do request_minigame()
 elif met_boss
 	Jefe Jeff Besos: ¿Qué haces parado aquí? Ve a la sala de los servidores y realiza la tarea.
 	do request_minigame()
 else
-	Jefe Jeff Besos: Asi que tu eres el nuevo empleado *Lo mira de abajo asi arriba con cara de desprecio
-	Jugador: Si ese soy yo, me dijeron que viniera al trabajo de programador.
-	Jefe Jeff Besos: ¿Programadro? Aca no hacemos eso nuevo aca estamos en el area de programacion en la nube y data center
-	Jugador: que D: pero si me dijeron que iba a programar.
-	Jefe Jeff Besos: Pues te informaron mal nosotros nos encargamos de manejar las plataformas digitales, asi como manetener la infraestructura que se construyo en la nube.
-	Jefe Jeff Besos: Ah nosotros nos piden instanciar maquinas virtuales, manejar los costos de los servicios que usamos, manejamos los pipelines y programamos las funciones que se ejecutan en los servidores.
-	Jefe Jeff Besos: aun que tu no vas a programar nada lo que vas a ser es diferente. En este caso aca no manejamos tarjetas de acceso asi que puedes ir caminando por cualquier lado, almenos que los caminos esten bloqueados.
-	Jefe Jeff Besos: Aca siempre hay cajas no se porque. como sea vamos a empezar con tu primer trabajo. Como se que tienes experiencia reciente arreglando equipos.
+	Jefe Jeff Besos: Así que tú eres el nuevo empleado. *Te mira de arriba abajo con cara de desprecio
+	El nuevo: Sí, ese soy yo. Me dijeron que viniera por el puesto de programador.
+	Jefe Jeff Besos: ¿Programador? Acá no hacemos eso, nuevo. Acá estamos en el área de computación en la nube y data center.
+	El nuevo: ¿QUÉ? D: Pero si me dijeron que iba a programar.
+	Jefe Jeff Besos: Pues te informaron mal. Nosotros nos encargamos de manejar las plataformas digitales, así como de mantener la infraestructura que se construyó en la nube.
+	Jefe Jeff Besos: Nos piden instanciar máquinas virtuales, controlar los costos de los servicios que usamos, administrar los pipelines y programar las funciones que se ejecutan en los servidores.
+	Jefe Jeff Besos: Aunque tú no vas a programar nada, lo que vas a hacer es diferente. Acá no manejamos tarjetas de acceso, así que puedes caminar por cualquier lado, a menos que los caminos estén bloqueados.
+	Jefe Jeff Besos: Acá siempre hay cajas, no sé por qué. Como sea, vamos a empezar con tu primer trabajo. Como sé que tienes experiencia reciente arreglando equipos...
 	Jefe Jeff Besos: Necesito que vayas a la sala de arriba a la izquierda y le hagas mantenimiento a los servidores.
-	Jefe Jeff Besos: Me han reportado que solo hay 4 dañados asi que tienes que encontrarlos y repararlos cuando termines vuelve conmigo y te dare tu siguiente tarea.
-	Jefe Jeff Besos: Para arreglar los servidores solo tienes que arrastar los cables que coresponden con su entrada es facil. Ah y una cosa más en esa sala tendras que entontrar tu usuario de google cloud es necesario para tu siguiente tarea.
-	Jugador: Ok entendido voy en camino
+	Jefe Jeff Besos: Un data center es un edificio lleno de servidores conectados por cableado. En la vida real, un solo cable mal conectado puede dejar caída una aplicación completa, por eso los técnicos de infraestructura revisan y etiquetan cada conexión.
+	Jefe Jeff Besos: Me han reportado que solo hay 4 dañados, así que tienes que encontrarlos y repararlos. Cuando termines, vuelve conmigo y te daré tu siguiente tarea.
+	Jefe Jeff Besos: Para arreglar los servidores solo tienes que arrastrar los cables que corresponden con su entrada, es fácil. Ah, y una cosa más: en esa sala tendrás que encontrar tus credenciales, son necesarias para tu siguiente tarea.
+	El nuevo: Ok, entendido. Voy en camino.
 	set met_boss = true
 	do request_minigame()
 => END
@@ -38,11 +69,13 @@ else
 ~ servers_done
 Jefe Jeff Besos: Mira nada más, lograste reparar los 4 servidores. Bien hecho.
 Jefe Jeff Besos: Tu siguiente tarea es sobre las zonas de disponibilidad. Cuando un usuario se conecta desde un país, su tráfico tiene que ir a la zona con menor latencia.
+Jefe Jeff Besos: Esto es parte de la alta disponibilidad: las nubes se dividen en regiones y zonas de disponibilidad, que son centros de datos separados. Elegir la zona más cercana baja la latencia y, si una zona falla, el servicio sigue funcionando desde otra.
 Jefe Jeff Besos: En el computador te van a aparecer unas banderas arriba a la izquierda con el nombre del país. Presiona el botón de la zona de disponibilidad que tenga el menor ping para ese país.
 Jefe Jeff Besos: Ojo, si eliges la zona equivocada pierdes una vida.
 if has_credentials()
 	Jefe Jeff Besos: Veo que ya tienes tus credenciales, así que puedes empezar cuando quieras.
 else
 	Jefe Jeff Besos: No te olvides de tus credenciales: las necesitas para usar el computador. Búscalas en la sala de los servidores de arriba, que es un laberinto.
-Jugador: Entendido.
+El nuevo: Entendido.
 => END
+

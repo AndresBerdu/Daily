@@ -6,12 +6,16 @@ extends CanvasLayer
 	$HeartCointainer/Heart3,
 ]
 @onready var label_coin: Label = $CoinContainer/LabelCoin
+@onready var give_heart_sfx: AudioStreamPlayer = $GiveHeartSfx
+@onready var lost_heart_sfx: AudioStreamPlayer = $LostHeartSfx
 
 func _ready() -> void:
 	_on_hearts_changed(GameManager.hearts)
 	_on_coins_changed(GameManager.coins)
 	GameManager.hearts_changed.connect(_on_hearts_changed)
 	GameManager.coins_changed.connect(_on_coins_changed)
+	GameManager.heart_gained.connect(give_heart_sfx.play)
+	GameManager.heart_lost.connect(lost_heart_sfx.play)
 
 func _on_hearts_changed(current: int) -> void:
 	for i in hearts.size():

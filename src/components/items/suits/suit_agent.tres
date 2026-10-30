@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://d4tlww032dxf"]
+
+[ext_resource type="Texture2D" uid="uid://jkhkodx63ylt" path="res://assets/sprites/items/suits/item_suit_agent.png" id="1_icon"]
+[ext_resource type="Script" uid="uid://csr0bmafqnr7x" path="res://src/components/items/items_resource/item_data.gd" id="2_data"]
+[ext_resource type="Texture2D" uid="uid://b501mjyejecks" path="res://assets/sprites/characters/player/agent/idle/character_player_agent_idle_down.png" id="3_id"]
+[ext_resource type="Texture2D" uid="uid://bujudxcxlxudn" path="res://assets/sprites/characters/player/agent/idle/character_player_agent_idle_side.png" id="4_is"]
+[ext_resource type="Texture2D" uid="uid://kk7p3lvhro7n" path="res://assets/sprites/characters/player/agent/idle/character_player_agent_idle_up.png" id="5_iu"]
+[ext_resource type="Script" uid="uid://bpfmt8tnsrgx3" path="res://src/components/items/items_resource/outfit_sheet.gd" id="6_sheet"]
+[ext_resource type="Texture2D" uid="uid://db88xp85am4j0" path="res://assets/sprites/characters/player/agent/walk/character_player_agent_down_run.png" id="7_wd"]
+[ext_resource type="Texture2D" uid="uid://cj268qs5ci0ck" path="res://assets/sprites/characters/player/agent/walk/character_player_agent_side_run.png" id="8_ws"]
+[ext_resource type="Texture2D" uid="uid://cq5ah2c6r063w" path="res://assets/sprites/characters/player/agent/walk/character_player_agent_up_run.png" id="9_wu"]
+
+[sub_resource type="Resource" id="Resource_agent"]
+script = ExtResource("6_sheet")
+idle_down = ExtResource("3_id")
+idle_up = ExtResource("5_iu")
+idle_side = ExtResource("4_is")
+walk_down = ExtResource("7_wd")
+walk_up = ExtResource("9_wu")
+walk_side = ExtResource("8_ws")
+metadata/_custom_type_script = "uid://bpfmt8tnsrgx3"
+
+[resource]
+script = ExtResource("2_data")
+id = "suit_agent"
+display_name = "Traje de agente"
+description = "Chaqueta táctica con chaleco y guantes."
+icon = ExtResource("1_icon")
+category = 0
+price = 60
+slot = 1
+suit_sheets = SubResource("Resource_agent")

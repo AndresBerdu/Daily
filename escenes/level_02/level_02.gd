@@ -5,16 +5,33 @@ signal minigame_completed(number: int)
 # ============================================================
 # CONSTANTES
 # ============================================================
-const COIN_REWARD := 10
+const COIN_REWARD := 30               # Monedas por minijuego completado
 const YUDERNIS_SIDE := preload("res://assets/sprites/characters/npc/yudernis_neleixys/character_boss_yudernis_nileixys_idle_side.png")
 const YUDERNIS_DOWN := preload("res://assets/sprites/characters/npc/yudernis_neleixys/character_boss_yudernis_neleixys_idle_down.png")
 const GOLDEN_TICKET := preload("res://src/components/items/props/golden_ticket.tres")
 const GOOGLE_CERT_ID := "google_certificate"
 const AWS_CERT_ID := "aws_certificate"
 
+# Objeto que se gasta al completar cada minijuego (numero -> id del item)
+const MINIGAME_ITEMS := {
+	5: GOOGLE_CERT_ID,
+	6: AWS_CERT_ID,
+}
+
+# Variables que se guardan con la partida (ver save_state / _apply_loaded_state)
+const SAVED_VARS := [
+	"talk_first_boss", "card5_given", "card6_given",
+	"boss_at_gate_1", "boss_at_zone_2", "boss_at_zone_3",
+	"minigame_4_done", "minigame_5_done", "minigame_6_done",
+	"elevator_opened", "boxes_deleted",
+]
+
 # ============================================================
 # NODOS
 # ============================================================
+@onready var start_minigame_sfx: AudioStreamPlayer = $StartMinigameSfx            # suena al empezar un minijuego
+@onready var minigame_finished_sfx: AudioStreamPlayer = $MinigameFinishedSfx    # suena al completarlo
+
 # --- Minijuegos ---
 @onready var minigame_4: Pc = $Pcs/PacketPc
 @onready var minigame_5: Pc = $Pcs/SecurityPc
@@ -34,7 +51,6 @@ const AWS_CERT_ID := "aws_certificate"
 
 # --- Personajes ---
 @onready var npc_yudernis: Npc = $Npcs/JefeYudernisNeleixys
-@onready var player: Player = $Player
 
 # --- Marcadores ---
 @onready var spawner_yudernis: Marker2D = $SpawnersNpcs/SpawnerYudernis      # junto a los torniquetes
@@ -44,6 +60,7 @@ const AWS_CERT_ID := "aws_certificate"
 
 # --- Zona que mueve al jefe despues de darte la tarjeta 5 ---
 @onready var teleport_1: Area2D = $Teleports/TeleportYudernis
+@onready var teleport_2: Area2D = $Teleports/TeleportYudernis2   # con la tarjeta 6, el jefe pasa junto al minijuego 6
 
 # --- Obstaculos que bloquean el camino al inicio ---
 @onready var boxes: StaticBody2D = $Obstacle
@@ -59,20 +76,25 @@ var card6_given := false         # el jefe ya entrego la tarjeta 6
 # --- Posicion del jefe ---
 var boss_at_gate_1 := false      # ya se movio al recoger el traje y la tarjeta 4
 var boss_at_zone_2 := false      # ya se movio al cruzar teleport_1
+var boss_at_zone_3 := false      # ya se movio al cruzar teleport_2 (junto al minijuego 6)
 
 # --- Minijuegos ---
 var minigame_4_done := false
 var minigame_5_done := false
 var minigame_6_done := false
 var belt_started := false
-var minigame_6_requested := false   # el dialogo lo pidio; arranca al cerrarse
 
 # --- Ascensor ---
 var elevator_opened := false
+var boxes_deleted := false    # ya se quitaron las cajas del inicio
 var belt_ready := false       # true cuando el jugador ya fue llevado a la sala 6
 var rewarded := {}  
 
 func _ready() -> void:
+	# Apariencias del jefe para npc_yudernis.face()/teleport_to() (mejor: asignalas en el Inspector del NPC)
+	npc_yudernis.texture_side = YUDERNIS_SIDE
+	npc_yudernis.texture_down = YUDERNIS_DOWN
+
 	minigame_5.required_item_id = GOOGLE_CERT_ID
 	minigame_5.locked_text = "Necesitas el certificado de Google."
 	
@@ -82,12 +104,58 @@ func _ready() -> void:
 	minigame_6.failed.connect(_on_belt_failed)
 
 	teleport_1.body_entered.connect(_on_teleport_1_entered)
+	teleport_2.body_entered.connect(_on_teleport_2_entered)
 	InventoryManager.item_added.connect(_on_item_added)
-	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 
 	# Red de seguridad: el minijuego 6 no puede estar corriendo antes de tiempo
 	if minigame_6.running:
 		minigame_6.stop()
+
+	# Si se cargo una partida, vuelve a dejar el nivel como estaba
+	LevelUtils.load_state(self, SAVED_VARS)
+	_apply_loaded_state()
+
+
+# ============================================================
+# GUARDADO
+# ============================================================
+
+# La llaman SaveManager al guardar y SceneTransition al salir del nivel
+func save_state() -> void:
+	LevelUtils.store_state(self, SAVED_VARS)
+
+
+# Reaplica en el mundo lo que el progreso guardado ya habia cambiado
+func _apply_loaded_state() -> void:
+	if boxes_deleted:
+		LevelUtils.remove_node(boxes)
+
+	# El jefe vuelve al ultimo lugar donde estaba
+	if boss_at_zone_3:
+		npc_yudernis.teleport_to(spawner_yudernis_3)
+	elif boss_at_zone_2:
+		npc_yudernis.teleport_to(spawner_yudernis_2, "h", true)
+	elif boss_at_gate_1:
+		npc_yudernis.teleport_to(spawner_yudernis)
+
+	if boss_at_gate_1:
+		LevelUtils.open_gates([ticket_gate_1])
+	if card5_given:
+		LevelUtils.open_gates([ticket_gate_2])
+	if card6_given:
+		LevelUtils.open_gates([ticket_gate_3])
+	if elevator_opened:
+		elevator.is_elevator_operational = true
+
+	# Minijuegos ya completados: no se repiten ni vuelven a dar premio
+	var done := {4: minigame_4_done, 5: minigame_5_done, 6: minigame_6_done}
+	for number in done:
+		if done[number]:
+			rewarded[number] = true
+	if minigame_4_done:
+		minigame_4.mark_done()
+	if minigame_5_done:
+		minigame_5.mark_done()
 
 # ============================================================
 # EVENTOS DE LA HISTORIA
@@ -99,8 +167,8 @@ func _on_item_added(_id: String, _amount: int) -> void:
 		return
 
 	boss_at_gate_1 = true
-	_move_boss(spawner_yudernis, false)
-	ticket_gate_1.open_ticket_gate()
+	npc_yudernis.teleport_to(spawner_yudernis)
+	LevelUtils.open_gates([ticket_gate_1])
 
 
 # Al cruzar la zona (con la tarjeta 5 ya entregada) el jefe pasa al spawner 2
@@ -109,20 +177,16 @@ func _on_teleport_1_entered(body: Node) -> void:
 		return
 
 	boss_at_zone_2 = true
-	_move_boss(spawner_yudernis_2, true)
+	npc_yudernis.teleport_to(spawner_yudernis_2, "h", true)
 
 
-# Coloca al jefe en un marcador y lo orienta
-func _move_boss(marker: Marker2D, look_left: bool) -> void:
-	npc_yudernis.global_position = marker.global_position
+# Al cruzar la segunda zona (con la tarjeta 6 ya entregada) el jefe pasa junto al minijuego 6
+func _on_teleport_2_entered(body: Node) -> void:
+	if not body.is_in_group("player") or not card6_given or boss_at_zone_3:
+		return
 
-	var sprite := npc_yudernis.get_node("Sprite2D") as Sprite2D
-	sprite.texture = YUDERNIS_SIDE if look_left else YUDERNIS_DOWN
-	sprite.flip_h = look_left
-
-	npc_yudernis.face_left = look_left
-	npc_yudernis.set_meta("facing", "h" if look_left else "d")
-	npc_yudernis.play_anim("idle")
+	boss_at_zone_3 = true
+	npc_yudernis.teleport_to(spawner_yudernis_3)
 
 
 # ============================================================
@@ -138,6 +202,7 @@ func _on_minigame_5_completed() -> void:
 
 
 func _on_belt_completed() -> void:
+	minigame_finished_sfx.play()
 	_complete_minigame(6)
 
 
@@ -152,6 +217,9 @@ func _complete_minigame(number: int) -> void:
 		5: minigame_5_done = true
 		6: minigame_6_done = true
 
+	if MINIGAME_ITEMS.has(number):
+		InventoryManager.remove_item(MINIGAME_ITEMS[number])
+
 	GameManager.set_flag("minigame_%d_done" % number)
 	GameManager.add_coins(COIN_REWARD)
 	minigame_completed.emit(number)
@@ -161,17 +229,17 @@ func _on_belt_failed() -> void:
 	belt_started = false          # permite volver a hablar con el jefe y reintentar
 
 
-# La llama el dialogo: solo marca la peticion. Arranca al cerrarse el dialogo
+# La llama el dialogo: el minijuego 6 arranca cuando el dialogo se cierra
 func request_belt_minigame() -> void:
 	if belt_ready and not belt_started and has_aws_cert():
-		minigame_6_requested = true
-
-
-func _on_dialogue_ended(_resource: DialogueResource) -> void:
-	if minigame_6_requested and not belt_started:
-		minigame_6_requested = false
 		belt_started = true
-		minigame_6.start()
+		LevelUtils.after_dialogue(_start_belt)
+
+
+# Arranca el minijuego 6 con su sonido de inicio
+func _start_belt() -> void:
+	start_minigame_sfx.play()
+	minigame_6.start()
 
 
 # ============================================================
@@ -180,8 +248,8 @@ func _on_dialogue_ended(_resource: DialogueResource) -> void:
 
 # Quita las cajas que bloquean el camino
 func delete_boxes() -> void:
-	if is_instance_valid(boxes):
-		boxes.queue_free()
+	boxes_deleted = true
+	LevelUtils.remove_node(boxes)
 
 
 # Tarjeta 5: se entrega y se abre el torniquete 2
@@ -190,8 +258,7 @@ func give_card_tier_5() -> void:
 		return
 	card5_given = true
 	GameManager.set_flag("card5_given")
-	InventoryManager.add_data(card_access_tier_5, 1)
-	ticket_gate_2.open_ticket_gate()
+	LevelUtils.give_card(card_access_tier_5, [ticket_gate_2])
 
 
 # Tarjeta 6: se entrega y se abre el torniquete 3
@@ -199,8 +266,7 @@ func give_card_tier_6() -> void:
 	if card6_given:
 		return
 	card6_given = true
-	InventoryManager.add_data(card_access_tier_6, 1)
-	ticket_gate_3.open_ticket_gate()
+	LevelUtils.give_card(card_access_tier_6, [ticket_gate_3])
 
 
 # Lleva al jugador y al jefe a la sala del minijuego 6, con transicion
@@ -209,14 +275,8 @@ func teleport_to_belt() -> void:
 
 
 func _do_teleport_to_belt() -> void:
-	player.velocity = Vector2.ZERO
-	player.global_position = spawner_player.global_position
-	_move_boss(spawner_yudernis_3, false)
-
-	var cam := player.get_node_or_null("Camera2D") as Camera2D
-	if cam:
-		cam.reset_smoothing()
-
+	PlayerControl.teleport_to(spawner_player)
+	npc_yudernis.teleport_to(spawner_yudernis_3)
 	belt_ready = true
 
 
@@ -237,11 +297,11 @@ func has_card_tier_4_and_suit() -> bool:
 			and InventoryManager.has_item("suit_security")
 
 func has_token() -> bool:
-	print("has_token llamado | inventario: ", InventoryManager.items.keys())
 	return InventoryManager.has_item("token")
 
 
 func give_golden_ticket_to_charlie() -> void:
+	GameManager.set_flag(GameFlow.FLAG_TOKEN_TO_CHARLIE)      # decide el final del juego
 	InventoryManager.remove_item("token", 1)
 	InventoryManager.add_data(GOLDEN_TICKET, 1)
 
@@ -249,6 +309,7 @@ func give_golden_ticket_to_charlie() -> void:
 func give_token_to_suspect() -> void:
 	if not InventoryManager.remove_item("token"):
 		return
+	GameManager.set_flag(GameFlow.FLAG_TOKEN_TO_STRANGER)
 	GameManager.add_coins(999)
 
 

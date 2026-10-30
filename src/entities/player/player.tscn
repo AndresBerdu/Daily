@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://eierx1asokja" path="res://src/entities/player/player.gd" id="1_n7e5a"]
 [ext_resource type="Script" uid="uid://bugurv12g5iec" path="res://src/components/state_machine/state_machine.gd" id="4_ketdh"]
 [ext_resource type="Script" uid="uid://dfam8d3trnwfw" path="res://src/entities/player/states/walk.gd" id="5_0mfjg"]
+[ext_resource type="Script" path="res://src/entities/player/states/frozen.gd" id="frozen_state"]
 [ext_resource type="Texture2D" uid="uid://fuhrvmmegypu" path="res://assets/sprites/characters/player/default/walk/character_player_up_run.png" id="6_4f0qm"]
 [ext_resource type="Script" uid="uid://dskawdpawrm6a" path="res://src/entities/player/states/hurt.gd" id="6_oih67"]
 [ext_resource type="Script" uid="uid://c1o7e31vp5a23" path="res://src/entities/player/states/idle.gd" id="8_4f0qm"]
@@ -174,6 +175,9 @@ script = ExtResource("5_0mfjg")
 
 [node name="Hurt" type="Node" parent="StateMachine" unique_id=2145707067]
 script = ExtResource("6_oih67")
+
+[node name="Frozen" type="Node" parent="StateMachine"]
+script = ExtResource("frozen_state")
 
 [node name="Hud" parent="." unique_id=559625638 instance=ExtResource("10_tk761")]
 metadata/_edit_use_anchors_ = true

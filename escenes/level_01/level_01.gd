@@ -11,9 +11,18 @@ signal minigame2_finished                            # Se emite al instalar los 
 # ============================================================
 # CONSTANTES
 # ============================================================
-const COIN_REWARD := 10               # Monedas que se dan al completar cada minijuego
-const MINIGAME1_DURATION := 120.0     # Duración del minijuego 1 en segundos
+const COIN_REWARD := 20               # Monedas que se dan al completar cada minijuego
+const MINIGAME1_DURATION := 60.0      # Duración del minijuego 1 en segundos (1 minuto)
 const ISO_ID := "image_iso"           # Id del ItemData de la imagen ISO
+const RELEASE_AGENT_ID := "release_agent"   # Despegante: se gasta al quitar la moneda pegada
+const USB_ID := "usb"                 # Id de la USB que se le entrega a Sara
+
+# Variables que se guardan con la partida (ver save_state / _apply_loaded_state)
+const SAVED_VARS := [
+	"suit_obtained", "box_open", "sara_taking", "martin_taking",
+	"card2_given", "card3_given", "elevator_opened",
+	"minigame1_done", "installed_count", "repaired_new_pcs",
+]
 
 # ============================================================
 # CONFIGURACIÓN DESDE EL INSPECTOR
@@ -33,6 +42,9 @@ const ISO_ID := "image_iso"           # Id del ItemData de la imagen ISO
 # ============================================================
 # NODOS
 # ============================================================
+@onready var start_minigame_sfx: AudioStreamPlayer = $StartMinigameSfx            # suena al empezar un minijuego
+@onready var minigame_finished_sfx: AudioStreamPlayer = $MinigameFinishedSfx    # suena al completarlo
+
 # --- Minijuego 1 ---
 @onready var spawner: Marker2D = $Teleports/SpawnerMinigame1   # Destino del teletransporte
 @onready var workers_node: Node2D = $Workers                   # Contenedor de los oficinistas
@@ -40,6 +52,9 @@ const ISO_ID := "image_iso"           # Id del ItemData de la imagen ISO
 # --- Minijuego 2 ---
 @onready var spawner2: Marker2D = $Teleports/SpawnerMinigame2  # Destino del teletransporte
 @onready var desktops_node: Node2D = $Desktops                 # Contenedor de los PCs
+
+# --- Minijuego 3 ---
+@onready var new_pcs_node: Node2D = $NewPcs                    # Contenedor de los PCs a reparar
 
 # --- Torniquetes, agrupados por nivel de tarjeta ---
 @onready var ticket_gate_1: TicketGate = $TicketsGate/Tier1/TicketGate
@@ -67,7 +82,6 @@ var elevator_opened := false          # Martín activó el ascensor
 var running := false                  # true mientras corre el minijuego 1
 var minigame1_started := false
 var minigame1_done := false
-var minigame1_requested := false      # El diálogo pidió empezar; arranca al cerrarse
 var minigame1_time_left := MINIGAME1_DURATION
 var workers: Array[OfficeWorker] = []
 var spawn_timer := Timer.new()        # Controla cuándo aparece el siguiente problema
@@ -75,8 +89,10 @@ var spawn_timer := Timer.new()        # Controla cuándo aparece el siguiente pr
 # --- Minijuego 2 ---
 var desktops: Array[Desktop] = []
 var installed_count := 0              # PCs instalados hasta ahora
-var minigame2_requested := false
 var minigame2_started := false
+
+# --- Minijuego 3 ---
+var repaired_new_pcs: Array = []      # nombres de los PCs ya reparados (se guarda con la partida)
 
 
 func _ready() -> void:
@@ -97,6 +113,12 @@ func _ready() -> void:
 			d.installed.connect(_on_desktop_installed)
 			d.repair_failed.connect(_on_desktop_repair_failed)
 
+	# Registra los PCs del minijuego 3 y escucha cuando se reparan
+	for child in new_pcs_node.get_children():
+		var pc := child as NewPc
+		if pc:
+			pc.repaired.connect(_on_new_pc_repaired.bind(pc))
+
 	# Asigna la apariencia de cada oficinista según la semilla de la partida
 	_assign_appearances()
 
@@ -108,24 +130,54 @@ func _ready() -> void:
 	spawn_timer.timeout.connect(_spawn_problem)
 	add_child(spawn_timer)
 
-	# La caja avisa al recogerse y los diálogos avisan al cerrarse
+	# La caja avisa al recogerse
 	suit_box.collected.connect(_on_suit_collected)
-	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+
+	# Si se cargo una partida, vuelve a dejar el nivel como estaba
+	LevelUtils.load_state(self, SAVED_VARS)
+	_apply_loaded_state()
+
+
+# ============================================================
+# GUARDADO
+# ============================================================
+
+# La llaman SaveManager al guardar y SceneTransition al salir del nivel
+func save_state() -> void:
+	LevelUtils.store_state(self, SAVED_VARS)
+
+
+# Reaplica en el mundo lo que el progreso guardado ya habia cambiado
+func _apply_loaded_state() -> void:
+	if martin_taking:
+		LevelUtils.open_gates([ticket_gate_1, ticket_gate_2, ticket_gate_3])   # tarjeta 1
+	if card2_given:
+		LevelUtils.open_gates([ticket_gate_4])
+	if card3_given:
+		LevelUtils.open_gates([ticket_gate_5])
+	if elevator_opened:
+		elevator.is_elevator_operational = true
+	for child in new_pcs_node.get_children():
+		if child is NewPc and repaired_new_pcs.has(str(child.name)):
+			child.mark_done()
 
 
 # ============================================================
 # MINIJUEGO 1: problemas de los oficinistas
 # ============================================================
 
-# La llama el diálogo de Sara para pedir el inicio del minijuego 1
+# La llama el diálogo de Sara: el minijuego 1 arranca cuando el diálogo se cierra
 func request_minigame() -> void:
-	if not minigame1_started:
-		minigame1_requested = true
+	if minigame1_started:
+		return
+	minigame1_started = true
+	LevelUtils.after_dialogue(_begin_minigame)
 
 
 # Teletransporta al jugador y arranca el contador y la aparición de problemas
 func _begin_minigame() -> void:
-	await SceneTransition.play(_teleport_player.bind(spawner))
+	await SceneTransition.play(PlayerControl.teleport_to.bind(spawner))
+	start_minigame_sfx.play()
 
 	minigame1_time_left = MINIGAME1_DURATION
 	running = true
@@ -197,6 +249,8 @@ func _finish(won: bool) -> void:
 
 	if won:
 		minigame1_done = true
+		minigame_finished_sfx.play()
+		InventoryManager.remove_item(USB_ID)       # Sara se queda con la USB
 		earned = COIN_REWARD
 		GameManager.add_coins(earned)
 	else:
@@ -217,12 +271,14 @@ func _on_game_over() -> void:
 # La llama el diálogo de Martín. Exige haber terminado el minijuego 1 y tener la ISO
 func request_minigame2() -> void:
 	if minigame1_done and has_image_iso() and not minigame2_started:
-		minigame2_requested = true
+		minigame2_started = true
+		LevelUtils.after_dialogue(_begin_minigame2)
 
 
 # Teletransporta al jugador y desbloquea todos los PCs
 func _begin_minigame2() -> void:
-	await SceneTransition.play(_teleport_player.bind(spawner2))
+	await SceneTransition.play(PlayerControl.teleport_to.bind(spawner2))
+	start_minigame_sfx.play()
 
 	for d in desktops:
 		d.activate()
@@ -238,9 +294,22 @@ func _on_desktop_installed(_d: Desktop) -> void:
 	installed_count += 1
 
 	if installed_count >= desktops.size():
+		InventoryManager.remove_item(ISO_ID)       # la imagen ISO ya se instalo en los PCs
+		minigame_finished_sfx.play()
 		minigame2_finished.emit()
 		GameManager.add_coins(COIN_REWARD)
 		print("Minijuego 2 completado")
+
+
+# ============================================================
+# MINIJUEGO 3: reparacion de PCs
+# ============================================================
+
+# Anota el PC reparado para que no haya que repetirlo despues de cargar la partida
+func _on_new_pc_repaired(pc: NewPc) -> void:
+	var pc_name := str(pc.name)
+	if not repaired_new_pcs.has(pc_name):
+		repaired_new_pcs.append(pc_name)
 
 
 # ============================================================
@@ -249,37 +318,21 @@ func _on_desktop_installed(_d: Desktop) -> void:
 
 # Martín entrega la tarjeta de nivel 1 y abre los torniquetes del tier 1
 func get_card_access() -> void:
-	InventoryManager.add_data(card_access_tier_1, 1)
-
-	ticket_gate_1.open_ticket_gate()
-	ticket_gate_2.open_ticket_gate()
-	ticket_gate_3.open_ticket_gate()
+	LevelUtils.give_card(card_access_tier_1, [ticket_gate_1, ticket_gate_2, ticket_gate_3])
 
 
 # Martín entrega la tarjeta de nivel 2 y abre los torniquetes del tier 2
 func get_card_access_tier_2() -> void:
 	if card2_given:
 		return
-	if card_access_tier_2 == null:
-		push_error("Level01: asigna Card Access Tier 2 en el Inspector")
-		return
-
-	card2_given = true
-	InventoryManager.add_data(card_access_tier_2, 1)
-	ticket_gate_4.open_ticket_gate()
+	card2_given = LevelUtils.give_card(card_access_tier_2, [ticket_gate_4])
 
 
 # Sara entrega la tarjeta de nivel 3 y abre los torniquetes del tier 3
 func get_card_access_tier_3() -> void:
 	if card3_given:
 		return
-	if card_access_tier_3 == null:
-		push_error("Level01: asigna Card Access Tier 3 en el Inspector")
-		return
-
-	card3_given = true
-	InventoryManager.add_data(card_access_tier_3, 1)
-	ticket_gate_5.open_ticket_gate()
+	card3_given = LevelUtils.give_card(card_access_tier_3, [ticket_gate_5])
 
 
 # Martín deja operativo el ascensor hacia el siguiente nivel
@@ -288,6 +341,11 @@ func open_elevator() -> void:
 		return
 	elevator_opened = true
 	elevator.is_elevator_operational = true
+
+
+# El despegante se gasta al quitar la unica moneda pegada (la llama el dialogo)
+func use_release_agent() -> void:
+	InventoryManager.remove_item(RELEASE_AGENT_ID)
 
 
 # Sara habilita la caja del traje
@@ -309,11 +367,11 @@ func has_suit() -> bool:
 
 
 func has_usb() -> bool:
-	return InventoryManager.has_item("usb")
+	return InventoryManager.has_item(USB_ID)
 
 
 func has_release_agent() -> bool:
-	return InventoryManager.has_item("release_agent")
+	return InventoryManager.has_item(RELEASE_AGENT_ID)
 
 
 func has_image_iso() -> bool:
@@ -344,36 +402,9 @@ func is_minigame2_done() -> bool:
 
 
 # ============================================================
-# EVENTOS Y UTILIDADES COMPARTIDAS
+# EVENTOS
 # ============================================================
 
 # La caja avisa que el traje fue recogido
 func _on_suit_collected(_item: Item) -> void:
 	suit_obtained = true
-
-
-# Al cerrarse cualquier diálogo se revisa si había un minijuego pendiente
-func _on_dialogue_ended(_resource: DialogueResource) -> void:
-	if minigame1_requested and not minigame1_started:
-		minigame1_requested = false
-		minigame1_started = true
-		_begin_minigame()
-	elif minigame2_requested and not minigame2_started:
-		minigame2_requested = false
-		minigame2_started = true
-		_begin_minigame2()
-
-
-# Mueve al jugador a un marcador y reinicia su velocidad y la cámara
-func _teleport_player(target: Marker2D) -> void:
-	var player := get_tree().get_first_node_in_group("player") as Node2D
-
-	if player:
-		player.global_position = target.global_position
-
-		if player is CharacterBody2D:
-			player.velocity = Vector2.ZERO   # Evita que conserve el movimiento anterior
-
-		var cam := player.get_node_or_null("Camera2D") as Camera2D
-		if cam:
-			cam.reset_smoothing()            # La cámara salta al nuevo punto sin deslizarse

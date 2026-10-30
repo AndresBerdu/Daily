@@ -84,7 +84,7 @@ func _update_ui() -> void:
 	bar.visible = state == State.INSTALLING or state == State.ERROR
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact") and not event.is_echo() and player_inside:
+	if PlayerControl.is_interact(event) and not event.is_echo() and player_inside:
 		if state in [State.IDLE, State.ERROR, State.FAILED]:
 			get_viewport().set_input_as_handled()
 			_on_button_pressed()

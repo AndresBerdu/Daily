@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://cfnwin36urvd7"
+path="res://.godot/imported/exit.dialogue-871b5e9115895767d78c753849ea1935.tres"
+
+[deps]
+
+source_file="res://escenes/lobby/dialogues/exit.dialogue"
+dest_files=["res://.godot/imported/exit.dialogue-871b5e9115895767d78c753849ea1935.tres"]
+
+[params]
+
+defaults=true

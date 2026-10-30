@@ -27,9 +27,13 @@ func _on_elevator_exited(body: Node) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if is_elevator_operational:
 		# Si no se presiona la tecla interact, o ya está animando, o no estamos en el área, no hacemos nada
-		if not event.is_action_pressed("interact") or is_animating or not in_elevator_area:
+		if not PlayerControl.is_interact(event) or is_animating or not in_elevator_area:
 				return
 			
+		if nex_level == null:
+			push_warning("Elevator: asigna Nex Level en el Inspector")
+			return
+
 		is_animating = true
 		elevator_sprite.play("open")
 		await elevator_sprite.animation_finished

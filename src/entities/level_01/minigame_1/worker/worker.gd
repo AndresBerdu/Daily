@@ -77,7 +77,7 @@ func _player_inside() -> bool:
 func _unhandled_input(event: InputEvent) -> void:
 	if not has_problem:
 		return
-	if not event.is_action_pressed("interact") or event.is_echo():
+	if not PlayerControl.is_interact(event) or event.is_echo():
 		return
 	if not _player_inside():
 		return

@@ -36,20 +36,34 @@ func play(middle: Callable = Callable()) -> void:
 	if busy:
 		return
 	busy = true
+	PlayerControl.freeze(self)
 	await cover()
 	if middle.is_valid():
 		await middle.call()
 	await reveal()
+	PlayerControl.unfreeze(self)
 	busy = false
 
-# Para cambiar de escena con la transición
-func change_scene(packed: PackedScene) -> void:
+# Para cambiar de escena con la transición.
+# on_loaded: se ejecuta con la escena nueva ya lista, antes de descubrir la pantalla.
+# save_leaving: false al cargar partida / ir al menú, para que el nivel que sale
+# no sobrescriba el progreso que se acaba de cargar.
+func change_scene(packed: PackedScene, on_loaded := Callable(), save_leaving := true) -> void:
 	if busy:
 		return
 	busy = true
+	var leaving := get_tree().current_scene
+	if save_leaving and leaving and leaving.has_method("save_state"):
+		leaving.save_state()          # el progreso del nivel se conserva al cambiar de escena
+	PlayerControl.freeze(self)
 	await cover()
+	PlayerControl.reset()            # lo que dejo congelado la escena anterior no pasa a la nueva
+	PlayerControl.freeze(self)       # y seguimos congelados mientras dura la transicion
 	get_tree().change_scene_to_packed(packed)
 	await get_tree().process_frame
 	await get_tree().process_frame   # espera a que la nueva escena esté lista
+	if on_loaded.is_valid():
+		on_loaded.call()
 	await reveal()
+	PlayerControl.unfreeze(self)     # un dialogo que empiece al cargar la escena (lobby) sigue congelando
 	busy = false

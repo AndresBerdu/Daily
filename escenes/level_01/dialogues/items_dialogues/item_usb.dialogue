@@ -1,8 +1,8 @@
 ~ start
-Miras al suelo y encuentras una usb que por supuesto no tiene malware
+Miras al suelo y encuentras una USB que, por supuesto, no tiene malware.
 - Recoger USB
 	do collect()
-		Has obtenido una USB con Microhard 720 y con el GTA San Andreas (Solo es el ejecutable del escritorio)
+		*Has recogido una USB con Microhard 720 y con el GTA San Andreas (solo es el ejecutable del escritorio).
 		=> END
 - Dejarlo
 	=> END

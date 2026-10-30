@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://cdecaha8gk0lw" path="res://assets/sprites/items/pc/pc.png" id="1_5j1fb"]
 [ext_resource type="Script" uid="uid://dopvukiuiuo37" path="res://src/entities/pc/pc.gd" id="1_blmvj"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/start_minigame_sfx.ogg" id="start_minigame_sfx"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/minigame_finished_sfx.ogg" id="minigame_finished_sfx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ostoq"]
 size = Vector2(37, 22)
@@ -25,3 +27,11 @@ shape = SubResource("RectangleShape2D_ostoq")
 position = Vector2(0.5, 3)
 shape = SubResource("RectangleShape2D_ajtct")
 debug_color = Color(0.88662076, 0.18495062, 0.6792642, 0.41960785)
+
+[node name="StartMinigameSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("start_minigame_sfx")
+bus = &"SFX"
+
+[node name="MinigameFinishedSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("minigame_finished_sfx")
+bus = &"SFX"
